@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+html, body {
+  overflow-x: hidden;
+}
+html, body, #root {
+  margin: 0;
+  padding: 0;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────
+   ADMIN STYLES
+───────────────────────────────────────── */
+
+@layer base {
+  body { @apply font-body text-gray-800 bg-gray-50; }
+  h1,h2,h3,h4 { @apply font-body font-semibold; }
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl font-medium text-sm transition-all duration-150 cursor-pointer; }
+  .btn-primary { @apply btn bg-brand-500 hover:bg-brand-600 text-white shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[.98]; }
+  .btn-ghost { @apply btn text-gray-600 hover:bg-brand-50 hover:text-brand-600; }
+  .btn-danger { @apply btn bg-red-50 text-red-600 hover:bg-red-100; }
+  .btn-outline { @apply btn border border-gray-200 hover:border-brand-300 hover:text-brand-600 bg-white; }
+  .card { @apply bg-white rounded-2xl shadow-card border border-gray-100/60; }
+  .card-hover { @apply card transition-all duration-200 hover:shadow-card-hover hover:-translate-y-0.5; }
+  .badge { @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold; }
+  .badge-green { @apply badge bg-emerald-50 text-emerald-700; }
+  .badge-orange { @apply badge bg-orange-50 text-orange-700; }
+  .badge-red { @apply badge bg-red-50 text-red-600; }
+  .badge-gray { @apply badge bg-gray-100 text-gray-600; }
+  .badge-blue { @apply badge bg-blue-50 text-blue-700; }
+  .input { @apply w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-transparent transition-all; }
+  .label { @apply block text-sm font-medium text-gray-700 mb-1.5; }
+  .section-title { @apply text-lg font-semibold text-gray-800; }
+  .table-th { @apply px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide; }
+  .table-td { @apply px-4 py-3.5 text-sm text-gray-700; }
+  .table-row { @apply border-b border-gray-50 hover:bg-brand-50/40 transition-colors; }
+  .sidebar-link { @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 cursor-pointer; }
+  .sidebar-link-active { @apply sidebar-link bg-brand-500 text-white shadow-sm; }
+  .sidebar-link-inactive { @apply sidebar-link text-gray-500 hover:bg-brand-50 hover:text-brand-700; }
+  .stat-card { @apply card p-5 flex items-start justify-between gap-3 animate-slide-up; }
+}
+
+@layer utilities {
+  .page-enter { @apply animate-fade-in; }
+  .text-brand { @apply text-brand-600; }
+  .bg-brand-grad { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+  .dot-online { @apply w-2 h-2 rounded-full bg-emerald-400 animate-pulse-dot; }
+}
+
+/* ─────────────────────────────────────────
+   USER / TOYSTORE STYLES
+───────────────────────────────────────── */
+
+/* User layout overrides — scoped so they don't bleed into admin */
+.user-layout * {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* .user-layout h1,
+.user-layout h2,
+.user-layout h3,
+.user-layout h4,
+.user-layout h5 {
+  font-family: 'Fredoka One', cursive;
+} */
+
+/* Custom carousel dots */
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fed7aa;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.carousel-dot.active {
+  width: 24px;
+  border-radius: 4px;
+  background: #f97316;
+}
+
+/* Zoom container */
+.zoom-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.zoom-image {
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+.zoom-image.zoomed {
+  cursor: zoom-out;
+}
+
+/* Confetti dots pattern bg */
+.dots-bg {
+  background-image: radial-gradient(circle, #fed7aa 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Wiggle on hover */
+.hover-wiggle:hover {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+/* Star rating */
+.star-filled { color: #fbbf24; fill: #fbbf24; }
+.star-half   { color: #fbbf24; }
+.star-empty  { color: #e5e7eb; fill: #e5e7eb; }
+
+/* Toast notification */
+.toast {
+  animation: toastIn 0.3s ease-out, toastOut 0.3s ease-in 2.5s forwards;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(100%); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes toastOut {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(100%); }
+}
+
+/* Banner gradient overlay */
+.banner-gradient {
+  background: linear-gradient(135deg, rgba(249,115,22,0.9) 0%, rgba(234,88,12,0.7) 50%, transparent 100%);
+}
+
+/* Product image placeholder gradients */
+.toy-gradient-1 { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+.toy-gradient-2 { background: linear-gradient(135deg, #a8edea, #fed6e3); }
+.toy-gradient-3 { background: linear-gradient(135deg, #fccb90, #d57eeb); }
+.toy-gradient-4 { background: linear-gradient(135deg, #e0c3fc, #8ec5fc); }
+.toy-gradient-5 { background: linear-gradient(135deg, #f9f586, #f9d371); }
+.toy-gradient-6 { background: linear-gradient(135deg, #96fbc4, #f9f586); }
+
+/* Shadow utilities used by user components */
+.shadow-toy       { box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.15); }
+.shadow-toy-hover { box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.2); }
+
+@keyframes popupFade {
+  0%   { opacity: 0; transform: translateX(10px); }
+  20%  { opacity: 1; transform: translateX(0); }
+  80%  { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(-6px); }
+}
+
+.animate-popup {
+  animation: popupFade 1.2s ease forwards;
+}
+
+/* Scrollbar hide */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+.text-shadow { text-shadow: 2px 2px 0px rgba(0,0,0,0.1); }
+
+
+html,
+body,
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
