@@ -24,12 +24,7 @@ const EMPTY = {
 const Ctx = createContext(null);
 
 export function SellerOnboardingProvider({ children }) {
-  const [data, setData] = useState(() => {
-    try {
-      const raw = localStorage.getItem(KEY);
-      return raw ? { ...EMPTY, ...JSON.parse(raw) } : { ...EMPTY };
-    } catch { return { ...EMPTY }; }
-  });
+  const [data, setData] = useState(() => ({ ...EMPTY }));
 
   useEffect(() => {
     // don't persist image blobs to localStorage - store everything else

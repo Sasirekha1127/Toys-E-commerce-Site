@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Sparkles } from 'lucide-react';
 import UserLoginForm from '../../components/user/auth/UserLoginForm';
 import SellerLoginForm from '../../components/user/auth/SellerLoginForm';
@@ -42,7 +43,20 @@ const titleMap = {
 };
 
 export default function AuthPage() {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [view, setView] = useState('user-login');
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const target = params.get('target');
+    if (target === 'admin') {
+      setView('admin-login');
+    } else if (target === 'seller') {
+      setView('seller-login');
+    }
+  }, [location]);
+
   const current = titleMap[view];
 
   return (
@@ -124,6 +138,7 @@ export default function AuthPage() {
                 onSwitchToUserRegister={() => setView('user-register')}
                 onSwitchToSellerRegister={() => setView('seller-register')}
                 onSwitchToSellerLogin={() => setView('seller-login')}
+                onSwitchToAdminLogin={() => setView('admin-login')}
               />
             )}
 
@@ -137,6 +152,7 @@ export default function AuthPage() {
               <SellerLoginForm
                 onSwitchToSellerRegister={() => setView('seller-register')}
                 onSwitchToUserLogin={() => setView('user-login')}
+                onSwitchToAdminLogin={() => setView('admin-login')}
               />
             )}
 
@@ -148,7 +164,9 @@ export default function AuthPage() {
             )}
 
             {view === 'admin-login' && (
-              <AdminLoginForm />
+               <AdminLoginForm
+                 onSwitchToUserLogin={() => setView('user-login')}
+               />
             )}
           </div>
         </div>

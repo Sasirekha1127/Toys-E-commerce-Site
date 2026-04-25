@@ -10,10 +10,7 @@ import {
   X,
   ChevronRight,
   BarChart2,
-  Bell,
   Percent,
-  Tag,
-  Sparkles,
 } from 'lucide-react';
 import { IndianRupee } from 'lucide-react';
 
@@ -62,12 +59,18 @@ export default function SellerSidebar({ open, onClose }) {
       >
         {/* Brand */}
         <div className="flex items-center justify-between px-5 py-5 border-b border-gray-100">
-          <div className="flex items-center gap-2.5 cursor-pointer">
+
+          {/* ✅ CLICKABLE BRAND */}
+          <div
+            className="flex items-center gap-2.5 text-left"
+          >
             <div className="w-9 h-9 bg-brand-grad rounded-xl flex items-center justify-center shadow-sm">
               <span className="text-lg">🧸</span>
             </div>
             <div>
-              <p className="font-semibold text-gray-900 text-base leading-none">ToyStore</p>
+              <p className="font-semibold text-gray-900 text-base leading-none">
+                ToyStore
+              </p>
               <p className="text-[10px] text-orange-500 font-semibold tracking-wide mt-0.5">
                 SELLER
               </p>
@@ -95,7 +98,8 @@ export default function SellerSidebar({ open, onClose }) {
               <button
                 key={path}
                 onClick={() => handleNav(path)}
-                className={`w-full ${active ? 'sidebar-link-active' : 'sidebar-link-inactive'}`}
+                className={`w-full ${active ? 'sidebar-link-active' : 'sidebar-link-inactive'
+                  }`}
               >
                 <Icon size={18} className="flex-none" />
                 <span className="flex-1 text-left">{label}</span>
@@ -108,9 +112,12 @@ export default function SellerSidebar({ open, onClose }) {
         {/* Footer badge */}
         <div className="px-4 py-4 border-t border-gray-100">
           {(() => {
-            const currentSeller = JSON.parse(localStorage.getItem('toyCurrentSeller') || 'null');
+            const currentSeller = JSON.parse(
+              localStorage.getItem('toyCurrentSeller') || 'null'
+            );
             const shopName = currentSeller?.shopName || 'Shop';
-            const initial = currentSeller?.sellerName?.charAt(0).toUpperCase() || 'S';
+            const initial =
+              currentSeller?.sellerName?.charAt(0).toUpperCase() || 'S';
 
             return (
               <div className="flex items-center gap-2.5 bg-orange-50 rounded-xl px-3 py-2.5">
@@ -118,8 +125,12 @@ export default function SellerSidebar({ open, onClose }) {
                   {initial}
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-gray-800 leading-none">{shopName}</p>
-                  <p className="text-[10px] text-orange-500 mt-0.5 font-medium">● Active Seller</p>
+                  <p className="text-xs font-semibold text-gray-800 leading-none">
+                    {shopName}
+                  </p>
+                  <p className="text-[10px] text-orange-500 mt-0.5 font-medium">
+                    ● Active Seller
+                  </p>
                 </div>
               </div>
             );

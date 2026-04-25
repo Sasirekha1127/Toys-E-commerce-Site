@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ShoppingCart, Trash2, Plus, Minus, ArrowLeft, Tag, Truck, ShieldCheck, Heart } from 'lucide-react';
 import { useStore } from '../../hooks/useStore';
+import { parsePrice, formatImageUrl } from '../../context/StoreContext';
 import Rating from '../../components/user/Rating';
 
 export default function Cart() {
@@ -9,9 +10,10 @@ export default function Cart() {
   const navigate = useNavigate();
 
   //  Indian pricing
-  const shipping = cartTotal >= 500 ? 0 : 50;
-  const tax = cartTotal * 0.08;
-  const total = cartTotal + shipping + tax;
+  const numericCartTotal = parsePrice(cartTotal);
+  const shipping = numericCartTotal >= 500 || numericCartTotal === 0 ? 0 : 50;
+  const tax = numericCartTotal * 0.08;
+  const total = numericCartTotal + shipping + tax;
 
   if (cart.length === 0) {
     return (
@@ -19,7 +21,7 @@ export default function Cart() {
         <div className="max-w-md mx-auto mt-24">
           <h2 className="font-display text-4xl text-orange-700 mb-3">Your Cart is Empty!</h2>
 
-          <button onClick={() => navigate('/')} className="btn-primary text-lg px-8 py-4">
+          <button onClick={() => navigate('/home')} className="btn-primary text-lg px-8 py-4">
             Start Shopping
           </button>
         </div>
@@ -56,10 +58,22 @@ export default function Cart() {
 
 
 
-          {cart.map(item => {
-            const wishlisted = isWishlisted(item.id);
+          {cart.map((item, idx) => {
+            const itemVariantId = item.variant_id || item.selectedVariant?.variant_id || null;
+            const wishlisted = isWishlisted(item.id, itemVariantId);
+            const itemImage =
+              item.image ||
+              item.imageUrl ||
+              item.image_url ||
+              (item.selectedVariant && item.selectedVariant.image_url) ||
+              (item.variants && item.variants.length > 0 && item.variants[0].image_url) ||
+              item.thumbnail ||
+              item.images?.[0] ||
+              item.image_urls?.[0] ||
+              item.gallery?.[0] ||
+              "/images/toy-placeholder.png";
             return (
-              <div key={item.id} className="bg-white rounded-3xl shadow-toy p-4 flex gap-4">
+              <div key={`${item.id}-${idx}-${itemVariantId}`} className="bg-white rounded-3xl shadow-toy p-4 flex gap-4">
 
                 {/* Image */}
                 <div
@@ -67,9 +81,13 @@ export default function Cart() {
                   onClick={() => navigate(`/product/${item.id}`)}
                 >
                   <img
-                    src={item.image}
+                    src={formatImageUrl(itemImage)}
                     alt={item.name}
                     className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = "/images/toy-placeholder.png";
+                    }}
                   />
                 </div>
 
@@ -89,7 +107,7 @@ export default function Cart() {
                     </div>
 
                     <span className="text-xl font-bold text-orange-600">
-                      ₹{(item.price * item.qty).toFixed(2)}
+                      ₹{(parsePrice(item.price) * item.qty).toFixed(2)}
                     </span>
                   </div>
 
@@ -98,19 +116,19 @@ export default function Cart() {
 
                     {/* Qty */}
                     <div className="flex items-center gap-2">
-                      <button onClick={() => item.qty === 1 ? removeFromCart(item.id) : updateQty(item.id, item.qty - 1)}>
+                      <button onClick={() => item.qty === 1 ? removeFromCart(item.id, itemVariantId) : updateQty(item.id, item.qty - 1, itemVariantId)}>
                         {item.qty === 1 ? <Trash2 size={14} /> : <Minus size={14} />}
                       </button>
 
                       <span>{item.qty}</span>
 
-                      <button onClick={() => updateQty(item.id, item.qty + 1)}>
+                      <button onClick={() => updateQty(item.id, item.qty + 1, itemVariantId)}>
                         <Plus size={14} />
                       </button>
                     </div>
 
                     {/* Price */}
-                    <span className="text-gray-500">₹{item.price} each</span>
+                    <span className="text-gray-500">₹{parsePrice(item.price)} each</span>
 
                     {/* Actions */}
                     <div className="flex gap-2">
@@ -123,7 +141,7 @@ export default function Cart() {
                         {wishlisted ? 'Wishlisted' : 'Wishlist'}
                       </button>
                       <button
-                        onClick={() => removeFromCart(item.id)}
+                        onClick={() => removeFromCart(item.id, itemVariantId)}
                         className="flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-xl border border-gray-200 text-gray-400 hover:border-red-200 hover:text-red-500 hover:bg-red-50 transition-all hover:scale-105"
                       >
                         <Trash2 size={13} /> Remove
@@ -144,7 +162,7 @@ export default function Cart() {
           <div className="space-y-2">
             <div className="flex justify-between">
               <span>Subtotal</span>
-              <span>₹{cartTotal.toFixed(2)}</span>
+              <span>₹{numericCartTotal.toFixed(2)}</span>
             </div>
 
             <div className="flex justify-between">

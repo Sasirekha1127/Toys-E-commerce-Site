@@ -3,25 +3,20 @@ import { useMemo, useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../../components/user/UserHeader';
 import ProductCard from '../../components/user/ProductCard';
-import { softToys, educationalToys, electronicToys, woodenToys } from '../../data/user';
 import { ArrowLeft } from 'lucide-react';
 
 const categoryMap = {
     'soft-toys': {
         title: 'Soft Toys',
-        data: softToys,
     },
     'educational-toys': {
         title: 'Educational Toys',
-        data: educationalToys,
     },
     'electronic-toys': {
         title: 'Electronic Toys',
-        data: electronicToys,
     },
     'wooden-toys': {
         title: 'Wooden Toys',
-        data: woodenToys,
     },
 };
 
@@ -31,40 +26,37 @@ export default function CategoryProductsPage() {
 
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('All Categories');
-    const [sellerProducts, setSellerProducts] = useState([]);
+    const [dbProducts, setDbProducts] = useState([]);
 
     const categoryInfo = categoryMap[slug];
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/seller-products')
+        fetch('http://localhost:5000/api/products')
             .then((res) => res.json())
             .then((data) => {
                 if (data.products) {
                     const mapped = data.products.map((p) => ({
+                        ...p,
                         id: String(p.id),
                         name: p.title || p.name,
-                        image: p.image_urls?.[0] || p.image || '',
-                        description: p.description || '',
                         price: Number(p.price),
                         rating: p.rating || 4.5,
                         reviews: p.reviews || 0,
-                        category: p.category || 'Soft Toys',
-                        subcategory: p.subcategory || '',
                     }));
-                    setSellerProducts(mapped);
+                    setDbProducts(mapped);
                 }
             })
-            .catch((err) => console.error('Error fetching seller products:', err));
+            .catch((err) => console.error('Error fetching products:', err));
     }, []);
 
     const allProducts = useMemo(() => {
         if (!categoryInfo) return [];
 
-        return [
-            ...categoryInfo.data,
-            ...sellerProducts.filter((p) => p.category === categoryInfo.title),
-        ];
-    }, [categoryInfo, sellerProducts]);
+        const normalize = (s) => (s || '').toLowerCase().trim();
+
+        return dbProducts.filter((p) => normalize(p.category) === normalize(categoryInfo.title));
+    }, [categoryInfo, dbProducts]);
+
 
     const filteredProducts = allProducts.filter((p) =>
         p.name.toLowerCase().includes(searchTerm.toLowerCase())

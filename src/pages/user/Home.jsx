@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { parsePrice } from '../../context/StoreContext';
 import BannerCarousel from '../../components/user/BannerCarousel';
 import ProductCarousel from '../../components/user/ProductCarousel';
 import Header from "../../components/user/UserHeader";
-import {
-  softToys,
-  educationalToys,
-  electronicToys,
-  woodenToys,
-} from '../../data/user';
 import { AGE_GROUPS } from '../../data/user/AgeCategorySection';
 import {
   ShieldCheck,
@@ -17,6 +12,7 @@ import {
   HeadphonesIcon,
   Star,
 } from 'lucide-react';
+import { softToys, educationalToys, electronicToys, woodenToys } from '../../data/user';
 
 const features = [
   {
@@ -100,14 +96,16 @@ function SectionHeader({ title, subtitle, icon, onViewAll }) {
   return (
     <div className="flex items-center justify-between mb-4 px-1">
       <div className="flex items-center gap-3">
-        <div className="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center text-2xl shadow-sm border border-orange-200">
-          {icon}
-        </div>
+        {icon && (
+          <div className="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center text-2xl shadow-sm border border-orange-200">
+            {icon}
+          </div>
+        )}
         <div>
           <h2 className="font-display text-2xl md:text-3xl text-gray-800">
             {title}
           </h2>
-          <p className="text-sm text-gray-400 font-body">{subtitle}</p>
+          {subtitle && <p className="text-sm text-gray-400 font-body">{subtitle}</p>}
         </div>
       </div>
 
@@ -127,54 +125,37 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
 
-  const [softToysList, setSoftToysList] = useState(softToys);
-  const [educationalToysList, setEducationalToysList] = useState(educationalToys);
-  const [electronicToysList, setElectronicToysList] = useState(electronicToys);
-  const [woodenToysList, setWoodenToysList] = useState(woodenToys);
+  const [softToysList, setSoftToysList] = useState([]);
+  const [educationalToysList, setEducationalToysList] = useState([]);
+  const [electronicToysList, setElectronicToysList] = useState([]);
+  const [woodenToysList, setWoodenToysList] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/seller-products')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.products) {
-          const mappedProducts = data.products.map((p) => ({
-            id: String(p.id),
-            name: p.title || p.name || '',
-            image:
-              p.image_urls && p.image_urls.length > 0
-                ? p.image_urls[0]
-                : (p.image || ''),
-            description: p.description || '',
-            price: Number(p.price) || 0,
-            rating: p.rating || 4.5,
-            reviews: p.reviews || 0,
-            category: p.category || 'Soft Toys',
-            subcategory: p.subcategory || '',
-          }));
+    // Requirements: Home page must use JS data files, no backend API fetch for Home product cards.
+    // Ensure allProducts is created without overwriting image field (requirement 6).
+    const allProducts = [
+      ...softToys,
+      ...educationalToys,
+      ...electronicToys,
+      ...woodenToys,
+    ];
 
-          setSoftToysList([
-            ...softToys,
-            ...mappedProducts.filter((p) => p.category === 'Soft Toys'),
-          ]);
+    const mapProduct = (p) => ({
+      ...p,
+      id: String(p.id),
+      name: p.name || p.title || '',
+      price: parsePrice(p.price),
+      // Requirement 8: Keep original image field from JS file unchanged.
+    });
 
-          setEducationalToysList([
-            ...educationalToys,
-            ...mappedProducts.filter((p) => p.category === 'Educational Toys'),
-          ]);
+    const normalizeCat = (cat) => (cat || '').toLowerCase().trim();
 
-          setElectronicToysList([
-            ...electronicToys,
-            ...mappedProducts.filter((p) => p.category === 'Electronic Toys'),
-          ]);
-
-          setWoodenToysList([
-            ...woodenToys,
-            ...mappedProducts.filter((p) => p.category === 'Wooden Toys'),
-          ]);
-        }
-      })
-      .catch((err) => console.error('Error fetching seller products:', err));
+    setSoftToysList(softToys.map(mapProduct));
+    setEducationalToysList(educationalToys.map(mapProduct));
+    setElectronicToysList(electronicToys.map(mapProduct));
+    setWoodenToysList(woodenToys.map(mapProduct));
   }, []);
+
 
   const handleSearch = (value) => setSearchTerm(value);
   const handleCategoryChange = (cat) => setSelectedCategory(cat);
@@ -223,14 +204,10 @@ export default function Home() {
         <div id="soft-toys" className="mb-6">
           <SectionHeader
             title="Soft Toys"
-            subtitle={`${filterProducts(softToysList).length} amazing toys`}
-            icon="🧸"
             onViewAll={() => navigate('/category/soft-toys')}
           />
           <ProductCarousel
             products={filterProducts(softToysList).slice(0, 10)}
-            title=""
-            icon="🧸"
             color="orange"
           />
         </div>
@@ -264,14 +241,10 @@ export default function Home() {
         <div id="educational-toys" className="mb-6">
           <SectionHeader
             title="Educational Toys"
-            subtitle={`${filterProducts(educationalToysList).length} learning toys`}
-            icon="🎓"
             onViewAll={() => navigate('/category/educational-toys')}
           />
           <ProductCarousel
             products={filterProducts(educationalToysList).slice(0, 10)}
-            title=""
-            icon="🎓"
             color="orange"
           />
         </div>
@@ -279,14 +252,10 @@ export default function Home() {
         <div id="electronic-toys" className="mb-6">
           <SectionHeader
             title="Electronic Toys"
-            subtitle={`${filterProducts(electronicToysList).length} smart toys`}
-            icon="⚡"
             onViewAll={() => navigate('/category/electronic-toys')}
           />
           <ProductCarousel
             products={filterProducts(electronicToysList).slice(0, 10)}
-            title=""
-            icon="⚡"
             color="orange"
           />
         </div>
@@ -294,14 +263,10 @@ export default function Home() {
         <div id="wooden-toys" className="mb-6">
           <SectionHeader
             title="Wooden Toys"
-            subtitle={`${filterProducts(woodenToysList).length} classic toys`}
-            icon="🪵"
             onViewAll={() => navigate('/category/wooden-toys')}
           />
           <ProductCarousel
             products={filterProducts(woodenToysList).slice(0, 10)}
-            title=""
-            icon="🪵"
             color="orange"
           />
         </div>
@@ -323,7 +288,7 @@ export default function Home() {
                 review:
                   "ToyLand is our family's go-to! Quality is incredible and my kids absolutely love every single toy we've ordered.",
                 rating: 5,
-                avatar: "👩‍👧‍👦",
+                avatar: "",
               },
               {
                 name: "James R.",
@@ -331,7 +296,7 @@ export default function Home() {
                 review:
                   "Fast shipping, amazing packaging, and the educational toys have genuinely helped my kids learn faster. Highly recommend!",
                 rating: 5,
-                avatar: "👨‍👦‍👦",
+                avatar: "",
               },
               {
                 name: "Priya K.",
@@ -339,7 +304,7 @@ export default function Home() {
                 review:
                   "The soft toys are SO soft and the quality is premium. My daughter sleeps with her bunny every night! Worth every penny.",
                 rating: 5,
-                avatar: "👩‍👧",
+                avatar: "",
               },
             ].map((t, i) => (
               <div

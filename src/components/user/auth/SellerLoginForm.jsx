@@ -15,6 +15,7 @@ export default function SellerLoginForm({
   onSwitchToUser,
   onSwitchToSellerRegister,
   onSwitchToUserLogin,
+  onSwitchToAdminLogin,
 }) {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: '', password: '' });
@@ -89,6 +90,7 @@ export default function SellerLoginForm({
 
       const currentSellerData = {
         ...matched,
+        password: form.password, // Carry password for onboarding pre-fill
         onboardingCompleted: (alreadyCompleted || !isPendingNewSeller) ? true : false,
       };
 
@@ -171,10 +173,18 @@ export default function SellerLoginForm({
 
         <button
           type="button"
-          onClick={() => (onSwitchToUser || onSwitchToUserLogin || (() => {}))()}
+          onClick={() => (onSwitchToUser || onSwitchToUserLogin || (() => { }))()}
           className="block w-full text-sm font-semibold text-gray-500 hover:text-orange-600 transition"
         >
           ← Back to User Login
+        </button>
+
+        <button
+          type="button"
+          onClick={onSwitchToAdminLogin}
+          className="block w-full text-sm font-semibold text-gray-400 hover:text-orange-600 transition"
+        >
+          Admin Login
         </button>
       </div>
     </form>

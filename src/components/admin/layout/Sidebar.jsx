@@ -11,7 +11,12 @@ import {
   Boxes,
   Settings,
   X,
-  ChevronRight
+  ChevronRight,
+  CreditCard,
+  CornerDownLeft,
+  Store,
+  DollarSign,
+  BarChart
 } from 'lucide-react';
 
 const navItems = [
@@ -23,6 +28,11 @@ const navItems = [
   { icon: Star, label: 'Reviews', path: '/admin/reviews' },
   { icon: Tag, label: 'Offers / Banners', path: '/admin/offers' },
   { icon: Boxes, label: 'Inventory', path: '/admin/inventory' },
+  { icon: CreditCard, label: 'Payments', path: '/admin/payments' },
+  { icon: CornerDownLeft, label: 'Returns', path: '/admin/returns' },
+  { icon: Store, label: 'Vendors', path: '/admin/vendors' },
+  { icon: DollarSign, label: 'Revenue', path: '/admin/finance' },
+  { icon: BarChart, label: 'Sales Reports', path: '/admin/sales' },
   { icon: Settings, label: 'Settings', path: '/admin/settings' },
 ];
 
@@ -61,7 +71,7 @@ export default function Sidebar({ open, onClose }) {
       >
         <div className="flex items-center justify-between px-5 py-5 border-b border-gray-100">
           <div
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/home')}
             className="flex items-center gap-2.5 cursor-pointer"
           >
             <div className="w-9 h-9 bg-brand-grad rounded-xl flex items-center justify-center shadow-sm">
@@ -87,7 +97,7 @@ export default function Sidebar({ open, onClose }) {
             Main Menu
           </p>
 
-          {navItems.slice(0, 8).map(({ icon: Icon, label, path }) => {
+          {navItems.slice(0, 13).map(({ icon: Icon, label, path }) => {
             const active = isActivePath(path);
 
             return (
@@ -107,7 +117,7 @@ export default function Sidebar({ open, onClose }) {
             Preferences
           </p>
 
-          {navItems.slice(8).map(({ icon: Icon, label, path }) => {
+          {navItems.slice(13).map(({ icon: Icon, label, path }) => {
             const active = isActivePath(path);
 
             return (

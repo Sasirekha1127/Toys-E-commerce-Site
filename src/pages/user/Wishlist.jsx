@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Heart, ShoppingCart, Trash2, Sparkles } from 'lucide-react';
 import { useStore } from '../../hooks/useStore';
 import Rating from '../../components/user/Rating';
+import { formatImageUrl } from '../../context/StoreContext';
 
 export default function Wishlist() {
   const { wishlist, toggleWishlist, addToCart, isInCart } = useStore();
@@ -43,22 +44,33 @@ export default function Wishlist() {
 
       {/* Products grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-        {wishlist.map(product => {
+        {wishlist.map((product, idx) => {
           const inCart = isInCart(product.id);
+          const productImage =
+            product.image ||
+            product.imageUrl ||
+            product.image_url ||
+            (product.selectedVariant && product.selectedVariant.image_url) ||
+            (product.variants && product.variants.length > 0 && product.variants[0].image_url) ||
+            product.thumbnail ||
+            product.images?.[0] ||
+            product.image_urls?.[0] ||
+            product.gallery?.[0] ||
+            "/images/toy-placeholder.png";
           return (
-            <div key={product.id} className="card group flex flex-col">
+            <div key={`${product.id}-${idx}`} className="card group flex flex-col">
               {/* Image */}
               <div
                 className="relative overflow-hidden bg-orange-50 rounded-t-3xl aspect-square cursor-pointer"
                 onClick={() => navigate(`/product/${product.id}`)}
               >
                 <img
-                  src={product.image}
+                  src={formatImageUrl(productImage)}
                   alt={product.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  onError={e => {
-                    e.target.style.display = 'none';
-                    e.target.parentElement.classList.add(product.gradient || 'toy-gradient-1');
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = "/images/toy-placeholder.png";
                   }}
                 />
 

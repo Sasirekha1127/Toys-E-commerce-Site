@@ -2,12 +2,6 @@ import React, { useMemo, useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ProductCard from '../../components/user/ProductCard';
 import { AGE_GROUPS } from '../../data/user/AgeCategorySection';
-import {
-  softToys,
-  educationalToys,
-  electronicToys,
-  woodenToys,
-} from '../../data/user/index';
 
 const MAIN_CATEGORIES = [
   'All Categories',
@@ -24,26 +18,23 @@ export default function AgeCategory() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
 
-  const [softToysList, setSoftToysList] = useState(softToys || []);
-  const [educationalToysList, setEducationalToysList] = useState(educationalToys || []);
-  const [electronicToysList, setElectronicToysList] = useState(electronicToys || []);
-  const [woodenToysList, setWoodenToysList] = useState(woodenToys || []);
+  const [softToysList, setSoftToysList] = useState([]);
+  const [educationalToysList, setEducationalToysList] = useState([]);
+  const [electronicToysList, setElectronicToysList] = useState([]);
+  const [woodenToysList, setWoodenToysList] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/seller-products')
+    fetch('http://localhost:5000/api/products')
       .then((res) => res.json())
       .then((data) => {
         if (data?.products) {
           const mapped = data.products.map((p) => ({
+            ...p,
             id: String(p.id),
             name: p.title || p.name || 'Toy',
-            image: p.image_urls?.[0] || p.image || '',
-            description: p.description || '',
             price: Number(p.price) || 0,
             rating: p.rating || 4.5,
             reviews: p.reviews || 0,
-            category: p.category || 'Soft Toys',
-            subcategory: p.subcategory || '',
             ageGroup: Array.isArray(p.ageGroup)
               ? p.ageGroup
               : p.age
@@ -51,29 +42,17 @@ export default function AgeCategory() {
               : ['3-5'],
           }));
 
-          setSoftToysList([
-            ...(softToys || []),
-            ...mapped.filter((p) => p.category === 'Soft Toys'),
-          ]);
+          const normalize = (cat) => (cat || '').toLowerCase().trim();
 
-          setEducationalToysList([
-            ...(educationalToys || []),
-            ...mapped.filter((p) => p.category === 'Educational Toys'),
-          ]);
-
-          setElectronicToysList([
-            ...(electronicToys || []),
-            ...mapped.filter((p) => p.category === 'Electronic Toys'),
-          ]);
-
-          setWoodenToysList([
-            ...(woodenToys || []),
-            ...mapped.filter((p) => p.category === 'Wooden Toys'),
-          ]);
+          setSoftToysList(mapped.filter((p) => normalize(p.category) === 'soft toys'));
+          setEducationalToysList(mapped.filter((p) => normalize(p.category) === 'educational toys'));
+          setElectronicToysList(mapped.filter((p) => normalize(p.category) === 'electronic toys'));
+          setWoodenToysList(mapped.filter((p) => normalize(p.category) === 'wooden toys'));
         }
       })
-      .catch((err) => console.error('Error fetching seller products:', err));
+      .catch((err) => console.error('Error fetching products:', err));
   }, []);
+
 
   const allProducts = useMemo(() => {
     return [

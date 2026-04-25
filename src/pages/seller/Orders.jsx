@@ -3,7 +3,6 @@ import { Search, Download, Truck, X } from "lucide-react";
 import jsPDF from "jspdf";
 import { sellerOrders as initialOrders } from "../../data/seller/index.js";
 
-const STORAGE_KEY = "toySellerOrders_v2";
 const PAGE_SIZE = 5;
 
 function fmt(n) {
@@ -68,21 +67,16 @@ function normalizeOrders(list) {
   }));
 }
 
-function getInitialOrders() {
-  try {
-    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
-    if (Array.isArray(stored) && stored.length > 0) {
-      return normalizeOrders(stored);
-    }
-  } catch (e) {}
-
-  const normalized = normalizeOrders(initialOrders);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(normalized));
-  return normalized;
+function getInitialMockOrders() {
+  return normalizeOrders(initialOrders);
 }
 
 export default function SellerOrders() {
-  const [orders, setOrders] = useState(getInitialOrders);
+  const currentSeller = useMemo(() => JSON.parse(localStorage.getItem('toyCurrentSeller') || '{}'), []);
+  const isDemo = currentSeller?.email === 'kidstoys@gmail.com';
+
+  const [orders, setOrders] = useState(isDemo ? getInitialMockOrders() : []);
+  const [loading, setLoading] = useState(!isDemo);
   const [search, setSearch] = useState("");
   const [filterStatus, setFilterStatus] = useState("All");
   const [sort, setSort] = useState("latest");
@@ -91,9 +85,43 @@ export default function SellerOrders() {
   const [showShippingModal, setShowShippingModal] = useState(false);
   const [activeOrderId, setActiveOrderId] = useState(null);
 
+  const fetchOrders = async () => {
+    if (isDemo || !currentSeller?.id) {
+       setLoading(false);
+       return;
+    };
+    
+    setLoading(true);
+    try {
+      const res = await fetch(`http://localhost:5000/api/orders?seller_id=${currentSeller.id}`);
+      const data = await res.json();
+      if (data.orders) {
+        const mapped = data.orders.map((o, idx) => ({
+          id: String(o.order_id || o.id),
+          customer: o.customer_name || null,
+          customerCode: o.customer_db_id ? `CUS${String(o.customer_db_id).padStart(3, '0')}` : (o.customer_id || `CUS${String(idx + 1).padStart(3, '0')}`),
+          product: o.product || (o.items && o.items.length > 0 ? o.items[0].name : 'Products'),
+          amount: Number(o.total_amount || o.amount || 0),
+          payment: o.payment_status || o.payment || 'Paid',
+          status: o.order_status || o.status || 'Pending',
+          date: o.ordered_at ? new Date(o.ordered_at).toLocaleDateString("en-IN") : (o.date || new Date().toLocaleDateString("en-IN")),
+          trackingNumber: o.tracking_number || `TRK${String(o.order_id || o.id).slice(-6)}`,
+          courier: o.courier || 'Delhivery',
+          shippingAddress: o.shipping_address || 'Address not provided',
+          invoiceNumber: o.invoice_id || `INV-${String(o.order_id || o.id).slice(-6)}`,
+        }));
+        setOrders(mapped);
+      }
+    } catch (err) {
+      console.error('Failed to fetch orders:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(orders));
-  }, [orders]);
+    fetchOrders();
+  }, [currentSeller?.id, isDemo]);
 
   const activeOrder = useMemo(
     () => orders.find((o) => o.id === activeOrderId),
@@ -106,8 +134,9 @@ export default function SellerOrders() {
       const term = search.toLowerCase();
 
       return (
-        o.id.toLowerCase().includes(term) ||
+        String(o.id).toLowerCase().includes(term) ||
         o.customer.toLowerCase().includes(term) ||
+        o.customerCode.toLowerCase().includes(term) ||
         o.product.toLowerCase().includes(term)
       ) && (filterStatus === "All" || o.status === filterStatus);
     });
@@ -136,18 +165,26 @@ export default function SellerOrders() {
       ).length,
       shipped: orders.filter((o) => o.status === "Shipped").length,
       delivered: orders.filter((o) => o.status === "Delivered").length,
-      revenue: orders.reduce(
-        (s, o) => (o.payment === "Paid" ? s + o.amount : s),
-        0
-      ),
+      revenue: orders.reduce((s, o) => s + o.amount, 0),
     };
   }, [orders]);
 
   /* 🔄 Status Update */
-  const handleStatusChange = (id, status) => {
-    setOrders((prev) =>
-      prev.map((o) => (o.id === id ? { ...o, status } : o))
-    );
+  const handleStatusChange = async (id, status) => {
+    try {
+      const res = await fetch(`http://localhost:5000/api/orders/${id}/status`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ order_status: status })
+      });
+      if (res.ok) {
+        setOrders((prev) =>
+          prev.map((o) => (o.id === id ? { ...o, status } : o))
+        );
+      }
+    } catch (err) {
+      console.error('Failed to update status:', err);
+    }
   };
 
   /* 📦 Shipping Modal */
@@ -227,8 +264,13 @@ export default function SellerOrders() {
             <tbody>
               {paginatedOrders.map((o) => (
                 <tr key={o.id} className="table-row">
-                  <td className="table-td">{o.id}</td>
-                  <td className="table-td">{o.customer}</td>
+                  <td className="table-td font-bold text-orange-600">ORD{String(o.id).padStart(3, '0')}</td>
+                  <td className="table-td">
+                    {o.customer && <div className="font-semibold text-gray-900">{o.customer}</div>}
+                    <div className={o.customer ? "text-[10px] text-gray-400 font-mono" : "font-semibold text-gray-800"}>
+                      {o.customerCode}
+                    </div>
+                  </td>
                   <td className="table-td">₹{fmt(o.amount)}</td>
                   <td className="table-td">
                     <StatusBadge status={o.status} />

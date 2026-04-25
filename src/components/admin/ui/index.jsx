@@ -1,5 +1,6 @@
 import React from 'react';
-import { Star, TrendingUp, TrendingDown } from 'lucide-react';
+import { Star, TrendingUp, TrendingDown, X } from 'lucide-react';
+
 
 /* ─── Stat Card ─── */
 export function StatCard({ icon, label, value, growth, color = 'brand', delay = 0 }) {
@@ -78,7 +79,9 @@ export function StarRating({ rating, size = 14 }) {
 }
 
 /* ─── Avatar ─── */
-export function Avatar({ initials, size = 'sm', color = 'brand' }) {
+export function Avatar({ src, image, name, initials, size = 'sm', color = 'brand' }) {
+  const [imgError, setImgError] = React.useState(false);
+
   const sizes = { sm: 'w-8 h-8 text-xs', md: 'w-10 h-10 text-sm', lg: 'w-12 h-12 text-base' };
   const colors = {
     brand: 'bg-brand-100 text-brand-700',
@@ -86,10 +89,42 @@ export function Avatar({ initials, size = 'sm', color = 'brand' }) {
     blue: 'bg-blue-100 text-blue-700',
     purple: 'bg-purple-100 text-purple-700',
   };
-  const pick = ['brand','green','blue','purple'][initials.charCodeAt(0) % 4];
+
+  const imgSrc = src || image;
+  const validSrc = typeof imgSrc === 'string' && imgSrc.trim() !== '';
+
+  const safeName = typeof name === 'string' ? name.trim() : '';
+  const safeInitials = typeof initials === 'string' ? initials.trim() : '';
+
+  let displayInitials = 'U';
+  if (safeInitials) {
+    displayInitials = safeInitials.substring(0, 2);
+  } else if (safeName) {
+    displayInitials = safeName.split(' ')
+      .map(n => n ? n[0] : '')
+      .join('')
+      .substring(0, 2)
+      .toUpperCase() || 'U';
+  }
+
+  const charCode = displayInitials.charCodeAt(0) || 85; 
+  const pick = ['brand','green','blue','purple'][charCode % 4];
+  const safeSize = sizes[size] || sizes['sm'];
+
+  if (validSrc && !imgError) {
+    return (
+      <img
+        src={imgSrc}
+        alt={safeName || displayInitials}
+        onError={() => setImgError(true)}
+        className={`rounded-xl object-cover flex-none ${safeSize}`}
+      />
+    );
+  }
+
   return ( 
-    <div className={`rounded-xl flex items-center justify-center font-bold flex-none ${sizes[size]} ${colors[pick]}`}>
-      {initials}
+    <div className={`rounded-xl flex items-center justify-center font-bold flex-none ${safeSize} ${colors[pick]}`}>
+      {displayInitials}
     </div>
   );
 }
@@ -163,5 +198,26 @@ export function SparklinePlaceholder({ color = '#f97316' }) {
         strokeLinejoin="round"
       />
     </svg>
+  );
+}
+
+/* ─── Toast ─── */
+export function Toast({ message, type = 'success', onClose }) {
+  if (!message) return null;
+  const colors = {
+    success: 'bg-emerald-600',
+    error: 'bg-red-600',
+    info: 'bg-gray-900',
+    warning: 'bg-orange-500'
+  };
+  return (
+    <div className={`fixed bottom-6 right-6 z-[100] text-white text-sm font-medium px-5 py-3 rounded-2xl shadow-xl animate-slide-up flex items-center gap-2 ${colors[type]}`}>
+      <span>{message}</span>
+      {onClose && (
+        <button onClick={onClose} className="ml-2 hover:opacity-70 transition-opacity">
+          <X size={14} />
+        </button>
+      )}
+    </div>
   );
 }

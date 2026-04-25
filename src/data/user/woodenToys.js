@@ -1,7 +1,7 @@
 const woodenToys = [
   // WOODEN BLOCKS (10)
   {
-    id: 1,
+    id: 'WOOD001',
     name: "Wooden Building Blocks",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST9AhjKIogGa2bjcC03eKZBsrjK5c68jKpyA&s",
     description: `Classic wooden building blocks for creative play.
@@ -19,9 +19,27 @@ const woodenToys = [
     badge: "Best Seller",
     gradient: "toy-gradient-5",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'WOOD001-BLUE',
+        variant_value: 'Default Blue',
+        price: 1299,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST9AhjKIogGa2bjcC03eKZBsrjK5c68jKpyA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST9AhjKIogGa2bjcC03eKZBsrjK5c68jKpyA&s']
+      },
+      {
+        sku: 'WOOD001-RED',
+        variant_value: 'Classic Red',
+        price: 1299,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST9AhjKIogGa2bjcC03eKZBsrjK5c68jKpyA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST9AhjKIogGa2bjcC03eKZBsrjK5c68jKpyA&s']
+      }
+    ]
   },
   {
-    id: 2,
+    id: 'WOOD002',
     name: "Wooden Stacking Rings",
     image: "https://kidsbestie.com/cdn/shop/files/5-shapes-wooden-colorful-shape-sorting-stacking-rings-toys-kids-bestie-2.png?v=1715973872&width=1080",
     description: `Classic ring stacking toy made from natural wood.
@@ -39,9 +57,27 @@ const woodenToys = [
     badge: null,
     gradient: "toy-gradient-4",
     ageGroup: ["0-2"],
+    variants: [
+      {
+        sku: 'WOOD002-BLUE',
+        variant_value: 'Default Blue',
+        price: 699,
+        stock_quantity: 25,
+        image_url: 'https://kidsbestie.com/cdn/shop/files/5-shapes-wooden-colorful-shape-sorting-stacking-rings-toys-kids-bestie-2.png?v=1715973872&width=1080',
+        gallery_images: ['https://kidsbestie.com/cdn/shop/files/5-shapes-wooden-colorful-shape-sorting-stacking-rings-toys-kids-bestie-2.png?v=1715973872&width=1080']
+      },
+      {
+        sku: 'WOOD002-RED',
+        variant_value: 'Classic Red',
+        price: 699,
+        stock_quantity: 15,
+        image_url: 'https://kidsbestie.com/cdn/shop/files/5-shapes-wooden-colorful-shape-sorting-stacking-rings-toys-kids-bestie-2.png?v=1715973872&width=1080',
+        gallery_images: ['https://kidsbestie.com/cdn/shop/files/5-shapes-wooden-colorful-shape-sorting-stacking-rings-toys-kids-bestie-2.png?v=1715973872&width=1080']
+      }
+    ]
   },
   {
-    id: 3,
+    id: 'WOOD003',
     name: "Wooden Rainbow Stacker",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxcXT0QyGoNUrWb1ylRgsrUeFsCLAf-PfqDA&s",
     description: `Colourful wooden rainbow stacker for toddlers.
@@ -59,9 +95,27 @@ const woodenToys = [
     badge: "Trending",
     gradient: "toy-gradient-3",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'WOOD003-BLUE',
+        variant_value: 'Default Blue',
+        price: 1199,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxcXT0QyGoNUrWb1ylRgsrUeFsCLAf-PfqDA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxcXT0QyGoNUrWb1ylRgsrUeFsCLAf-PfqDA&s']
+      },
+      {
+        sku: 'WOOD003-RED',
+        variant_value: 'Classic Red',
+        price: 1199,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxcXT0QyGoNUrWb1ylRgsrUeFsCLAf-PfqDA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxcXT0QyGoNUrWb1ylRgsrUeFsCLAf-PfqDA&s']
+      }
+    ]
   },
   {
-    id: 4,
+    id: 'WOOD004',
     name: "Wooden Cube Tower Set",
     image: "https://thumbs.dreamstime.com/z/children-s-wooden-designer-blocks-different-form-city-towers-buildings-built-constructor-140217633.jpg",
     description: `Set of wooden cubes for stacking and learning.
@@ -79,9 +133,27 @@ const woodenToys = [
     badge: null,
     gradient: "toy-gradient-6",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'WOOD004-BLUE',
+        variant_value: 'Default Blue',
+        price: 999,
+        stock_quantity: 25,
+        image_url: 'https://thumbs.dreamstime.com/z/children-s-wooden-designer-blocks-different-form-city-towers-buildings-built-constructor-140217633.jpg',
+        gallery_images: ['https://thumbs.dreamstime.com/z/children-s-wooden-designer-blocks-different-form-city-towers-buildings-built-constructor-140217633.jpg']
+      },
+      {
+        sku: 'WOOD004-RED',
+        variant_value: 'Classic Red',
+        price: 999,
+        stock_quantity: 15,
+        image_url: 'https://thumbs.dreamstime.com/z/children-s-wooden-designer-blocks-different-form-city-towers-buildings-built-constructor-140217633.jpg',
+        gallery_images: ['https://thumbs.dreamstime.com/z/children-s-wooden-designer-blocks-different-form-city-towers-buildings-built-constructor-140217633.jpg']
+      }
+    ]
   },
   {
-    id: 5,
+    id: 'WOOD005',
     name: "Wooden Domino Blocks",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1logwUNVqw5QyQqEBW7qXPeWxl5QXsSi2nA&s",
     description: `Fun wooden domino blocks for chain reaction play.
@@ -99,9 +171,27 @@ const woodenToys = [
     badge: "Fun Pick",
     gradient: "toy-gradient-2",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD005-BLUE',
+        variant_value: 'Default Blue',
+        price: 899,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1logwUNVqw5QyQqEBW7qXPeWxl5QXsSi2nA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1logwUNVqw5QyQqEBW7qXPeWxl5QXsSi2nA&s']
+      },
+      {
+        sku: 'WOOD005-RED',
+        variant_value: 'Classic Red',
+        price: 899,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1logwUNVqw5QyQqEBW7qXPeWxl5QXsSi2nA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1logwUNVqw5QyQqEBW7qXPeWxl5QXsSi2nA&s']
+      }
+    ]
   },
   {
-    id: 6,
+    id: 'WOOD006',
     name: "Wooden City Block Set",
     image: "https://popupkids.in/cdn/shop/products/WoodenCityBuildingBlocks_1_1024x1024.jpg?v=1638421847",
     description: `City-themed wooden block set for imaginative builders.
@@ -119,9 +209,27 @@ const woodenToys = [
     badge: "Popular",
     gradient: "toy-gradient-1",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD006-BLUE',
+        variant_value: 'Default Blue',
+        price: 1599,
+        stock_quantity: 25,
+        image_url: 'https://popupkids.in/cdn/shop/products/WoodenCityBuildingBlocks_1_1024x1024.jpg?v=1638421847',
+        gallery_images: ['https://popupkids.in/cdn/shop/products/WoodenCityBuildingBlocks_1_1024x1024.jpg?v=1638421847']
+      },
+      {
+        sku: 'WOOD006-RED',
+        variant_value: 'Classic Red',
+        price: 1599,
+        stock_quantity: 15,
+        image_url: 'https://popupkids.in/cdn/shop/products/WoodenCityBuildingBlocks_1_1024x1024.jpg?v=1638421847',
+        gallery_images: ['https://popupkids.in/cdn/shop/products/WoodenCityBuildingBlocks_1_1024x1024.jpg?v=1638421847']
+      }
+    ]
   },
   {
-    id: 7,
+    id: 'WOOD007',
     name: "Wooden Pattern Blocks",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR39Nc43naiQpv75Yy55E8KjpJO-LT6JNfwBw&s",
     description: `Pattern blocks help kids create shapes and designs.
@@ -139,9 +247,27 @@ const woodenToys = [
     badge: null,
     gradient: "toy-gradient-5",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD007-BLUE',
+        variant_value: 'Default Blue',
+        price: 1099,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR39Nc43naiQpv75Yy55E8KjpJO-LT6JNfwBw&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR39Nc43naiQpv75Yy55E8KjpJO-LT6JNfwBw&s']
+      },
+      {
+        sku: 'WOOD007-RED',
+        variant_value: 'Classic Red',
+        price: 1099,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR39Nc43naiQpv75Yy55E8KjpJO-LT6JNfwBw&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR39Nc43naiQpv75Yy55E8KjpJO-LT6JNfwBw&s']
+      }
+    ]
   },
   {
-    id: 8,
+    id: 'WOOD008',
     name: "Wooden Animal Stacker",
     image: "https://m.media-amazon.com/images/I/71ME2CaU+bL._AC_UF1000,1000_QL80_.jpg",
     description: `Cute animal-themed wooden stacker for toddlers.
@@ -159,9 +285,27 @@ const woodenToys = [
     badge: "Kid Favorite",
     gradient: "toy-gradient-4",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'WOOD008-BLUE',
+        variant_value: 'Default Blue',
+        price: 949,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71ME2CaU+bL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71ME2CaU+bL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'WOOD008-RED',
+        variant_value: 'Classic Red',
+        price: 949,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71ME2CaU+bL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71ME2CaU+bL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 9,
+    id: 'WOOD009',
     name: "Wooden Tower Tumbling Game",
     image: "https://m.media-amazon.com/images/I/71O+FL9SJtL.jpg",
     description: `Classic wooden tumbling tower game for all ages.
@@ -179,9 +323,27 @@ const woodenToys = [
     badge: "Game Night",
     gradient: "toy-gradient-6",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'WOOD009-BLUE',
+        variant_value: 'Default Blue',
+        price: 1199,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71O+FL9SJtL.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71O+FL9SJtL.jpg']
+      },
+      {
+        sku: 'WOOD009-RED',
+        variant_value: 'Classic Red',
+        price: 1199,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71O+FL9SJtL.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71O+FL9SJtL.jpg']
+      }
+    ]
   },
   {
-    id: 10,
+    id: 'WOOD010',
     name: "Wooden Nesting Blocks",
     image: "https://images.ctfassets.net/50gzycvace50/a421f40059ddec5934b5fc063c7e4f4f282b5cdf65d1f31bcb4574e240816dc8/e59456a04dbc506d28e11c0b5165b87a/a421f40059ddec5934b5fc063c7e4f4f282b5cdf65d1f31bcb4574e240816dc8.png?fl=progressive&fm=jpg&bg=rgb:fafafa&w=1240&h=1240",
     description: `Wooden nesting blocks for sorting and stacking fun.
@@ -199,11 +361,29 @@ const woodenToys = [
     badge: null,
     gradient: "toy-gradient-3",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'WOOD010-BLUE',
+        variant_value: 'Default Blue',
+        price: 1299,
+        stock_quantity: 25,
+        image_url: 'https://images.ctfassets.net/50gzycvace50/a421f40059ddec5934b5fc063c7e4f4f282b5cdf65d1f31bcb4574e240816dc8/e59456a04dbc506d28e11c0b5165b87a/a421f40059ddec5934b5fc063c7e4f4f282b5cdf65d1f31bcb4574e240816dc8.png?fl=progressive&fm=jpg&bg=rgb:fafafa&w=1240&h=1240',
+        gallery_images: ['https://images.ctfassets.net/50gzycvace50/a421f40059ddec5934b5fc063c7e4f4f282b5cdf65d1f31bcb4574e240816dc8/e59456a04dbc506d28e11c0b5165b87a/a421f40059ddec5934b5fc063c7e4f4f282b5cdf65d1f31bcb4574e240816dc8.png?fl=progressive&fm=jpg&bg=rgb:fafafa&w=1240&h=1240']
+      },
+      {
+        sku: 'WOOD010-RED',
+        variant_value: 'Classic Red',
+        price: 1299,
+        stock_quantity: 15,
+        image_url: 'https://images.ctfassets.net/50gzycvace50/a421f40059ddec5934b5fc063c7e4f4f282b5cdf65d1f31bcb4574e240816dc8/e59456a04dbc506d28e11c0b5165b87a/a421f40059ddec5934b5fc063c7e4f4f282b5cdf65d1f31bcb4574e240816dc8.png?fl=progressive&fm=jpg&bg=rgb:fafafa&w=1240&h=1240',
+        gallery_images: ['https://images.ctfassets.net/50gzycvace50/a421f40059ddec5934b5fc063c7e4f4f282b5cdf65d1f31bcb4574e240816dc8/e59456a04dbc506d28e11c0b5165b87a/a421f40059ddec5934b5fc063c7e4f4f282b5cdf65d1f31bcb4574e240816dc8.png?fl=progressive&fm=jpg&bg=rgb:fafafa&w=1240&h=1240']
+      }
+    ]
   },
 
   // WOODEN PUZZLES (10)
   {
-    id: 11,
+    id: 'WOOD011',
     name: "Wooden Shape Sorter",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJtMFl4QnM6R1BzxFt1MhS17DEH2h6sceq5g&s",
     description: `Fun wooden shape sorter for early learners.
@@ -221,9 +401,27 @@ const woodenToys = [
     badge: "Top Rated",
     gradient: "toy-gradient-6",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'WOOD011-BLUE',
+        variant_value: 'Default Blue',
+        price: 999,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJtMFl4QnM6R1BzxFt1MhS17DEH2h6sceq5g&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJtMFl4QnM6R1BzxFt1MhS17DEH2h6sceq5g&s']
+      },
+      {
+        sku: 'WOOD011-RED',
+        variant_value: 'Classic Red',
+        price: 999,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJtMFl4QnM6R1BzxFt1MhS17DEH2h6sceq5g&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJtMFl4QnM6R1BzxFt1MhS17DEH2h6sceq5g&s']
+      }
+    ]
   },
   {
-    id: 12,
+    id: 'WOOD012',
     name: "Wooden Puzzle Animals",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6SRJHkK-L1Beq8wUchAhw7DvOHs2GSaY4-g&s",
     description: `Colourful wooden animal puzzle for young minds.
@@ -241,9 +439,27 @@ const woodenToys = [
     badge: null,
     gradient: "toy-gradient-3",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'WOOD012-BLUE',
+        variant_value: 'Default Blue',
+        price: 749,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6SRJHkK-L1Beq8wUchAhw7DvOHs2GSaY4-g&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6SRJHkK-L1Beq8wUchAhw7DvOHs2GSaY4-g&s']
+      },
+      {
+        sku: 'WOOD012-RED',
+        variant_value: 'Classic Red',
+        price: 749,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6SRJHkK-L1Beq8wUchAhw7DvOHs2GSaY4-g&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6SRJHkK-L1Beq8wUchAhw7DvOHs2GSaY4-g&s']
+      }
+    ]
   },
   {
-    id: 13,
+    id: 'WOOD013',
     name: "Wooden Farm Puzzle",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmkEWOVemp0ejG5saXZ3Bsxni-jTgr29ovWA&s",
     description: `Farm-themed wooden puzzle with colourful pieces.
@@ -261,9 +477,27 @@ const woodenToys = [
     badge: "Learning Pick",
     gradient: "toy-gradient-2",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'WOOD013-BLUE',
+        variant_value: 'Default Blue',
+        price: 799,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmkEWOVemp0ejG5saXZ3Bsxni-jTgr29ovWA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmkEWOVemp0ejG5saXZ3Bsxni-jTgr29ovWA&s']
+      },
+      {
+        sku: 'WOOD013-RED',
+        variant_value: 'Classic Red',
+        price: 799,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmkEWOVemp0ejG5saXZ3Bsxni-jTgr29ovWA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmkEWOVemp0ejG5saXZ3Bsxni-jTgr29ovWA&s']
+      }
+    ]
   },
   {
-    id: 14,
+    id: 'WOOD014',
     name: "Wooden Fruit Puzzle",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlkqEbN74KmzlRSPbvgLzbWtbM0wqpmtva8A&s",
     description: `Bright fruit puzzle helps kids learn healthy foods.
@@ -281,9 +515,27 @@ const woodenToys = [
     badge: null,
     gradient: "toy-gradient-5",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'WOOD014-BLUE',
+        variant_value: 'Default Blue',
+        price: 699,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlkqEbN74KmzlRSPbvgLzbWtbM0wqpmtva8A&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlkqEbN74KmzlRSPbvgLzbWtbM0wqpmtva8A&s']
+      },
+      {
+        sku: 'WOOD014-RED',
+        variant_value: 'Classic Red',
+        price: 699,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlkqEbN74KmzlRSPbvgLzbWtbM0wqpmtva8A&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlkqEbN74KmzlRSPbvgLzbWtbM0wqpmtva8A&s']
+      }
+    ]
   },
   {
-    id: 15,
+    id: 'WOOD015',
     name: "Wooden Vehicle Puzzle",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK0_baDn9EcFlMEDAjOLyhbpFBq-F9DuLMfg&s",
     description: `Vehicle-themed wooden puzzle for curious kids.
@@ -301,9 +553,27 @@ const woodenToys = [
     badge: "Top Pick",
     gradient: "toy-gradient-1",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'WOOD015-BLUE',
+        variant_value: 'Default Blue',
+        price: 849,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK0_baDn9EcFlMEDAjOLyhbpFBq-F9DuLMfg&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK0_baDn9EcFlMEDAjOLyhbpFBq-F9DuLMfg&s']
+      },
+      {
+        sku: 'WOOD015-RED',
+        variant_value: 'Classic Red',
+        price: 849,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK0_baDn9EcFlMEDAjOLyhbpFBq-F9DuLMfg&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK0_baDn9EcFlMEDAjOLyhbpFBq-F9DuLMfg&s']
+      }
+    ]
   },
   {
-    id: 16,
+    id: 'WOOD016',
     name: "Wooden Sea Animals Puzzle",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW19dmls2eW54QiLHXpyNcB86DDq-wWprD7w&s",
     description: `Sea animal puzzle with bright ocean characters.
@@ -321,9 +591,27 @@ const woodenToys = [
     badge: "Trending",
     gradient: "toy-gradient-4",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'WOOD016-BLUE',
+        variant_value: 'Default Blue',
+        price: 799,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW19dmls2eW54QiLHXpyNcB86DDq-wWprD7w&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW19dmls2eW54QiLHXpyNcB86DDq-wWprD7w&s']
+      },
+      {
+        sku: 'WOOD016-RED',
+        variant_value: 'Classic Red',
+        price: 799,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW19dmls2eW54QiLHXpyNcB86DDq-wWprD7w&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW19dmls2eW54QiLHXpyNcB86DDq-wWprD7w&s']
+      }
+    ]
   },
   {
-    id: 17,
+    id: 'WOOD017',
     name: "Wooden Knob Puzzle Letters",
     image: "https://m.media-amazon.com/images/I/71sD9kHxiSL._AC_UF1000,1000_QL80_.jpg",
     description: `Letter puzzle with wooden knobs for easy gripping.
@@ -341,9 +629,27 @@ const woodenToys = [
     badge: "Educational",
     gradient: "toy-gradient-6",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD017-BLUE',
+        variant_value: 'Default Blue',
+        price: 949,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71sD9kHxiSL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71sD9kHxiSL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'WOOD017-RED',
+        variant_value: 'Classic Red',
+        price: 949,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71sD9kHxiSL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71sD9kHxiSL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 18,
+    id: 'WOOD018',
     name: "Wooden Map Puzzle",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRLq8p6MkM0Kka7KB-0szowALnvRIDV2usag&s",
     description: `Map-style wooden puzzle for curious young learners.
@@ -361,9 +667,27 @@ const woodenToys = [
     badge: "Smart Choice",
     gradient: "toy-gradient-3",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'WOOD018-BLUE',
+        variant_value: 'Default Blue',
+        price: 1199,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRLq8p6MkM0Kka7KB-0szowALnvRIDV2usag&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRLq8p6MkM0Kka7KB-0szowALnvRIDV2usag&s']
+      },
+      {
+        sku: 'WOOD018-RED',
+        variant_value: 'Classic Red',
+        price: 1199,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRLq8p6MkM0Kka7KB-0szowALnvRIDV2usag&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRLq8p6MkM0Kka7KB-0szowALnvRIDV2usag&s']
+      }
+    ]
   },
   {
-    id: 19,
+    id: 'WOOD019',
     name: "Wooden Number Peg Puzzle",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0LVzX7tJVGIW-2BvWPTtY1AXDY1dM6K1tkA&s",
     description: `Peg puzzle with numbers for early counting practice.
@@ -381,9 +705,27 @@ const woodenToys = [
     badge: null,
     gradient: "toy-gradient-2",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD019-BLUE',
+        variant_value: 'Default Blue',
+        price: 799,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0LVzX7tJVGIW-2BvWPTtY1AXDY1dM6K1tkA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0LVzX7tJVGIW-2BvWPTtY1AXDY1dM6K1tkA&s']
+      },
+      {
+        sku: 'WOOD019-RED',
+        variant_value: 'Classic Red',
+        price: 799,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0LVzX7tJVGIW-2BvWPTtY1AXDY1dM6K1tkA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0LVzX7tJVGIW-2BvWPTtY1AXDY1dM6K1tkA&s']
+      }
+    ]
   },
   {
-    id: 20,
+    id: 'WOOD020',
     name: "Wooden Jungle Puzzle",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbHNCstBpLunnkSSz00DGnuT2mhTv0UJ1bcQ&s",
     description: `Jungle-themed puzzle filled with fun animal shapes.
@@ -401,11 +743,29 @@ const woodenToys = [
     badge: "Best Value",
     gradient: "toy-gradient-5",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD020-BLUE',
+        variant_value: 'Default Blue',
+        price: 899,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbHNCstBpLunnkSSz00DGnuT2mhTv0UJ1bcQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbHNCstBpLunnkSSz00DGnuT2mhTv0UJ1bcQ&s']
+      },
+      {
+        sku: 'WOOD020-RED',
+        variant_value: 'Classic Red',
+        price: 899,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbHNCstBpLunnkSSz00DGnuT2mhTv0UJ1bcQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbHNCstBpLunnkSSz00DGnuT2mhTv0UJ1bcQ&s']
+      }
+    ]
   },
 
   // WOODEN VEHICLES (10)
   {
-    id: 21,
+    id: 'WOOD021',
     name: "Wooden Train Set",
     image: "https://toyshine.in/cdn/shop/files/LTJ_22_6_1024x1024@2x.jpg?v=1700555588",
     description: `Charming wooden train set with multiple carriages.
@@ -423,9 +783,27 @@ const woodenToys = [
     badge: "New Arrival",
     gradient: "toy-gradient-1",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD021-BLUE',
+        variant_value: 'Default Blue',
+        price: 2499,
+        stock_quantity: 25,
+        image_url: 'https://toyshine.in/cdn/shop/files/LTJ_22_6_1024x1024@2x.jpg?v=1700555588',
+        gallery_images: ['https://toyshine.in/cdn/shop/files/LTJ_22_6_1024x1024@2x.jpg?v=1700555588']
+      },
+      {
+        sku: 'WOOD021-RED',
+        variant_value: 'Classic Red',
+        price: 2499,
+        stock_quantity: 15,
+        image_url: 'https://toyshine.in/cdn/shop/files/LTJ_22_6_1024x1024@2x.jpg?v=1700555588',
+        gallery_images: ['https://toyshine.in/cdn/shop/files/LTJ_22_6_1024x1024@2x.jpg?v=1700555588']
+      }
+    ]
   },
   {
-    id: 22,
+    id: 'WOOD022',
     name: "Wooden Toy Car Set",
     image: "https://i.etsystatic.com/26145841/r/il/d7cfaf/3536981077/il_fullxfull.3536981077_6z6g.jpg",
     description: `Set of 4 handcrafted wooden toy cars for kids.
@@ -442,9 +820,27 @@ const woodenToys = [
     badge: null,
     gradient: "toy-gradient-1",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'WOOD022-BLUE',
+        variant_value: 'Default Blue',
+        price: 1099,
+        stock_quantity: 25,
+        image_url: 'https://i.etsystatic.com/26145841/r/il/d7cfaf/3536981077/il_fullxfull.3536981077_6z6g.jpg',
+        gallery_images: ['https://i.etsystatic.com/26145841/r/il/d7cfaf/3536981077/il_fullxfull.3536981077_6z6g.jpg']
+      },
+      {
+        sku: 'WOOD022-RED',
+        variant_value: 'Classic Red',
+        price: 1099,
+        stock_quantity: 15,
+        image_url: 'https://i.etsystatic.com/26145841/r/il/d7cfaf/3536981077/il_fullxfull.3536981077_6z6g.jpg',
+        gallery_images: ['https://i.etsystatic.com/26145841/r/il/d7cfaf/3536981077/il_fullxfull.3536981077_6z6g.jpg']
+      }
+    ]
   },
   {
-    id: 23,
+    id: 'WOOD023',
     name: "Wooden Fire Engine",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvP1VInJ0OTnBzbFFvDXRXYpOxlKCe_R9pMQ&s",
     description: `Bright wooden fire engine for rescue role play.
@@ -462,9 +858,27 @@ const woodenToys = [
     badge: "Hot Pick",
     gradient: "toy-gradient-4",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD023-BLUE',
+        variant_value: 'Default Blue',
+        price: 1199,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvP1VInJ0OTnBzbFFvDXRXYpOxlKCe_R9pMQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvP1VInJ0OTnBzbFFvDXRXYpOxlKCe_R9pMQ&s']
+      },
+      {
+        sku: 'WOOD023-RED',
+        variant_value: 'Classic Red',
+        price: 1199,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvP1VInJ0OTnBzbFFvDXRXYpOxlKCe_R9pMQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvP1VInJ0OTnBzbFFvDXRXYpOxlKCe_R9pMQ&s']
+      }
+    ]
   },
   {
-    id: 24,
+    id: 'WOOD024',
     name: "Wooden Bus Toy",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiWcy8f3loJcsbYCZHX-TE47Tvmd2ewuElLg&s",
     description: `Classic wooden bus toy with smooth rolling wheels.
@@ -482,9 +896,27 @@ const woodenToys = [
     badge: null,
     gradient: "toy-gradient-2",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'WOOD024-BLUE',
+        variant_value: 'Default Blue',
+        price: 999,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiWcy8f3loJcsbYCZHX-TE47Tvmd2ewuElLg&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiWcy8f3loJcsbYCZHX-TE47Tvmd2ewuElLg&s']
+      },
+      {
+        sku: 'WOOD024-RED',
+        variant_value: 'Classic Red',
+        price: 999,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiWcy8f3loJcsbYCZHX-TE47Tvmd2ewuElLg&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiWcy8f3loJcsbYCZHX-TE47Tvmd2ewuElLg&s']
+      }
+    ]
   },
   {
-    id: 25,
+    id: 'WOOD025',
     name: "Wooden Airplane Toy",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFNmafNizIvHHA12xHYQZ4biV4iytvgakx3Q&s",
     description: `Wooden airplane toy for sky-high imaginative fun.
@@ -502,9 +934,27 @@ const woodenToys = [
     badge: "Travel Fun",
     gradient: "toy-gradient-6",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD025-BLUE',
+        variant_value: 'Default Blue',
+        price: 1099,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFNmafNizIvHHA12xHYQZ4biV4iytvgakx3Q&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFNmafNizIvHHA12xHYQZ4biV4iytvgakx3Q&s']
+      },
+      {
+        sku: 'WOOD025-RED',
+        variant_value: 'Classic Red',
+        price: 1099,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFNmafNizIvHHA12xHYQZ4biV4iytvgakx3Q&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFNmafNizIvHHA12xHYQZ4biV4iytvgakx3Q&s']
+      }
+    ]
   },
   {
-    id: 26,
+    id: 'WOOD026',
     name: "Wooden Tractor Toy",
     image: "https://www.amazon.in/Wooden-Movable-Tractor-Handcrafted-Showpiece/dp/B0GKQCQ8SL",
     description: `Farm-style wooden tractor toy for pretend field work.
@@ -522,9 +972,27 @@ const woodenToys = [
     badge: "Farm Favorite",
     gradient: "toy-gradient-3",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD026-BLUE',
+        variant_value: 'Default Blue',
+        price: 1149,
+        stock_quantity: 25,
+        image_url: 'https://www.amazon.in/Wooden-Movable-Tractor-Handcrafted-Showpiece/dp/B0GKQCQ8SL',
+        gallery_images: ['https://www.amazon.in/Wooden-Movable-Tractor-Handcrafted-Showpiece/dp/B0GKQCQ8SL']
+      },
+      {
+        sku: 'WOOD026-RED',
+        variant_value: 'Classic Red',
+        price: 1149,
+        stock_quantity: 15,
+        image_url: 'https://www.amazon.in/Wooden-Movable-Tractor-Handcrafted-Showpiece/dp/B0GKQCQ8SL',
+        gallery_images: ['https://www.amazon.in/Wooden-Movable-Tractor-Handcrafted-Showpiece/dp/B0GKQCQ8SL']
+      }
+    ]
   },
   {
-    id: 27,
+    id: 'WOOD027',
     name: "Wooden Dump Truck",
     image: "https://sowpeace.in/cdn/shop/files/sowpeace-wooden-duck-set-artisan-home-decor-accenttabletopsowpeacewood-wdds-wdn-tt-364312.jpg?v=1741833139",
     description: `Wooden dump truck built for pretend construction fun.
@@ -542,9 +1010,27 @@ const woodenToys = [
     badge: "Best Seller",
     gradient: "toy-gradient-5",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD027-BLUE',
+        variant_value: 'Default Blue',
+        price: 1299,
+        stock_quantity: 25,
+        image_url: 'https://sowpeace.in/cdn/shop/files/sowpeace-wooden-duck-set-artisan-home-decor-accenttabletopsowpeacewood-wdds-wdn-tt-364312.jpg?v=1741833139',
+        gallery_images: ['https://sowpeace.in/cdn/shop/files/sowpeace-wooden-duck-set-artisan-home-decor-accenttabletopsowpeacewood-wdds-wdn-tt-364312.jpg?v=1741833139']
+      },
+      {
+        sku: 'WOOD027-RED',
+        variant_value: 'Classic Red',
+        price: 1299,
+        stock_quantity: 15,
+        image_url: 'https://sowpeace.in/cdn/shop/files/sowpeace-wooden-duck-set-artisan-home-decor-accenttabletopsowpeacewood-wdds-wdn-tt-364312.jpg?v=1741833139',
+        gallery_images: ['https://sowpeace.in/cdn/shop/files/sowpeace-wooden-duck-set-artisan-home-decor-accenttabletopsowpeacewood-wdds-wdn-tt-364312.jpg?v=1741833139']
+      }
+    ]
   },
   {
-    id: 28,
+    id: 'WOOD028',
     name: "Wooden Police Jeep",
     image: "https://m.media-amazon.com/images/I/81ZjpBZp5RL.jpg",
     description: `Police jeep toy for action-packed rescue stories.
@@ -562,9 +1048,27 @@ const woodenToys = [
     badge: null,
     gradient: "toy-gradient-1",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD028-BLUE',
+        variant_value: 'Default Blue',
+        price: 1199,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/81ZjpBZp5RL.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/81ZjpBZp5RL.jpg']
+      },
+      {
+        sku: 'WOOD028-RED',
+        variant_value: 'Classic Red',
+        price: 1199,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/81ZjpBZp5RL.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/81ZjpBZp5RL.jpg']
+      }
+    ]
   },
   {
-    id: 29,
+    id: 'WOOD029',
     name: "Wooden Helicopter Toy",
     image: "https://cgaxisimages.fra1.cdn.digitaloceanspaces.com/2018/10/cgaxis_models_40_13a-copy.jpg",
     description: `Wooden helicopter toy for rescue and flight adventures.
@@ -582,9 +1086,27 @@ const woodenToys = [
     badge: "Unique Pick",
     gradient: "toy-gradient-4",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD029-BLUE',
+        variant_value: 'Default Blue',
+        price: 1249,
+        stock_quantity: 25,
+        image_url: 'https://cgaxisimages.fra1.cdn.digitaloceanspaces.com/2018/10/cgaxis_models_40_13a-copy.jpg',
+        gallery_images: ['https://cgaxisimages.fra1.cdn.digitaloceanspaces.com/2018/10/cgaxis_models_40_13a-copy.jpg']
+      },
+      {
+        sku: 'WOOD029-RED',
+        variant_value: 'Classic Red',
+        price: 1249,
+        stock_quantity: 15,
+        image_url: 'https://cgaxisimages.fra1.cdn.digitaloceanspaces.com/2018/10/cgaxis_models_40_13a-copy.jpg',
+        gallery_images: ['https://cgaxisimages.fra1.cdn.digitaloceanspaces.com/2018/10/cgaxis_models_40_13a-copy.jpg']
+      }
+    ]
   },
   {
-    id: 30,
+    id: 'WOOD030',
     name: "Wooden Race Car",
     image: "https://m.media-amazon.com/images/I/71VzYgxZl2L.jpg",
     description: `Fast-looking wooden race car with sporty design.
@@ -602,11 +1124,29 @@ const woodenToys = [
     badge: "Top Rated",
     gradient: "toy-gradient-2",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD030-BLUE',
+        variant_value: 'Default Blue',
+        price: 999,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71VzYgxZl2L.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71VzYgxZl2L.jpg']
+      },
+      {
+        sku: 'WOOD030-RED',
+        variant_value: 'Classic Red',
+        price: 999,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71VzYgxZl2L.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71VzYgxZl2L.jpg']
+      }
+    ]
   },
 
   // WOODEN LEARNING TOYS (10)
   {
-    id: 31,
+    id: 'WOOD031',
     name: "Wooden Abacus",
     image: "",
     description: `Classic wooden abacus for counting and maths learning.
@@ -624,9 +1164,27 @@ const woodenToys = [
     badge: "Educational",
     gradient: "toy-gradient-2",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD031-BLUE',
+        variant_value: 'Default Blue',
+        price: 849,
+        stock_quantity: 25,
+        image_url: '',
+        gallery_images: ['']
+      },
+      {
+        sku: 'WOOD031-RED',
+        variant_value: 'Classic Red',
+        price: 849,
+        stock_quantity: 15,
+        image_url: '',
+        gallery_images: ['']
+      }
+    ]
   },
   {
-    id: 32,
+    id: 'WOOD032',
     name: "Wooden Xylophone",
     image: "https://sarveda.com/wp-content/uploads/2024/06/Xylophone_Wooden_4.png",
     description: `Mini wooden xylophone for musical little ones.
@@ -644,9 +1202,27 @@ const woodenToys = [
     badge: "Trending",
     gradient: "toy-gradient-5",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'WOOD032-BLUE',
+        variant_value: 'Default Blue',
+        price: 1199,
+        stock_quantity: 25,
+        image_url: 'https://sarveda.com/wp-content/uploads/2024/06/Xylophone_Wooden_4.png',
+        gallery_images: ['https://sarveda.com/wp-content/uploads/2024/06/Xylophone_Wooden_4.png']
+      },
+      {
+        sku: 'WOOD032-RED',
+        variant_value: 'Classic Red',
+        price: 1199,
+        stock_quantity: 15,
+        image_url: 'https://sarveda.com/wp-content/uploads/2024/06/Xylophone_Wooden_4.png',
+        gallery_images: ['https://sarveda.com/wp-content/uploads/2024/06/Xylophone_Wooden_4.png']
+      }
+    ]
   },
   {
-    id: 33,
+    id: 'WOOD033',
     name: "Wooden Alphabet Board",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnDVseRa6pGelFIuPCmmmfWzJHcLsA2yQwkQ&s",
     description: `Wooden alphabet learning board for early literacy.
@@ -664,9 +1240,27 @@ const woodenToys = [
     badge: "Award Winner",
     gradient: "toy-gradient-6",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD033-BLUE',
+        variant_value: 'Default Blue',
+        price: 1499,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnDVseRa6pGelFIuPCmmmfWzJHcLsA2yQwkQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnDVseRa6pGelFIuPCmmmfWzJHcLsA2yQwkQ&s']
+      },
+      {
+        sku: 'WOOD033-RED',
+        variant_value: 'Classic Red',
+        price: 1499,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnDVseRa6pGelFIuPCmmmfWzJHcLsA2yQwkQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnDVseRa6pGelFIuPCmmmfWzJHcLsA2yQwkQ&s']
+      }
+    ]
   },
   {
-    id: 34,
+    id: 'WOOD034',
     name: "Wooden Number Puzzle",
     image: "https://bluebellstoys.com/wp-content/uploads/2025/04/Educational-Learning-Toy-7.webp",
     description: `10-piece wooden number puzzle for early maths.
@@ -683,9 +1277,27 @@ const woodenToys = [
     badge: null,
     gradient: "toy-gradient-2",
     ageGroup: ["3-5"],
+    variants: [
+      {
+        sku: 'WOOD034-BLUE',
+        variant_value: 'Default Blue',
+        price: 649,
+        stock_quantity: 25,
+        image_url: 'https://bluebellstoys.com/wp-content/uploads/2025/04/Educational-Learning-Toy-7.webp',
+        gallery_images: ['https://bluebellstoys.com/wp-content/uploads/2025/04/Educational-Learning-Toy-7.webp']
+      },
+      {
+        sku: 'WOOD034-RED',
+        variant_value: 'Classic Red',
+        price: 649,
+        stock_quantity: 15,
+        image_url: 'https://bluebellstoys.com/wp-content/uploads/2025/04/Educational-Learning-Toy-7.webp',
+        gallery_images: ['https://bluebellstoys.com/wp-content/uploads/2025/04/Educational-Learning-Toy-7.webp']
+      }
+    ]
   },
   {
-    id: 35,
+    id: 'WOOD035',
     name: "Wooden Clock Learning Toy",
     image: "https://rukmini1.flixcart.com/image/1500/1500/xif0q/learning-toy/j/j/t/-original-imahk4a4gnrtnrfa.jpeg?q=70",
     description: `Wooden clock toy for learning time concepts.
@@ -703,9 +1315,27 @@ const woodenToys = [
     badge: "Teacher Choice",
     gradient: "toy-gradient-1",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'WOOD035-BLUE',
+        variant_value: 'Default Blue',
+        price: 899,
+        stock_quantity: 25,
+        image_url: 'https://rukmini1.flixcart.com/image/1500/1500/xif0q/learning-toy/j/j/t/-original-imahk4a4gnrtnrfa.jpeg?q=70',
+        gallery_images: ['https://rukmini1.flixcart.com/image/1500/1500/xif0q/learning-toy/j/j/t/-original-imahk4a4gnrtnrfa.jpeg?q=70']
+      },
+      {
+        sku: 'WOOD035-RED',
+        variant_value: 'Classic Red',
+        price: 899,
+        stock_quantity: 15,
+        image_url: 'https://rukmini1.flixcart.com/image/1500/1500/xif0q/learning-toy/j/j/t/-original-imahk4a4gnrtnrfa.jpeg?q=70',
+        gallery_images: ['https://rukmini1.flixcart.com/image/1500/1500/xif0q/learning-toy/j/j/t/-original-imahk4a4gnrtnrfa.jpeg?q=70']
+      }
+    ]
   },
   {
-    id: 36,
+    id: 'WOOD036',
     name: "Wooden Counting Sticks",
     image: "https://m.media-amazon.com/images/I/41wJZRDYh-L._AC_UF1000,1000_QL80_.jpg",
     description: `Counting sticks made from colourful wooden pieces.
@@ -723,9 +1353,27 @@ const woodenToys = [
     badge: null,
     gradient: "toy-gradient-4",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD036-BLUE',
+        variant_value: 'Default Blue',
+        price: 799,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/41wJZRDYh-L._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/41wJZRDYh-L._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'WOOD036-RED',
+        variant_value: 'Classic Red',
+        price: 799,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/41wJZRDYh-L._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/41wJZRDYh-L._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 37,
+    id: 'WOOD037',
     name: "Wooden Spelling Board",
     image: "https://m.media-amazon.com/images/I/61wpgJLDEyL._AC_UF1000,1000_QL80_.jpg",
     description: `Spelling board helps children build simple words.
@@ -743,9 +1391,27 @@ const woodenToys = [
     badge: "Popular",
     gradient: "toy-gradient-3",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD037-BLUE',
+        variant_value: 'Default Blue',
+        price: 1299,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/61wpgJLDEyL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61wpgJLDEyL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'WOOD037-RED',
+        variant_value: 'Classic Red',
+        price: 1299,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/61wpgJLDEyL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61wpgJLDEyL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 38,
+    id: 'WOOD038',
     name: "Wooden Math Board",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvMC02BREycaaKG1BNl7dCGikgLCqFkERjHA&s",
     description: `Math learning board with numbers and symbols.
@@ -763,9 +1429,27 @@ const woodenToys = [
     badge: "Educational",
     gradient: "toy-gradient-5",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD038-BLUE',
+        variant_value: 'Default Blue',
+        price: 1099,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvMC02BREycaaKG1BNl7dCGikgLCqFkERjHA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvMC02BREycaaKG1BNl7dCGikgLCqFkERjHA&s']
+      },
+      {
+        sku: 'WOOD038-RED',
+        variant_value: 'Classic Red',
+        price: 1099,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvMC02BREycaaKG1BNl7dCGikgLCqFkERjHA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvMC02BREycaaKG1BNl7dCGikgLCqFkERjHA&s']
+      }
+    ]
   },
   {
-    id: 39,
+    id: 'WOOD039',
     name: "Wooden Calendar Board",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNd9aP1x6hOsbeSFu4LrYtyhF0GADnnwRg-Q&s",
     description: `Calendar board helps kids learn days and dates.
@@ -783,9 +1467,27 @@ const woodenToys = [
     badge: "Daily Learning",
     gradient: "toy-gradient-6",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'WOOD039-BLUE',
+        variant_value: 'Default Blue',
+        price: 1399,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNd9aP1x6hOsbeSFu4LrYtyhF0GADnnwRg-Q&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNd9aP1x6hOsbeSFu4LrYtyhF0GADnnwRg-Q&s']
+      },
+      {
+        sku: 'WOOD039-RED',
+        variant_value: 'Classic Red',
+        price: 1399,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNd9aP1x6hOsbeSFu4LrYtyhF0GADnnwRg-Q&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNd9aP1x6hOsbeSFu4LrYtyhF0GADnnwRg-Q&s']
+      }
+    ]
   },
   {
-    id: 40,
+    id: 'WOOD040',
     name: "Wooden Memory Matching Game",
     image: "https://toyshine.in/cdn/shop/products/WT-338_1_480x480@2x.jpg?v=1644820126",
     description: `Wooden memory game with matching picture tiles.
@@ -803,6 +1505,24 @@ const woodenToys = [
     badge: "Brain Boost",
     gradient: "toy-gradient-2",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'WOOD040-BLUE',
+        variant_value: 'Default Blue',
+        price: 999,
+        stock_quantity: 25,
+        image_url: 'https://toyshine.in/cdn/shop/products/WT-338_1_480x480@2x.jpg?v=1644820126',
+        gallery_images: ['https://toyshine.in/cdn/shop/products/WT-338_1_480x480@2x.jpg?v=1644820126']
+      },
+      {
+        sku: 'WOOD040-RED',
+        variant_value: 'Classic Red',
+        price: 999,
+        stock_quantity: 15,
+        image_url: 'https://toyshine.in/cdn/shop/products/WT-338_1_480x480@2x.jpg?v=1644820126',
+        gallery_images: ['https://toyshine.in/cdn/shop/products/WT-338_1_480x480@2x.jpg?v=1644820126']
+      }
+    ]
   },
 ];
 

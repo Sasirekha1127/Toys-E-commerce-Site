@@ -55,18 +55,18 @@ export default function BannerCarousel() {
   };
 
   return (
-   <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden shadow-2xl mt-20 h-[480px]">
-          {slide.image && (
-      <img
-        src={slide.image}
-        alt={slide.title}
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{
-          objectPosition: 'center 20%',
-          animation: 'zoomInOut 12s ease-in-out infinite'
-        }}
-      />
-    )}
+    <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden shadow-2xl mt-20 h-[480px]">
+      {slide.image && (
+        <img
+          src={slide.image}
+          alt={slide.title}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            objectPosition: 'center 20%',
+            animation: 'zoomInOut 12s ease-in-out infinite'
+          }}
+        />
+      )}
 
       {/* Slide content */}
       <div className="relative z-10 flex items-center min-h-[500px] px-8 md:px-16 py-10">

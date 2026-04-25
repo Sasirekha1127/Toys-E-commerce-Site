@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { StoreProvider } from './context/StoreContext.jsx';
 import { AdminProvider } from './context/AdminContext.jsx';
@@ -7,6 +7,7 @@ import UserLayout from './layouts/UserLayout';
 import AdminLayout from './layouts/AdminLayout';
 import SellerLayout from './layouts/SellerLayout';
 import SellerRouteGuard from './components/seller/SellerRouteGuard.jsx';
+import UserRouteGuard from './components/user/UserRouteGuard.jsx';
 
 import Home from './pages/user/Home';
 import Cart from './pages/user/Cart';
@@ -27,6 +28,11 @@ import Settings from './pages/admin/Settings';
 import Categories from './pages/admin/Categories';
 import Reviews from './pages/admin/Reviews';
 import Offers from './pages/admin/Offers';
+import Payments from './pages/admin/Payments';
+import Returns from './pages/admin/Returns';
+import Vendors from './pages/admin/Vendors';
+import Finance from './pages/admin/Finance';
+import SalesReports from './pages/admin/SalesReports';
 
 import SellerDashboard from './pages/seller/Dashboard';
 import SellerProducts from './pages/seller/Products';
@@ -35,14 +41,19 @@ import SellerInventory from './pages/seller/Inventory';
 import SellerReviews from './pages/seller/Reviews';
 import SellerProfile from './pages/seller/Profile';
 import SellerOnboarding from './pages/seller/Onboarding';
+import Analytics from './pages/seller/Analytics';
+import SellerPayments from './pages/seller/SellerPayment';
+import SellerDiscounts from './pages/seller/Discount';
 
 export default function App() {
+
+
   return (
     <StoreProvider>
       <SellerOnboardingProvider>
         <Routes>
           {/* Default */}
-          <Route path="/" element={<Navigate to="/home" replace />} />
+          <Route path="/" element={<Navigate to="/auth" replace />} />
 
           {/* Auth */}
           <Route path="/auth" element={<AuthPage />} />
@@ -51,57 +62,71 @@ export default function App() {
           <Route
             path="/home"
             element={
-              <UserLayout>
-                <Home />
-              </UserLayout>
+              <UserRouteGuard>
+                <UserLayout>
+                  <Home />
+                </UserLayout>
+              </UserRouteGuard>
             }
           />
           <Route
             path="/product/:id"
             element={
-              <UserLayout>
-                <ProductDetails />
-              </UserLayout>
+              <UserRouteGuard>
+                <UserLayout>
+                  <ProductDetails />
+                </UserLayout>
+              </UserRouteGuard>
             }
           />
           <Route
             path="/cart"
             element={
-              <UserLayout>
-                <Cart />
-              </UserLayout>
+              <UserRouteGuard>
+                <UserLayout>
+                  <Cart />
+                </UserLayout>
+              </UserRouteGuard>
             }
           />
           <Route
             path="/wishlist"
             element={
-              <UserLayout>
-                <Wishlist />
-              </UserLayout>
+              <UserRouteGuard>
+                <UserLayout>
+                  <Wishlist />
+                </UserLayout>
+              </UserRouteGuard>
             }
           />
           <Route
             path="/profile"
             element={
-              <UserLayout>
-                <UserPage />
-              </UserLayout>
+              <UserRouteGuard>
+                <UserLayout>
+                  <UserPage />
+                </UserLayout>
+              </UserRouteGuard>
             }
           />
           <Route
             path="/checkout"
             element={
-              <UserLayout>
-                <CheckoutPage />
-              </UserLayout>
+              <UserRouteGuard>
+                <UserLayout>
+                  <CheckoutPage />
+                </UserLayout>
+              </UserRouteGuard>
             }
           />
           <Route
             path="/category/:slug"
             element={
-              <UserLayout>
-                <CategoryProductsPage />
-              </UserLayout>
+              <UserRouteGuard>
+                <UserLayout>
+                  <CategoryProductsPage />
+                </UserLayout>
+              </UserRouteGuard>
             }
           />
 
@@ -109,9 +134,11 @@ export default function App() {
           <Route
             path="/age/:slug"
             element={
-              <UserLayout>
-                <AgeCategory />
-              </UserLayout>
+              <UserRouteGuard>
+                <UserLayout>
+                  <AgeCategory />
+                </UserLayout>
+              </UserRouteGuard>
             }
           />
 
@@ -206,6 +233,56 @@ export default function App() {
               </AdminProvider>
             }
           />
+          <Route
+            path="/admin/payments"
+            element={
+              <AdminProvider>
+                <AdminLayout>
+                  <Payments />
+                </AdminLayout>
+              </AdminProvider>
+            }
+          />
+          <Route
+            path="/admin/returns"
+            element={
+              <AdminProvider>
+                <AdminLayout>
+                  <Returns />
+                </AdminLayout>
+              </AdminProvider>
+            }
+          />
+          <Route
+            path="/admin/vendors"
+            element={
+              <AdminProvider>
+                <AdminLayout>
+                  <Vendors />
+                </AdminLayout>
+              </AdminProvider>
+            }
+          />
+          <Route
+            path="/admin/finance"
+            element={
+              <AdminProvider>
+                <AdminLayout>
+                  <Finance />
+                </AdminLayout>
+              </AdminProvider>
+            }
+          />
+          <Route
+            path="/admin/sales"
+            element={
+              <AdminProvider>
+                <AdminLayout>
+                  <SalesReports />
+                </AdminLayout>
+              </AdminProvider>
+            }
+          />
 
           {/* Seller onboarding */}
           <Route
@@ -278,9 +355,39 @@ export default function App() {
               </SellerRouteGuard>
             }
           />
+          <Route
+            path="/seller/payments"
+            element={
+              <SellerRouteGuard mode="dashboard">
+                <SellerLayout>
+                  <SellerPayments />
+                </SellerLayout>
+              </SellerRouteGuard>
+            }
+          />
+          <Route
+            path="/seller/analytics"
+            element={
+              <SellerRouteGuard mode="dashboard">
+                <SellerLayout>
+                  <Analytics />
+                </SellerLayout>
+              </SellerRouteGuard>
+            }
+          />
+          <Route
+            path="/seller/discounts"
+            element={
+              <SellerRouteGuard mode="dashboard">
+                <SellerLayout>
+                  <SellerDiscounts />
+                </SellerLayout>
+              </SellerRouteGuard>
+            }
+          />
 
           {/* Fallback */}
-          <Route path="*" element={<Navigate to="/home" replace />} />
+          <Route path="*" element={<Navigate to="/auth" replace />} />
         </Routes>
       </SellerOnboardingProvider>
     </StoreProvider>

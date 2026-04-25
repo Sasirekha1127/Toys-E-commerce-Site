@@ -1,7 +1,7 @@
 const electronicToys = [
   // REMOTE CONTROL TOYS (10)
   {
-    id: 1,
+    id: 'ELEC001',
     name: "Remote Control Car",
     image: "https://baybee.co.in/cdn/shop/files/71opsm_qR7L_1400x.jpg?v=1735995271",
     description: `High-speed remote control car for thrilling races.
@@ -18,9 +18,27 @@ const electronicToys = [
     badge: "Glow in Dark",
     gradient: "toy-gradient-4",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'ELEC001-BLUE',
+        variant_value: 'Default Blue',
+        price: 4980,
+        stock_quantity: 25,
+        image_url: 'https://baybee.co.in/cdn/shop/files/71opsm_qR7L_1400x.jpg?v=1735995271',
+        gallery_images: ['https://baybee.co.in/cdn/shop/files/71opsm_qR7L_1400x.jpg?v=1735995271']
+      },
+      {
+        sku: 'ELEC001-RED',
+        variant_value: 'Classic Red',
+        price: 4980,
+        stock_quantity: 15,
+        image_url: 'https://baybee.co.in/cdn/shop/files/71opsm_qR7L_1400x.jpg?v=1735995271',
+        gallery_images: ['https://baybee.co.in/cdn/shop/files/71opsm_qR7L_1400x.jpg?v=1735995271']
+      }
+    ]
   },
   {
-    id: 2,
+    id: 'ELEC002',
     name: "Drone",
     image: "https://www.ul.com/sites/default/files/styles/hero_boxed_width/public/2019-05/Image18_Quadcopter-drone_Caban_022819-Hero-1000x715.jpg?itok=6WSk4wNj",
     description: `Easy-to-fly drone with stable flight controls.
@@ -37,9 +55,27 @@ const electronicToys = [
     badge: "Editor's Pick",
     gradient: "toy-gradient-5",
     ageGroup: ["8-12"],
+    variants: [
+      {
+        sku: 'ELEC002-BLUE',
+        variant_value: 'Default Blue',
+        price: 6640,
+        stock_quantity: 25,
+        image_url: 'https://www.ul.com/sites/default/files/styles/hero_boxed_width/public/2019-05/Image18_Quadcopter-drone_Caban_022819-Hero-1000x715.jpg?itok=6WSk4wNj',
+        gallery_images: ['https://www.ul.com/sites/default/files/styles/hero_boxed_width/public/2019-05/Image18_Quadcopter-drone_Caban_022819-Hero-1000x715.jpg?itok=6WSk4wNj']
+      },
+      {
+        sku: 'ELEC002-RED',
+        variant_value: 'Classic Red',
+        price: 6640,
+        stock_quantity: 15,
+        image_url: 'https://www.ul.com/sites/default/files/styles/hero_boxed_width/public/2019-05/Image18_Quadcopter-drone_Caban_022819-Hero-1000x715.jpg?itok=6WSk4wNj',
+        gallery_images: ['https://www.ul.com/sites/default/files/styles/hero_boxed_width/public/2019-05/Image18_Quadcopter-drone_Caban_022819-Hero-1000x715.jpg?itok=6WSk4wNj']
+      }
+    ]
   },
   {
-    id: 3,
+    id: 'ELEC003',
     name: "RC Helicopter",
     image: "https://m.media-amazon.com/images/I/71SRXsLCMxL.jpg",
     description: `Lightweight RC helicopter with stable flying control.
@@ -56,9 +92,27 @@ const electronicToys = [
     badge: "⭐ Must Have",
     gradient: "toy-gradient-2",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'ELEC003-BLUE',
+        variant_value: 'Default Blue',
+        price: 3320,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71SRXsLCMxL.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71SRXsLCMxL.jpg']
+      },
+      {
+        sku: 'ELEC003-RED',
+        variant_value: 'Classic Red',
+        price: 3320,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71SRXsLCMxL.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71SRXsLCMxL.jpg']
+      }
+    ]
   },
   {
-    id: 4,
+    id: 'ELEC004',
     name: "RC Monster Truck",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwMlzMGvC_jG1nzX1VcrT9rGdTni9rHOfVOg&s",
     description: `Powerful RC monster truck built for rough play.
@@ -75,9 +129,27 @@ const electronicToys = [
     badge: "Hot Pick",
     gradient: "toy-gradient-1",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'ELEC004-BLUE',
+        variant_value: 'Default Blue',
+        price: 5299,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwMlzMGvC_jG1nzX1VcrT9rGdTni9rHOfVOg&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwMlzMGvC_jG1nzX1VcrT9rGdTni9rHOfVOg&s']
+      },
+      {
+        sku: 'ELEC004-RED',
+        variant_value: 'Classic Red',
+        price: 5299,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwMlzMGvC_jG1nzX1VcrT9rGdTni9rHOfVOg&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwMlzMGvC_jG1nzX1VcrT9rGdTni9rHOfVOg&s']
+      }
+    ]
   },
   {
-    id: 5,
+    id: 'ELEC005',
     name: "RC Speed Boat",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXwujVUGP7TH1vzCtKDV01vMHbgFOFyOpcHA&s",
     description: `Fast RC speed boat for water racing fun.
@@ -94,9 +166,27 @@ const electronicToys = [
     badge: "Water Fun",
     gradient: "toy-gradient-6",
     ageGroup: ["8-12"],
+    variants: [
+      {
+        sku: 'ELEC005-BLUE',
+        variant_value: 'Default Blue',
+        price: 5899,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXwujVUGP7TH1vzCtKDV01vMHbgFOFyOpcHA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXwujVUGP7TH1vzCtKDV01vMHbgFOFyOpcHA&s']
+      },
+      {
+        sku: 'ELEC005-RED',
+        variant_value: 'Classic Red',
+        price: 5899,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXwujVUGP7TH1vzCtKDV01vMHbgFOFyOpcHA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXwujVUGP7TH1vzCtKDV01vMHbgFOFyOpcHA&s']
+      }
+    ]
   },
   {
-    id: 6,
+    id: 'ELEC006',
     name: "RC Stunt Car",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiptwjABPSdwKAvjOxER6zItdVq0UYtLwYdw&s",
     description: `Exciting stunt car that flips and spins with ease.
@@ -113,9 +203,27 @@ const electronicToys = [
     badge: "Trending",
     gradient: "toy-gradient-3",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'ELEC006-BLUE',
+        variant_value: 'Default Blue',
+        price: 4599,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiptwjABPSdwKAvjOxER6zItdVq0UYtLwYdw&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiptwjABPSdwKAvjOxER6zItdVq0UYtLwYdw&s']
+      },
+      {
+        sku: 'ELEC006-RED',
+        variant_value: 'Classic Red',
+        price: 4599,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiptwjABPSdwKAvjOxER6zItdVq0UYtLwYdw&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiptwjABPSdwKAvjOxER6zItdVq0UYtLwYdw&s']
+      }
+    ]
   },
   {
-    id: 7,
+    id: 'ELEC007',
     name: "RC Racing Bike",
     image: "https://imgd.aeplcdn.com/1280x720/n/2y6a0gb_1836049.jpg",
     description: `Remote control racing bike with sporty styling.
@@ -132,9 +240,27 @@ const electronicToys = [
     badge: "Race Ready",
     gradient: "toy-gradient-4",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'ELEC007-BLUE',
+        variant_value: 'Default Blue',
+        price: 4799,
+        stock_quantity: 25,
+        image_url: 'https://imgd.aeplcdn.com/1280x720/n/2y6a0gb_1836049.jpg',
+        gallery_images: ['https://imgd.aeplcdn.com/1280x720/n/2y6a0gb_1836049.jpg']
+      },
+      {
+        sku: 'ELEC007-RED',
+        variant_value: 'Classic Red',
+        price: 4799,
+        stock_quantity: 15,
+        image_url: 'https://imgd.aeplcdn.com/1280x720/n/2y6a0gb_1836049.jpg',
+        gallery_images: ['https://imgd.aeplcdn.com/1280x720/n/2y6a0gb_1836049.jpg']
+      }
+    ]
   },
   {
-    id: 8,
+    id: 'ELEC008',
     name: "RC Tank Toy",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpYW34goYAjtoRJ7a1VwqCq7nZcQbhp4A4Ww&s",
     description: `Battle-style RC tank toy for action playtime.
@@ -151,9 +277,27 @@ const electronicToys = [
     badge: "Action Toy",
     gradient: "toy-gradient-5",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'ELEC008-BLUE',
+        variant_value: 'Default Blue',
+        price: 5499,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpYW34goYAjtoRJ7a1VwqCq7nZcQbhp4A4Ww&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpYW34goYAjtoRJ7a1VwqCq7nZcQbhp4A4Ww&s']
+      },
+      {
+        sku: 'ELEC008-RED',
+        variant_value: 'Classic Red',
+        price: 5499,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpYW34goYAjtoRJ7a1VwqCq7nZcQbhp4A4Ww&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpYW34goYAjtoRJ7a1VwqCq7nZcQbhp4A4Ww&s']
+      }
+    ]
   },
   {
-    id: 9,
+    id: 'ELEC009',
     name: "Mini RC Car",
     image: "https://www.giftoo.in/cdn/shop/files/Car_5.png?v=1768636058&width=1946",
     description: `Compact mini RC car for quick racing fun.
@@ -170,9 +314,27 @@ const electronicToys = [
     badge: null,
     gradient: "toy-gradient-2",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'ELEC009-BLUE',
+        variant_value: 'Default Blue',
+        price: 2499,
+        stock_quantity: 25,
+        image_url: 'https://www.giftoo.in/cdn/shop/files/Car_5.png?v=1768636058&width=1946',
+        gallery_images: ['https://www.giftoo.in/cdn/shop/files/Car_5.png?v=1768636058&width=1946']
+      },
+      {
+        sku: 'ELEC009-RED',
+        variant_value: 'Classic Red',
+        price: 2499,
+        stock_quantity: 15,
+        image_url: 'https://www.giftoo.in/cdn/shop/files/Car_5.png?v=1768636058&width=1946',
+        gallery_images: ['https://www.giftoo.in/cdn/shop/files/Car_5.png?v=1768636058&width=1946']
+      }
+    ]
   },
   {
-    id: 10,
+    id: 'ELEC010',
     name: "RC Construction Excavator",
     image: "https://m.media-amazon.com/images/I/51jSr00vunL._AC_UF1000,1000_QL80_.jpg",
     description: `Remote control excavator for building-site role play.
@@ -189,11 +351,29 @@ const electronicToys = [
     badge: "Best Seller",
     gradient: "toy-gradient-6",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'ELEC010-BLUE',
+        variant_value: 'Default Blue',
+        price: 6199,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/51jSr00vunL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/51jSr00vunL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC010-RED',
+        variant_value: 'Classic Red',
+        price: 6199,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/51jSr00vunL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/51jSr00vunL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
 
   // INTERACTIVE TOYS (10)
   {
-    id: 11,
+    id: 'ELEC011',
     name: "Robot Kit",
     image: "https://img.freepik.com/free-photo/home-made-robot-desk_23-2148863420.jpg",
     description: `DIY robot kit for hands-on building experience.
@@ -210,9 +390,27 @@ const electronicToys = [
     badge: "Party Hit",
     gradient: "toy-gradient-6",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'ELEC011-BLUE',
+        variant_value: 'Default Blue',
+        price: 3730,
+        stock_quantity: 25,
+        image_url: 'https://img.freepik.com/free-photo/home-made-robot-desk_23-2148863420.jpg',
+        gallery_images: ['https://img.freepik.com/free-photo/home-made-robot-desk_23-2148863420.jpg']
+      },
+      {
+        sku: 'ELEC011-RED',
+        variant_value: 'Classic Red',
+        price: 3730,
+        stock_quantity: 15,
+        image_url: 'https://img.freepik.com/free-photo/home-made-robot-desk_23-2148863420.jpg',
+        gallery_images: ['https://img.freepik.com/free-photo/home-made-robot-desk_23-2148863420.jpg']
+      }
+    ]
   },
   {
-    id: 12,
+    id: 'ELEC012',
     name: "Smart Toy Dog",
     image: "https://m.media-amazon.com/images/I/41Pmnm087yL._AC_UF1000,1000_QL80_.jpg",
     description: `Interactive smart dog that walks and barks.
@@ -229,9 +427,27 @@ const electronicToys = [
     badge: "STEM Kit",
     gradient: "toy-gradient-3",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'ELEC012-BLUE',
+        variant_value: 'Default Blue',
+        price: 5810,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/41Pmnm087yL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/41Pmnm087yL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC012-RED',
+        variant_value: 'Classic Red',
+        price: 5810,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/41Pmnm087yL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/41Pmnm087yL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 13,
+    id: 'ELEC013',
     name: "Talking Robot",
     image: "https://c8.alamy.com/comp/FCEGBA/3d-render-of-a-robot-speaking-into-a-microphone-FCEGBA.jpg",
     description: `Interactive talking robot with lights and sounds.
@@ -248,9 +464,27 @@ const electronicToys = [
     badge: "Top Rated",
     gradient: "toy-gradient-1",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'ELEC013-BLUE',
+        variant_value: 'Default Blue',
+        price: 4299,
+        stock_quantity: 25,
+        image_url: 'https://c8.alamy.com/comp/FCEGBA/3d-render-of-a-robot-speaking-into-a-microphone-FCEGBA.jpg',
+        gallery_images: ['https://c8.alamy.com/comp/FCEGBA/3d-render-of-a-robot-speaking-into-a-microphone-FCEGBA.jpg']
+      },
+      {
+        sku: 'ELEC013-RED',
+        variant_value: 'Classic Red',
+        price: 4299,
+        stock_quantity: 15,
+        image_url: 'https://c8.alamy.com/comp/FCEGBA/3d-render-of-a-robot-speaking-into-a-microphone-FCEGBA.jpg',
+        gallery_images: ['https://c8.alamy.com/comp/FCEGBA/3d-render-of-a-robot-speaking-into-a-microphone-FCEGBA.jpg']
+      }
+    ]
   },
   {
-    id: 14,
+    id: 'ELEC014',
     name: "Smart Dino Toy",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu82ll7d50VEnXycd7CL9vO4JV7dtSNsi2PQ&s",
     description: `Interactive dinosaur toy with sound and movement.
@@ -267,9 +501,27 @@ const electronicToys = [
     badge: "Dino Fun",
     gradient: "toy-gradient-5",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'ELEC014-BLUE',
+        variant_value: 'Default Blue',
+        price: 3899,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu82ll7d50VEnXycd7CL9vO4JV7dtSNsi2PQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu82ll7d50VEnXycd7CL9vO4JV7dtSNsi2PQ&s']
+      },
+      {
+        sku: 'ELEC014-RED',
+        variant_value: 'Classic Red',
+        price: 3899,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu82ll7d50VEnXycd7CL9vO4JV7dtSNsi2PQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu82ll7d50VEnXycd7CL9vO4JV7dtSNsi2PQ&s']
+      }
+    ]
   },
   {
-    id: 15,
+    id: 'ELEC015',
     name: "Interactive Baby Doll",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGgXeNHsSPZj2WQG8vX7rRPRLhmkGpYgq5-A&s",
     description: `Talking baby doll with realistic sound effects.
@@ -286,9 +538,27 @@ const electronicToys = [
     badge: "Cute Pick",
     gradient: "toy-gradient-4",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'ELEC015-BLUE',
+        variant_value: 'Default Blue',
+        price: 3499,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGgXeNHsSPZj2WQG8vX7rRPRLhmkGpYgq5-A&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGgXeNHsSPZj2WQG8vX7rRPRLhmkGpYgq5-A&s']
+      },
+      {
+        sku: 'ELEC015-RED',
+        variant_value: 'Classic Red',
+        price: 3499,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGgXeNHsSPZj2WQG8vX7rRPRLhmkGpYgq5-A&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGgXeNHsSPZj2WQG8vX7rRPRLhmkGpYgq5-A&s']
+      }
+    ]
   },
   {
-    id: 16,
+    id: 'ELEC016',
     name: "Smart Toy Cat",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsHTe1eitdBHC9MFFMdl7SOoAPYmJ_nIDRgA&s",
     description: `Interactive toy cat that meows and moves gently.
@@ -305,9 +575,27 @@ const electronicToys = [
     badge: null,
     gradient: "toy-gradient-2",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'ELEC016-BLUE',
+        variant_value: 'Default Blue',
+        price: 3699,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsHTe1eitdBHC9MFFMdl7SOoAPYmJ_nIDRgA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsHTe1eitdBHC9MFFMdl7SOoAPYmJ_nIDRgA&s']
+      },
+      {
+        sku: 'ELEC016-RED',
+        variant_value: 'Classic Red',
+        price: 3699,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsHTe1eitdBHC9MFFMdl7SOoAPYmJ_nIDRgA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsHTe1eitdBHC9MFFMdl7SOoAPYmJ_nIDRgA&s']
+      }
+    ]
   },
   {
-    id: 17,
+    id: 'ELEC017',
     name: "Voice Control Robot",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_RF4WKypjozPAPFhdd_bPOHWezqLw_UXvcA&s",
     description: `Voice control robot responds to simple commands.
@@ -324,9 +612,27 @@ const electronicToys = [
     badge: "Smart Pick",
     gradient: "toy-gradient-6",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'ELEC017-BLUE',
+        variant_value: 'Default Blue',
+        price: 6299,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_RF4WKypjozPAPFhdd_bPOHWezqLw_UXvcA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_RF4WKypjozPAPFhdd_bPOHWezqLw_UXvcA&s']
+      },
+      {
+        sku: 'ELEC017-RED',
+        variant_value: 'Classic Red',
+        price: 6299,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_RF4WKypjozPAPFhdd_bPOHWezqLw_UXvcA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_RF4WKypjozPAPFhdd_bPOHWezqLw_UXvcA&s']
+      }
+    ]
   },
   {
-    id: 18,
+    id: 'ELEC018',
     name: "Interactive Story Bear",
     image: "https://m.media-amazon.com/images/I/71d7u9sYVKL._AC_UF1000,1000_QL80_.jpg",
     description: `Storytelling bear plays sounds and gentle voice clips.
@@ -343,9 +649,27 @@ const electronicToys = [
     badge: "Bedtime Buddy",
     gradient: "toy-gradient-3",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'ELEC018-BLUE',
+        variant_value: 'Default Blue',
+        price: 3199,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71d7u9sYVKL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71d7u9sYVKL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC018-RED',
+        variant_value: 'Classic Red',
+        price: 3199,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71d7u9sYVKL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71d7u9sYVKL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 19,
+    id: 'ELEC019',
     name: "Gesture Control Robot",
     image: "https://m.media-amazon.com/images/I/61fF8ZlzqFL._AC_UF1000,1000_QL80_.jpg",
     description: `Gesture control robot reacts to hand movement.
@@ -362,9 +686,27 @@ const electronicToys = [
     badge: "Future Fun",
     gradient: "toy-gradient-5",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'ELEC019-BLUE',
+        variant_value: 'Default Blue',
+        price: 5599,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/61fF8ZlzqFL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61fF8ZlzqFL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC019-RED',
+        variant_value: 'Classic Red',
+        price: 5599,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/61fF8ZlzqFL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61fF8ZlzqFL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 20,
+    id: 'ELEC020',
     name: "Interactive Pet Parrot",
     image: "https://m.media-amazon.com/images/I/61yM4D7Q9rL._AC_UF1000,1000_QL80_.jpg",
     description: `Talking pet parrot repeats words in a funny style.
@@ -381,11 +723,29 @@ const electronicToys = [
     badge: "Fun Voice",
     gradient: "toy-gradient-1",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'ELEC020-BLUE',
+        variant_value: 'Default Blue',
+        price: 2999,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/61yM4D7Q9rL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61yM4D7Q9rL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC020-RED',
+        variant_value: 'Classic Red',
+        price: 2999,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/61yM4D7Q9rL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61yM4D7Q9rL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
 
   // MUSICAL TOYS (10)
   {
-    id: 21,
+    id: 'ELEC021',
     name: "Electronic Drum Set",
     image: "https://cdn.shopaccino.com/master-music/products/1-864460_m.jpg?v=684",
     description: `Fun electronic drum set with multiple sound modes.
@@ -402,9 +762,27 @@ const electronicToys = [
     badge: "Super Scary",
     gradient: "toy-gradient-1",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'ELEC021-BLUE',
+        variant_value: 'Default Blue',
+        price: 4150,
+        stock_quantity: 25,
+        image_url: 'https://cdn.shopaccino.com/master-music/products/1-864460_m.jpg?v=684',
+        gallery_images: ['https://cdn.shopaccino.com/master-music/products/1-864460_m.jpg?v=684']
+      },
+      {
+        sku: 'ELEC021-RED',
+        variant_value: 'Classic Red',
+        price: 4150,
+        stock_quantity: 15,
+        image_url: 'https://cdn.shopaccino.com/master-music/products/1-864460_m.jpg?v=684',
+        gallery_images: ['https://cdn.shopaccino.com/master-music/products/1-864460_m.jpg?v=684']
+      }
+    ]
   },
   {
-    id: 22,
+    id: 'ELEC022',
     name: "Kids Piano Keyboard",
     image: "https://m.media-amazon.com/images/I/71LHdcPbxQL._AC_UF1000,1000_QL80_.jpg",
     description: `24-key piano keyboard with built-in melodies.
@@ -421,9 +799,27 @@ const electronicToys = [
     badge: "Trending",
     gradient: "toy-gradient-4",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'ELEC022-BLUE',
+        variant_value: 'Default Blue',
+        price: 2199,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71LHdcPbxQL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71LHdcPbxQL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC022-RED',
+        variant_value: 'Classic Red',
+        price: 2199,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71LHdcPbxQL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71LHdcPbxQL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 23,
+    id: 'ELEC023',
     name: "Musical Guitar Toy",
     image: "https://m.media-amazon.com/images/I/71dA3h6cvKL._AC_UF1000,1000_QL80_.jpg",
     description: `Kids musical guitar with fun sound and light effects.
@@ -440,9 +836,27 @@ const electronicToys = [
     badge: "Music Fun",
     gradient: "toy-gradient-2",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'ELEC023-BLUE',
+        variant_value: 'Default Blue',
+        price: 2499,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71dA3h6cvKL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71dA3h6cvKL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC023-RED',
+        variant_value: 'Classic Red',
+        price: 2499,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71dA3h6cvKL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71dA3h6cvKL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 24,
+    id: 'ELEC024',
     name: "DJ Mixer Toy",
     image: "https://m.media-amazon.com/images/I/61n5X2Q7bEL._AC_UF1000,1000_QL80_.jpg",
     description: `Electronic DJ mixer toy for energetic play sessions.
@@ -459,9 +873,27 @@ const electronicToys = [
     badge: "Party Favorite",
     gradient: "toy-gradient-5",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'ELEC024-BLUE',
+        variant_value: 'Default Blue',
+        price: 2899,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/61n5X2Q7bEL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61n5X2Q7bEL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC024-RED',
+        variant_value: 'Classic Red',
+        price: 2899,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/61n5X2Q7bEL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61n5X2Q7bEL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 25,
+    id: 'ELEC025',
     name: "Musical Microphone Stand",
     image: "https://m.media-amazon.com/images/I/71W4oN3v6tL._AC_UF1000,1000_QL80_.jpg",
     description: `Microphone stand toy for singing and performance fun.
@@ -478,9 +910,27 @@ const electronicToys = [
     badge: "Stage Star",
     gradient: "toy-gradient-3",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'ELEC025-BLUE',
+        variant_value: 'Default Blue',
+        price: 3299,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71W4oN3v6tL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71W4oN3v6tL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC025-RED',
+        variant_value: 'Classic Red',
+        price: 3299,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71W4oN3v6tL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71W4oN3v6tL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 26,
+    id: 'ELEC026',
     name: "Musical Saxophone Toy",
     image: "https://m.media-amazon.com/images/I/61P4U2f7M-L._AC_UF1000,1000_QL80_.jpg",
     description: `Colourful toy saxophone with fun sound features.
@@ -497,9 +947,27 @@ const electronicToys = [
     badge: null,
     gradient: "toy-gradient-6",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'ELEC026-BLUE',
+        variant_value: 'Default Blue',
+        price: 1899,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/61P4U2f7M-L._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61P4U2f7M-L._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC026-RED',
+        variant_value: 'Classic Red',
+        price: 1899,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/61P4U2f7M-L._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61P4U2f7M-L._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 27,
+    id: 'ELEC027',
     name: "Baby Musical Mat",
     image: "https://m.media-amazon.com/images/I/71zv1xmfDwL._AC_UF1000,1000_QL80_.jpg",
     description: `Interactive musical mat responds to foot and hand taps.
@@ -516,9 +984,27 @@ const electronicToys = [
     badge: "Active Play",
     gradient: "toy-gradient-1",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'ELEC027-BLUE',
+        variant_value: 'Default Blue',
+        price: 2799,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71zv1xmfDwL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71zv1xmfDwL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC027-RED',
+        variant_value: 'Classic Red',
+        price: 2799,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71zv1xmfDwL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71zv1xmfDwL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 28,
+    id: 'ELEC028',
     name: "Electronic Violin Toy",
     image: "https://m.media-amazon.com/images/I/61A7oV4vWkL._AC_UF1000,1000_QL80_.jpg",
     description: `Violin-style toy with light and sound effects.
@@ -535,9 +1021,27 @@ const electronicToys = [
     badge: "Performer Pick",
     gradient: "toy-gradient-4",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'ELEC028-BLUE',
+        variant_value: 'Default Blue',
+        price: 2399,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/61A7oV4vWkL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61A7oV4vWkL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC028-RED',
+        variant_value: 'Classic Red',
+        price: 2399,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/61A7oV4vWkL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61A7oV4vWkL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 29,
+    id: 'ELEC029',
     name: "Mini Musical Tambourine",
     image: "https://m.media-amazon.com/images/I/61tH2X8wQ9L._AC_UF1000,1000_QL80_.jpg",
     description: `Electronic tambourine toy with bright sounds and lights.
@@ -554,9 +1058,27 @@ const electronicToys = [
     badge: "Tiny Beats",
     gradient: "toy-gradient-2",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'ELEC029-BLUE',
+        variant_value: 'Default Blue',
+        price: 1499,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/61tH2X8wQ9L._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61tH2X8wQ9L._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC029-RED',
+        variant_value: 'Classic Red',
+        price: 1499,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/61tH2X8wQ9L._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61tH2X8wQ9L._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 30,
+    id: 'ELEC030',
     name: "Kids Karaoke Machine",
     image: "https://m.media-amazon.com/images/I/71Ww6LrM1QL._AC_UF1000,1000_QL80_.jpg",
     description: `Portable karaoke machine for singing fun at home.
@@ -573,11 +1095,29 @@ const electronicToys = [
     badge: "Top Singer",
     gradient: "toy-gradient-5",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'ELEC030-BLUE',
+        variant_value: 'Default Blue',
+        price: 4499,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71Ww6LrM1QL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71Ww6LrM1QL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC030-RED',
+        variant_value: 'Classic Red',
+        price: 4499,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71Ww6LrM1QL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71Ww6LrM1QL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
 
   // BATTERY OPERATED TOYS (10)
   {
-    id: 31,
+    id: 'ELEC031',
     name: "Talking Learning Tablet",
     image: "https://m.media-amazon.com/images/I/61VznmhwCuL._AC_UF1000,1000_QL80_.jpg",
     description: `Interactive learning tablet with touch screen.
@@ -594,9 +1134,27 @@ const electronicToys = [
     badge: null,
     gradient: "toy-gradient-5",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'ELEC031-BLUE',
+        variant_value: 'Default Blue',
+        price: 1899,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/61VznmhwCuL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61VznmhwCuL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC031-RED',
+        variant_value: 'Classic Red',
+        price: 1899,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/61VznmhwCuL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61VznmhwCuL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 32,
+    id: 'ELEC032',
     name: "Battery Operated Toy Train",
     image: "https://m.media-amazon.com/images/I/71K8W6d6LOL._AC_UF1000,1000_QL80_.jpg",
     description: `Battery train toy with lights and moving action.
@@ -613,9 +1171,27 @@ const electronicToys = [
     badge: "Classic Fun",
     gradient: "toy-gradient-3",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'ELEC032-BLUE',
+        variant_value: 'Default Blue',
+        price: 2299,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71K8W6d6LOL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71K8W6d6LOL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC032-RED',
+        variant_value: 'Classic Red',
+        price: 2299,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71K8W6d6LOL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71K8W6d6LOL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 33,
+    id: 'ELEC033',
     name: "Light Up Dancing Duck",
     image: "https://m.media-amazon.com/images/I/71L1kP3zX1L._AC_UF1000,1000_QL80_.jpg",
     description: `Cute dancing duck toy with lights and music.
@@ -632,9 +1208,27 @@ const electronicToys = [
     badge: "Baby Favorite",
     gradient: "toy-gradient-1",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'ELEC033-BLUE',
+        variant_value: 'Default Blue',
+        price: 1599,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71L1kP3zX1L._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71L1kP3zX1L._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC033-RED',
+        variant_value: 'Classic Red',
+        price: 1599,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71L1kP3zX1L._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71L1kP3zX1L._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 34,
+    id: 'ELEC034',
     name: "Battery Operated Rabbit",
     image: "https://m.media-amazon.com/images/I/61Qd2XvM+XL._AC_UF1000,1000_QL80_.jpg",
     description: `Adorable rabbit toy that hops with sound effects.
@@ -651,9 +1245,27 @@ const electronicToys = [
     badge: null,
     gradient: "toy-gradient-4",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'ELEC034-BLUE',
+        variant_value: 'Default Blue',
+        price: 1499,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/61Qd2XvM+XL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61Qd2XvM+XL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC034-RED',
+        variant_value: 'Classic Red',
+        price: 1499,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/61Qd2XvM+XL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61Qd2XvM+XL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 35,
+    id: 'ELEC035',
     name: "Battery Operated Fish Toy",
     image: "https://m.media-amazon.com/images/I/71n4hQjM7SL._AC_UF1000,1000_QL80_.jpg",
     description: `Swimming fish toy with moving tail and lights.
@@ -670,9 +1282,27 @@ const electronicToys = [
     badge: "Underwater Fun",
     gradient: "toy-gradient-6",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'ELEC035-BLUE',
+        variant_value: 'Default Blue',
+        price: 1399,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71n4hQjM7SL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71n4hQjM7SL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC035-RED',
+        variant_value: 'Classic Red',
+        price: 1399,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71n4hQjM7SL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71n4hQjM7SL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 36,
+    id: 'ELEC036',
     name: "Crawling Baby Toy",
     image: "https://m.media-amazon.com/images/I/71hW8mD7kJL._AC_UF1000,1000_QL80_.jpg",
     description: `Battery-operated crawling baby toy for active fun.
@@ -689,9 +1319,27 @@ const electronicToys = [
     badge: "Active Baby",
     gradient: "toy-gradient-2",
     ageGroup: ["0-2"],
+    variants: [
+      {
+        sku: 'ELEC036-BLUE',
+        variant_value: 'Default Blue',
+        price: 2199,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71hW8mD7kJL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71hW8mD7kJL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC036-RED',
+        variant_value: 'Classic Red',
+        price: 2199,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71hW8mD7kJL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71hW8mD7kJL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 37,
+    id: 'ELEC037',
     name: "Battery Operated Bus",
     image: "https://m.media-amazon.com/images/I/71Q5N3t0ffL._AC_UF1000,1000_QL80_.jpg",
     description: `Colourful bus toy with lights and moving wheels.
@@ -708,9 +1356,27 @@ const electronicToys = [
     badge: "Travel Toy",
     gradient: "toy-gradient-5",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'ELEC037-BLUE',
+        variant_value: 'Default Blue',
+        price: 1999,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71Q5N3t0ffL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71Q5N3t0ffL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC037-RED',
+        variant_value: 'Classic Red',
+        price: 1999,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71Q5N3t0ffL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71Q5N3t0ffL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 38,
+    id: 'ELEC038',
     name: "Light and Sound Gun Toy",
     image: "https://m.media-amazon.com/images/I/71b9w4o7YML._AC_UF1000,1000_QL80_.jpg",
     description: `Action toy with exciting light and sound effects.
@@ -727,9 +1393,27 @@ const electronicToys = [
     badge: "Action Fun",
     gradient: "toy-gradient-3",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'ELEC038-BLUE',
+        variant_value: 'Default Blue',
+        price: 1799,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71b9w4o7YML._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71b9w4o7YML._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC038-RED',
+        variant_value: 'Classic Red',
+        price: 1799,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71b9w4o7YML._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71b9w4o7YML._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 39,
+    id: 'ELEC039',
     name: "Spinning Light Top Toy",
     image: "https://m.media-amazon.com/images/I/61V8nN4kHfL._AC_UF1000,1000_QL80_.jpg",
     description: `Battery top toy spins with colourful light effects.
@@ -746,9 +1430,27 @@ const electronicToys = [
     badge: "Light Show",
     gradient: "toy-gradient-1",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'ELEC039-BLUE',
+        variant_value: 'Default Blue',
+        price: 999,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/61V8nN4kHfL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61V8nN4kHfL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC039-RED',
+        variant_value: 'Classic Red',
+        price: 999,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/61V8nN4kHfL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61V8nN4kHfL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 40,
+    id: 'ELEC040',
     name: "Battery Operated Dancing Cactus",
     image: "https://m.media-amazon.com/images/I/61i1kD3+wtL._AC_UF1000,1000_QL80_.jpg",
     description: `Dancing cactus toy that sings and repeats sounds.
@@ -765,6 +1467,24 @@ const electronicToys = [
     badge: "Viral Pick",
     gradient: "toy-gradient-4",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'ELEC040-BLUE',
+        variant_value: 'Default Blue',
+        price: 1699,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/61i1kD3+wtL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61i1kD3+wtL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'ELEC040-RED',
+        variant_value: 'Classic Red',
+        price: 1699,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/61i1kD3+wtL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/61i1kD3+wtL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
 ];
 

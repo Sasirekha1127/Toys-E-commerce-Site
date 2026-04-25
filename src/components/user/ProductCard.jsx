@@ -3,6 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { Heart, ShoppingCart, Eye } from 'lucide-react';
 import { useStore } from '../../hooks/useStore';
 import Rating from './Rating';
+import { parsePrice, formatImageUrl } from '../../context/StoreContext';
+
+// Compute discount % from product data
+function getDiscount(product) {
+  const price = parsePrice(product.price);
+  const mrp = parsePrice(product.mrp);
+  if (!mrp || mrp <= price) return null;
+  return Math.round(((mrp - price) / mrp) * 100);
+}
 
 export default function ProductCard({ product, disableNavigation = false }) {
   const navigate = useNavigate();
@@ -11,6 +20,9 @@ export default function ProductCard({ product, disableNavigation = false }) {
   const inCart = isInCart(product.id);
   const [showPopup, setShowPopup] = useState(false);
   const [showCartPopup, setShowCartPopup] = useState(false);
+  const discountPct = getDiscount(product);
+  const price = parsePrice(product.price);
+  const mrp = parsePrice(product.mrp);
 
   const handleWishlist = (e) => {
     e.stopPropagation();
@@ -25,6 +37,13 @@ export default function ProductCard({ product, disableNavigation = false }) {
     setShowCartPopup(true);
     setTimeout(() => setShowCartPopup(false), 1200);
   };
+  const productImage =
+    product.image ||
+    product.imageUrl ||
+    product.image_url ||
+    product.variants?.[0]?.image_url ||
+    "/images/toy-placeholder.png";
+
   return (
     <div
       onClick={() => {
@@ -35,9 +54,12 @@ export default function ProductCard({ product, disableNavigation = false }) {
       className={`card group relative transition-all duration-300 
       hover:shadow-[0_10px_30px_rgba(300,115,0,0.35)] hover:-translate-y-1
       ${disableNavigation ? "cursor-default" : "cursor-pointer"}`}    >
-      {product.badge && (
+      {/* Discount Badge */}
+      {discountPct && (
         <div className="absolute top-3 left-3 z-10">
-          <span className="badge text-xs font-bold shadow-sm">{product.badge}</span>
+          <span className="bg-red-500 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-md shadow leading-tight">
+            {discountPct}% OFF
+          </span>
         </div>
       )}
 
@@ -62,12 +84,12 @@ export default function ProductCard({ product, disableNavigation = false }) {
       {/* Image */}
       <div className="relative overflow-hidden bg-orange-50 rounded-t-3xl aspect-square">
         <img
-          src={product.image}
+          src={formatImageUrl(productImage)}
           alt={product.name}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          onError={e => {
-            e.target.style.display = 'none';
-            e.target.parentElement.classList.add(product.gradient || 'toy-gradient-1');
+          onError={(e) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = "/images/toy-placeholder.png";
           }}
         />
 
@@ -90,7 +112,12 @@ export default function ProductCard({ product, disableNavigation = false }) {
           <Rating rating={product.rating} reviews={product.reviews} size="sm" />
 
           <div className="flex items-center justify-between mt-3 relative">
-            <span className="font-display text-xl text-orange-600">₹{product.price}</span>
+            <div className="flex flex-col gap-0.5">
+              <span className="font-display text-xl text-orange-600">₹{price}</span>
+              {mrp > price && (
+                <span className="text-xs text-gray-400 line-through">₹{mrp}</span>
+              )}
+            </div>
 
             {/* cart */}
             <div className="relative">

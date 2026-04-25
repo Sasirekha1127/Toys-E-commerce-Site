@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useStore } from '../../../hooks/useStore';
 import defaultUsers from '../../../data/user/user';
+import { sendLoginEmail } from '../../../utils/emailService';
 
 function Field({ label, error, children }) {
   return (
@@ -16,7 +18,9 @@ export default function UserLoginForm({
   onSwitchToSellerLogin,
   onSwitchToSellerRegister,
   onSwitchToUserRegister,
+  onSwitchToAdminLogin,
 }) {
+  const { login } = useStore();
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -52,7 +56,7 @@ export default function UserLoginForm({
     return err;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const err = validate();
@@ -63,75 +67,68 @@ export default function UserLoginForm({
 
     setLoading(true);
 
-    fetch('http://localhost:5000/api/auth/user/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: form.email.trim(),
-        password: form.password,
-      }),
-    })
-      .then(res => res.json())
-      .then(data => {
-        setLoading(false);
-        if (data.error) {
-          setErrors({ general: data.error });
-        } else {
-          localStorage.setItem('authToken', data.token);
-          const user = data.user;
-
-          if (user.role === 'admin') {
-            localStorage.removeItem('toyCurrentSeller');
-            localStorage.setItem('toyCurrentUser', JSON.stringify(user));
-            navigate('/admin');
-          } else if (user.role === 'seller') {
-            localStorage.removeItem('toyCurrentUser');
-            
-            const sellerEmail = user.email?.toLowerCase?.() || '';
-            const pendingSellerEmail = localStorage.getItem('toyNewSellerPendingOnboarding')?.toLowerCase?.() || '';
-            
-            // newly registered seller in this browser?
-            const isPendingNewSeller = !!pendingSellerEmail && !!sellerEmail && pendingSellerEmail === sellerEmail;
-            
-            // if NOT a new pending seller, we treat them as already onboarded (existing user)
-            const forceOnboarded = !isPendingNewSeller;
-            
-            const currentSellerData = {
-              ...user,
-              onboardingCompleted: forceOnboarded || user.onboardingCompleted === true,
-            };
-
-            localStorage.setItem('toyCurrentSeller', JSON.stringify(currentSellerData));
-
-            if (!forceOnboarded && user.onboardingCompleted === false) {
-              navigate('/seller/onboarding');
-            } else {
-              // clear pending key for existing/old users
-              localStorage.removeItem('toyNewSellerPendingOnboarding');
-
-              // sync to DB if they were an old user who wasn't marked complete
-              if (forceOnboarded && user.onboardingCompleted === false) {
-                fetch('http://localhost:5000/api/auth/seller/onboarding/complete', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ seller_id: user.id || user.seller_id }),
-                }).catch(err => console.error('Silent onboarding completion failed:', err));
-              }
-
-              navigate('/seller');
-            }
-          } else {
-            localStorage.removeItem('toyCurrentSeller');
-            localStorage.setItem('toyCurrentUser', JSON.stringify(user));
-            navigate('/home');
-          }
-        }
-      })
-      .catch(err => {
-        setLoading(false);
-        setErrors({ general: 'Server error. Please try again.' });
-        console.error('Login error:', err);
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/user/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: form.email.trim(),
+          password: form.password,
+        }),
       });
+      const data = await response.json();
+      setLoading(false);
+
+      if (data.error) {
+        setErrors({ general: data.error });
+      } else {
+        localStorage.setItem('authToken', data.token);
+        const user = data.user;
+
+        if (user.role === 'admin') {
+          login(user, 'admin');
+          navigate('/admin');
+        } else if (user.role === 'seller') {
+          const sellerEmail = user.email?.toLowerCase?.() || '';
+          const pendingSellerEmail = localStorage.getItem('toyNewSellerPendingOnboarding')?.toLowerCase?.() || '';
+          const isPendingNewSeller = !!pendingSellerEmail && !!sellerEmail && pendingSellerEmail === sellerEmail;
+          const forceOnboarded = !isPendingNewSeller;
+
+          const currentSellerData = {
+            ...user,
+            onboardingCompleted: forceOnboarded || user.onboardingCompleted === true,
+          };
+
+          login(currentSellerData, 'seller');
+
+          if (!forceOnboarded && user.onboardingCompleted === false) {
+            navigate('/seller/onboarding');
+          } else {
+            localStorage.removeItem('toyNewSellerPendingOnboarding');
+            if (forceOnboarded && user.onboardingCompleted === false) {
+              fetch('http://localhost:5000/api/auth/seller/onboarding/complete', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ seller_id: user.id || user.seller_id }),
+              }).catch(err => console.error('Silent onboarding completion failed:', err));
+            }
+            navigate('/seller');
+          }
+        } else {
+          login(user, 'user');
+          try {
+            await sendLoginEmail(user);
+          } catch (error) {
+            console.warn("Login email failed:", error);
+          }
+          navigate('/home');
+        }
+      }
+    } catch (err) {
+      setLoading(false);
+      setErrors({ general: 'Server error. Please try again.' });
+      console.error('Login error:', err);
+    }
   };
 
   return (
@@ -188,6 +185,14 @@ export default function UserLoginForm({
           className="block w-full text-sm font-semibold text-gray-500 hover:text-orange-600 transition"
         >
           Seller Register
+        </button>
+
+        <button
+          type="button"
+          onClick={onSwitchToAdminLogin}
+          className="block w-full text-sm font-semibold text-gray-400 hover:text-orange-600 transition"
+        >
+          Admin Login
         </button>
       </div>
     </form>

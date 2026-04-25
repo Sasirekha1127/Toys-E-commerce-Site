@@ -15,9 +15,7 @@ export default function Reviews() {
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('All');
   const [deleteId, setDeleteId] = useState(null);
-  const [toast, setToast] = useState('');
 
-  const showToast = (msg) => { setToast(msg); setTimeout(() => setToast(''), 2500); };
 
   const filtered = reviews.filter((r) => {
     const q = search.toLowerCase();
@@ -39,16 +37,13 @@ export default function Reviews() {
 
   return (
     <div className="p-4 sm:p-6 page-enter">
-      {toast && (
-        <div className="fixed bottom-6 right-6 z-50 bg-gray-900 text-white text-sm px-5 py-3 rounded-2xl shadow-xl animate-slide-up">
-          {toast}
-        </div>
-      )}
+
 
       <ConfirmModal
         open={!!deleteId}
         onClose={() => setDeleteId(null)}
-        onConfirm={() => { deleteReview(deleteId); setDeleteId(null); showToast('Review deleted'); }}
+        onConfirm={() => { deleteReview(deleteId); setDeleteId(null); }}
+
         title="Delete Review?"
         description="This review will be permanently removed from the system and user side."
       />
@@ -101,7 +96,7 @@ export default function Reviews() {
                 src={r.productImg}
                 alt={r.product}
                 className="w-14 h-14 rounded-2xl object-cover bg-orange-50 flex-none hidden sm:block"
-                onError={(e) => { e.target.style.display = 'none'; }}
+                onError={(e) => { e.target.src = 'https://placehold.co/100x100/f3f4f6/a1a1aa?text=Toy'; }}
               />
 
               <div className="flex-1 min-w-0">
@@ -129,7 +124,8 @@ export default function Reviews() {
             <div className="flex items-center gap-2 mt-4 pt-3 border-t border-gray-50">
               {r.status !== 'Approved' && (
                 <button
-                  onClick={() => { approveReview(r.id); showToast('Review approved — now visible on user side ✓'); }}
+                  onClick={() => { approveReview(r.id); }}
+
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-700 text-sm font-medium hover:bg-emerald-100 transition-all border border-emerald-200"
                 >
                   <CheckCircle size={14} /> Approve
@@ -137,7 +133,8 @@ export default function Reviews() {
               )}
               {r.status !== 'Rejected' && (
                 <button
-                  onClick={() => { rejectReview(r.id); showToast('Review rejected — hidden from user side'); }}
+                  onClick={() => { rejectReview(r.id); }}
+
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-orange-50 text-orange-700 text-sm font-medium hover:bg-orange-100 transition-all border border-orange-200"
                 >
                   <AlertCircle size={14} /> Reject

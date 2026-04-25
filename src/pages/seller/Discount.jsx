@@ -9,48 +9,19 @@ import {
   X,
   Save,
 } from 'lucide-react';
+import { sellerProducts as initialProducts } from '../../data/seller/index.js';
 
-const initialOffers = [
-  {
-    id: 1,
-    title: 'Summer Toys Sale',
-    discount: '40% OFF',
-    type: 'Category Offer',
-    status: 'Active',
-    validFrom: '2026-04-10',
-    validTo: '2026-04-20',
-    coupon: 'SUMMER40',
-  },
-  {
-    id: 2,
-    title: 'Buy 2 Get 1 Free',
-    discount: 'B2G1',
-    type: 'Combo Offer',
-    status: 'Scheduled',
-    validFrom: '2026-04-15',
-    validTo: '2026-04-30',
-    coupon: 'B2G1FUN',
-  },
-  {
-    id: 3,
-    title: 'Flat ₹200 Off Above ₹1999',
-    discount: '₹200 OFF',
-    type: 'Cart Offer',
-    status: 'Active',
-    validFrom: '2026-04-09',
-    validTo: '2026-04-18',
-    coupon: 'SAVE200',
-  },
-];
+const initialOffers = [];
 
 const emptyForm = {
   title: '',
   discount: '',
-  type: 'Category Offer',
+  type: 'Product Offer',
   status: 'Active',
   validFrom: '',
   validTo: '',
   coupon: '',
+  product_id: '',
 };
 
 function formatDateRange(from, to) {
@@ -93,6 +64,9 @@ export default function SellerDiscounts() {
   const [deleteId, setDeleteId] = useState(null);
   const [form, setForm] = useState(emptyForm);
   const [errors, setErrors] = useState({});
+  const currentSeller = useMemo(() => JSON.parse(localStorage.getItem('toyCurrentSeller') || '{}'), []);
+  const isDemo = currentSeller?.email === 'kidstoys@gmail.com';
+  const [products, setProducts] = useState(isDemo ? initialProducts : []);
 
   const activeCount = useMemo(
     () => offers.filter((offer) => offer.status === 'Active').length,
@@ -120,28 +94,54 @@ export default function SellerDiscounts() {
 
   useEffect(() => {
     fetchDiscounts();
+    fetchProducts();
   }, []);
+
+  const fetchProducts = async () => {
+    if (isDemo) {
+      setProducts(initialProducts);
+      return;
+    }
+    try {
+      const sid = currentSeller.id;
+      if (!sid) return;
+      const res = await fetch(`http://localhost:5000/api/seller-products?seller_id=${sid}`);
+      const data = await res.json();
+      if (data.products) {
+        setProducts(data.products);
+      }
+    } catch (e) {
+      console.error('Failed to fetch products', e);
+    }
+  };
 
   const fetchDiscounts = async () => {
     try {
-      const sid = getSellerId();
-      const res = await fetch(`http://localhost:5000/api/discounts?seller_id=${sid}`);
+      const sid = currentSeller.id;
+      if (!sid && !isDemo) return;
+      const url = isDemo 
+        ? `http://localhost:5000/api/coupons?seller_id=S001` // Demo fallback if needed
+        : `http://localhost:5000/api/coupons?seller_id=${sid}`;
+      const res = await fetch(url);
       const data = await res.json();
-      if (data.discounts) {
-        const mapped = data.discounts.map(d => ({
-          id: d.id,
-          title: d.title || `Offer ${d.code}`, // Handle potentially missing title from backend
-          discount: d.discount_type === 'percentage' ? `${d.discount_value}% OFF` : `₹${d.discount_value} OFF`,
-          type: d.offer_type || 'Category Offer',
-          status: d.is_active ? 'Active' : 'Scheduled',
-          validFrom: d.valid_from ? new Date(d.valid_from).toISOString().split('T')[0] : '',
+      if (data.coupons) {
+        const mapped = data.coupons.map(d => ({
+          id: d.coupon_id,
+          title: d.title || `Coupon ${d.code}`,
+          discount: d.discount_type === 'percentage' ? `${d.discount_percent}% OFF` : `₹${d.discount_value} OFF`,
+          type: 'Cart Offer',
+          status: d.status,
+          validFrom: d.created_at ? new Date(d.created_at).toISOString().split('T')[0] : '',
           validTo: d.valid_until ? new Date(d.valid_until).toISOString().split('T')[0] : '',
-          coupon: d.code
+          coupon: d.code,
+          usage_limit: d.usage_limit,
+          product_id: d.product_id,
+          product_name: d.product_name
         }));
         setOffers(mapped);
       }
     } catch (e) {
-      console.error('Failed to fetch discounts from db', e);
+      console.error('Failed to fetch coupons from db', e);
     }
   };
 
@@ -162,6 +162,7 @@ export default function SellerDiscounts() {
       validFrom: offer.validFrom,
       validTo: offer.validTo,
       coupon: offer.coupon,
+      product_id: offer.product_id || '',
     });
     setErrors({});
     setShowModal(true);
@@ -182,10 +183,17 @@ export default function SellerDiscounts() {
     setDeleteId(null);
   };
 
-  const confirmDelete = () => {
+  const confirmDelete = async () => {
     if (deleteId === null) return;
-    setOffers((prev) => prev.filter((offer) => offer.id !== deleteId));
-    setDeleteId(null);
+    try {
+      const res = await fetch(`http://localhost:5000/api/coupons/${deleteId}`, { method: 'DELETE' });
+      if (res.ok) {
+        setOffers((prev) => prev.filter((offer) => offer.id !== deleteId));
+        setDeleteId(null);
+      }
+    } catch (e) {
+      console.error('Failed to delete coupon', e);
+    }
   };
 
   const handleChange = (key, value) => {
@@ -200,6 +208,7 @@ export default function SellerDiscounts() {
     if (!form.discount.trim()) newErrors.discount = 'Discount value is required';
     if (!form.validFrom) newErrors.validFrom = 'Start date is required';
     if (!form.validTo) newErrors.validTo = 'End date is required';
+    if (!form.product_id) newErrors.product_id = 'Please select a target product';
 
     if (form.validFrom && form.validTo && form.validFrom > form.validTo) {
       newErrors.validTo = 'Valid To must be after Valid From';
@@ -212,28 +221,28 @@ export default function SellerDiscounts() {
   const handleSave = async () => {
     if (!validate()) return;
 
-    let discount_type = form.discount.includes('%') ? 'percentage' : 'fixed_amount';
-    let discount_value = Number(form.discount.replace(/[^0-9.]/g, '')) || 0;
+    let discount_type = form.discount.includes('%') ? 'percentage' : 'fixed';
+    let val = Number(form.discount.replace(/[^0-9.]/g, '')) || 0;
 
     const payload = {
-      seller_id: getSellerId(),
+      seller_id: currentSeller.id || 'S001',
       code: form.coupon || `COUPON${Date.now().toString().slice(-4)}`,
       discount_type,
-      discount_value,
-      valid_from: form.validFrom || null,
+      discount_percent: discount_type === 'percentage' ? val : 0,
+      discount_value: discount_type === 'fixed' ? val : 0,
       valid_until: form.validTo || null,
-      usage_limit: 100, // default limit
-      // the extra fields which we altered the db to include
+      usage_limit: -1, // default unlimited as per decision
       title: form.title,
-      offer_type: form.type,
-      status: form.status
+      description: form.type,
+      status: form.status,
+      product_id: form.product_id
     };
 
     try {
       const method = editingId ? 'PUT' : 'POST';
       const url = editingId 
-        ? `http://localhost:5000/api/discounts/${editingId}` 
-        : 'http://localhost:5000/api/discounts';
+        ? `http://localhost:5000/api/coupons/${editingId}` 
+        : 'http://localhost:5000/api/coupons';
         
       const res = await fetch(url, {
         method,
@@ -250,7 +259,7 @@ export default function SellerDiscounts() {
       }
     } catch (e) {
       console.error(e);
-      alert('Failed to connect to database');
+      alert('Failed to connect to backend');
     }
   };
 
@@ -318,6 +327,11 @@ export default function SellerDiscounts() {
                     <p className="text-xs text-gray-400 mt-2">
                       {formatDateRange(offer.validFrom, offer.validTo)}
                     </p>
+                    {offer.product_name && (
+                      <p className="text-xs text-blue-600 font-medium mt-1">
+                        Applies to: {offer.product_name}
+                      </p>
+                    )}
                     {offer.coupon && (
                       <p className="text-xs text-orange-600 font-semibold mt-2">
                         Coupon: {offer.coupon}
@@ -400,6 +414,28 @@ export default function SellerDiscounts() {
                     placeholder="Enter offer title"
                     className={inputClass}
                   />
+                </Field>
+
+                <Field label="Target Product" error={errors.product_id} full>
+                  <select
+                    value={form.product_id}
+                    onChange={(e) => handleChange('product_id', e.target.value)}
+                    className={inputClass}
+                    disabled={products.length === 0}
+                  >
+                    {products.length === 0 ? (
+                      <option value="">No products available</option>
+                    ) : (
+                      <>
+                        <option value="">Select a product...</option>
+                        {products.map((p) => (
+                          <option key={p.id || p.product_id} value={p.id || p.product_id}>
+                            {p.name} (SKU: {p.sku || 'N/A'})
+                          </option>
+                        ))}
+                      </>
+                    )}
+                  </select>
                 </Field>
 
                 <Field label="Discount Value" error={errors.discount}>

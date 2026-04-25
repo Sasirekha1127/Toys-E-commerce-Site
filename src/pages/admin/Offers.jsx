@@ -8,6 +8,77 @@ const OFFER_STATUSES = ['Active', 'Scheduled', 'Expired'];
 
 const EMPTY_OFFER = { title: '', description: '', discount: '', category: 'All', startDate: '', endDate: '', status: 'Scheduled' };
 const EMPTY_BANNER = { title: '', description: '', cta: 'Shop Now', link: '', image: '', active: true };
+const EMPTY_COUPON = { title: '', description: '', code: '', discount_type: 'percentage', discount_percent: '', discount_value: '', min_order_val: '', max_discount: '', usage_limit: -1, valid_until: '', status: 'Active' };
+
+function CouponForm({ data, onChange, onSave, onClose, title }) {
+  return (
+    <div className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center px-4 backdrop-blur-sm">
+      <div className="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 flex-none">
+          <h2 className="text-xl font-bold text-gray-800">{title}</h2>
+          <button onClick={onClose} className="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center transition text-gray-400"><X size={18} /></button>
+        </div>
+        <div className="p-6 overflow-y-auto space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="sm:col-span-2">
+              <label className="label">Coupon Title *</label>
+              <input type="text" name="title" value={data.title} onChange={onChange} className="input" placeholder="e.g. Welcome Discount" />
+            </div>
+            <div className="sm:col-span-2">
+              <label className="label">Description</label>
+              <textarea name="description" value={data.description} onChange={onChange} rows={2} className="input resize-none" placeholder="Details about this coupon" />
+            </div>
+            <div>
+              <label className="label">Coupon Code *</label>
+              <input type="text" name="code" value={data.code} onChange={(e) => onChange({...e, target: {...e.target, name: 'code', value: e.target.value.toUpperCase()}})} className="input font-mono font-bold" placeholder="WELCOME10" />
+            </div>
+            <div>
+              <label className="label">Status</label>
+              <select name="status" value={data.status} onChange={onChange} className="input text-sm">
+                <option value="Active">Active</option>
+                <option value="Scheduled">Scheduled</option>
+                <option value="Expired">Expired</option>
+              </select>
+            </div>
+            <div>
+              <label className="label">Discount Type</label>
+              <select name="discount_type" value={data.discount_type} onChange={onChange} className="input text-sm">
+                <option value="percentage">Percentage (%)</option>
+                <option value="fixed">Fixed Amount (₹)</option>
+              </select>
+            </div>
+            <div>
+              <label className="label">{data.discount_type === 'percentage' ? 'Percent (%)' : 'Amount (₹)'}</label>
+              <input type="number" name={data.discount_type === 'percentage' ? 'discount_percent' : 'discount_value'} value={data.discount_type === 'percentage' ? data.discount_percent : data.discount_value} onChange={onChange} className="input" placeholder="0" />
+            </div>
+            <div>
+              <label className="label">Min Order Value (₹)</label>
+              <input type="number" name="min_order_val" value={data.min_order_val} onChange={onChange} className="input" placeholder="0" />
+            </div>
+            {data.discount_type === 'percentage' && (
+              <div>
+                <label className="label">Max Discount (₹)</label>
+                <input type="number" name="max_discount" value={data.max_discount} onChange={onChange} className="input" placeholder="No limit" />
+              </div>
+            )}
+            <div>
+              <label className="label">Usage Limit</label>
+              <input type="number" name="usage_limit" value={data.usage_limit} onChange={onChange} className="input" placeholder="-1 for unlimited" />
+            </div>
+            <div>
+              <label className="label">Expiry Date</label>
+              <input type="date" name="valid_until" value={data.valid_until ? (typeof data.valid_until === 'string' ? data.valid_until.split('T')[0] : '') : ''} onChange={onChange} className="input" />
+            </div>
+          </div>
+        </div>
+        <div className="px-6 py-4 border-t border-gray-100 flex justify-end gap-3 flex-none bg-gray-50/50">
+          <button onClick={onClose} className="btn-outline">Cancel</button>
+          <button onClick={onSave} className="btn-primary">Save Coupon</button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function OfferForm({ data, onChange, onSave, onClose, title }) {
   return (
@@ -109,9 +180,9 @@ function BannerForm({ data, onChange, onToggle, onSave, onClose, title }) {
 }
 
 export default function Offers() {
-  const { offers, addOffer, updateOffer, deleteOffer, toggleOfferStatus, banners, addBanner, updateBanner, deleteBanner, toggleBanner } = useAdmin();
+  const { offers, addOffer, updateOffer, deleteOffer, toggleOfferStatus, banners, addBanner, updateBanner, deleteBanner, toggleBanner, coupons, addCoupon, updateCoupon, deleteCoupon } = useAdmin();
 
-  const [tab, setTab] = useState('offers');
+  const [tab, setTab] = useState('coupons');
   const [showOfferForm, setShowOfferForm] = useState(false);
   const [editOfferId, setEditOfferId] = useState(null);
   const [deleteOfferId, setDeleteOfferId] = useState(null);
@@ -121,6 +192,11 @@ export default function Offers() {
   const [editBannerId, setEditBannerId] = useState(null);
   const [deleteBannerId, setDeleteBannerId] = useState(null);
   const [bannerForm, setBannerForm] = useState(EMPTY_BANNER);
+
+  const [showCouponForm, setShowCouponForm] = useState(false);
+  const [editCouponId, setEditCouponId] = useState(null);
+  const [deleteCouponId, setDeleteCouponId] = useState(null);
+  const [couponForm, setCouponForm] = useState(EMPTY_COUPON);
 
   const [toast, setToast] = useState('');
   const showToast = (msg) => { setToast(msg); setTimeout(() => setToast(''), 2500); };
@@ -153,6 +229,17 @@ export default function Offers() {
     setShowBannerForm(false); setEditBannerId(null);
   };
 
+  /* Coupon handlers */
+  const handleCouponChange = (e) => setCouponForm(p => ({ ...p, [e.target.name]: e.target.value }));
+  const openAddCoupon = () => { setCouponForm(EMPTY_COUPON); setEditCouponId(null); setShowCouponForm(true); };
+  const openEditCoupon = (c) => { setCouponForm(c); setEditCouponId(c.coupon_id); setShowCouponForm(true); };
+  const handleCouponSave = async () => {
+    if (!couponForm.title.trim() || !couponForm.code.trim()) return;
+    if (editCouponId) { await updateCoupon(couponForm); showToast('Coupon updated ✓'); }
+    else { await addCoupon(couponForm); showToast('Coupon created ✓'); }
+    setShowCouponForm(false); setEditCouponId(null);
+  };
+
   return (
     <div className="p-4 sm:p-6 page-enter">
       {toast && <div className="fixed bottom-6 right-6 z-50 bg-gray-900 text-white text-sm px-5 py-3 rounded-2xl shadow-xl animate-slide-up">{toast}</div>}
@@ -165,15 +252,21 @@ export default function Offers() {
         onConfirm={() => { deleteBanner(deleteBannerId); setDeleteBannerId(null); showToast('Banner deleted — removed from homepage'); }}
         title="Delete Banner?" description="This banner will be removed from the homepage carousel." />
 
+      <ConfirmModal open={!!deleteCouponId} onClose={() => setDeleteCouponId(null)}
+        onConfirm={async () => { await deleteCoupon(deleteCouponId); setDeleteCouponId(null); showToast('Coupon deleted'); }}
+        title="Delete Coupon?" description="This coupon code will no longer be usable by customers." />
+
       {showOfferForm && <OfferForm data={offerForm} onChange={handleOfferChange} onSave={handleOfferSave} onClose={() => setShowOfferForm(false)} title={editOfferId ? 'Edit Offer' : 'Create Offer'} />}
       {showBannerForm && <BannerForm data={bannerForm} onChange={handleBannerChange} onToggle={() => setBannerForm(p => ({ ...p, active: !p.active }))} onSave={handleBannerSave} onClose={() => setShowBannerForm(false)} title={editBannerId ? 'Edit Banner' : 'Add Banner'} />}
+      {showCouponForm && <CouponForm data={couponForm} onChange={handleCouponChange} onSave={handleCouponSave} onClose={() => setShowCouponForm(false)} title={editCouponId ? 'Edit Coupon' : 'Create Coupon'} />}
 
-      <SectionHeader title="Offers & Banners" subtitle="Manage homepage promotions and hero banners" />
+      <SectionHeader title="Promotions & Coupons" subtitle="Manage homepage banners, offers and checkout coupon codes" />
 
       {/* Tabs */}
       <div className="flex gap-2 mb-6 border-b border-gray-100 pb-1">
         {[
-          { key: 'offers', label: `🏷️ Offers (${offers.length})` },
+          { key: 'coupons', label: `🎫 Coupons (${coupons.length})` },
+          { key: 'offers', label: `🏷️ Home Offers (${offers.length})` },
           { key: 'banners', label: `🖼️ Hero Banners (${banners.length})` },
         ].map((t) => (
           <button key={t.key} onClick={() => setTab(t.key)}
@@ -258,6 +351,72 @@ export default function Offers() {
                 </div>
               </div>
             ))}
+          </div>
+        </>
+      )}
+
+      {/* Coupons Tab */}
+      {tab === 'coupons' && (
+        <>
+          <div className="flex justify-end mb-4">
+            <button className="btn-primary" onClick={openAddCoupon}><Plus size={16} /> Create Coupon</button>
+          </div>
+          <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left">
+                <thead>
+                  <tr className="bg-gray-50 border-b border-gray-100">
+                    <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Coupon Code</th>
+                    <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Discount</th>
+                    <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Visibility</th>
+                    <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Usage</th>
+                    <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Status</th>
+                    <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-50">
+                  {coupons.length > 0 ? coupons.map((c) => (
+                    <tr key={c.coupon_id} className="hover:bg-gray-50/50 transition">
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center flex-none font-bold">🎫</div>
+                          <div>
+                            <p className="font-bold text-gray-900 font-mono tracking-wider">{c.code}</p>
+                            <p className="text-xs text-gray-500 mt-0.5">{c.title || 'Untitled Coupon'}</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <span className="px-2.5 py-1 rounded-lg bg-green-50 text-green-600 text-xs font-bold">
+                          {c.discount_type === 'percentage' ? `${c.discount_percent}% OFF` : `₹${c.discount_value} OFF`}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4">
+                        <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider ${c.seller_id ? 'bg-blue-50 text-blue-600' : 'bg-purple-50 text-purple-600'}`}>
+                          {c.seller_id ? `Seller (${c.seller_id})` : 'Admin'}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-sm text-gray-600">
+                        {c.used_count} / {c.usage_limit === -1 ? '∞' : c.usage_limit}
+                      </td>
+                      <td className="px-6 py-4">
+                        <StatusBadge status={c.status} />
+                      </td>
+                      <td className="px-6 py-4 text-right">
+                        <div className="flex justify-end gap-2">
+                          <button onClick={() => openEditCoupon(c)} className="p-2 rounded-xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition text-blue-500"><Edit2 size={13} /></button>
+                          <button onClick={() => setDeleteCouponId(c.coupon_id)} className="p-2 rounded-xl border border-gray-200 hover:border-red-300 hover:bg-red-50 transition text-red-500"><Trash2 size={13} /></button>
+                        </div>
+                      </td>
+                    </tr>
+                  )) : (
+                    <tr>
+                      <td colSpan="6" className="px-6 py-12 text-center text-gray-500">No coupons found. Create your first one to drive more sales!</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
         </>
       )}

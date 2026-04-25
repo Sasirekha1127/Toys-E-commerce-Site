@@ -66,8 +66,6 @@ export default function Categories() {
     setEditCat(null);
   };
 
-  // Live product counts per category from admin state
-  const getCatProductCount = (catName) => products.filter(p => p.category === catName).length;
 
   return (
     <div className="p-4 sm:p-6 page-enter">
@@ -160,7 +158,7 @@ export default function Categories() {
 
             <div className="flex items-center gap-2 p-2.5 bg-orange-50 rounded-xl mb-4">
               <Package size={14} className="text-orange-500" />
-              <span className="text-sm font-semibold text-orange-700">{getCatProductCount(c.name)} products</span>
+              <span className="text-sm font-semibold text-orange-700">{c.products || 0} products</span>
             </div>
 
             <div className="flex items-center gap-2">

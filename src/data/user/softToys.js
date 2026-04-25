@@ -1,322 +1,606 @@
 const softToys = [
   // TEDDY BEARS
   {
-    id: 1,
+    id: 'SOFT001',
     name: "Teddy Bear",
     image: "https://cdn.bloomsflora.com/uploads/product/bloomsflora/DEC2024/24InchTeddyBear-1734068311632.webp",
     description: `A lovable classic brown teddy bear with an adorable smile.
     Ultra-soft silky fur gives a warm and cozy feel.
-    Perfect companion for bedtime stories and naps.
-    Lightweight design makes it easy for kids to carry.
-    Safe and child-friendly materials used throughout.`,
+    Perfect companion for bedtime stories and naps.`,
     price: "2499",
+    mrp: "3999",
+    deal: "Best Seller",
     rating: 4.8,
     reviews: 128,
     category: "Soft Toys",
     subcategory: "Teddy Bears",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'SOFT001-BLUE',
+        variant_value: 'Default Blue',
+        price: 2499,
+        stock_quantity: 25,
+        image_url: 'https://cdn.bloomsflora.com/uploads/product/bloomsflora/DEC2024/24InchTeddyBear-1734068311632.webp',
+        gallery_images: ['/uploads/products/blue_teddy.png']
+      },
+      {
+        sku: 'SOFT001-RED',
+        variant_value: 'Classic Red',
+        price: 2499,
+        stock_quantity: 15,
+        image_url: '/uploads/products/red_teddy.png',
+        gallery_images: ['/uploads/products/red_teddy.png']
+      }
+    ]
   },
 
   // PLUSH ANIMALS
   {
-    id: 2,
+    id: 'SOFT002',
     name: "Rabbit Plush",
-    image: "https://m.media-amazon.com/images/I/61VP9u-+3LL._AC_UF1000,1000_QL80_.jpg",
+    image: "/images/rabbit_plush.png",
     description: `Cute rabbit plush with long floppy ears.
     Super soft texture perfect for hugging and cuddling.
-    Made with hypoallergenic and safe materials.
-    Gentle design suitable for toddlers and kids.
-    Brings comfort during sleep and playtime.
-    A lovely companion for everyday joy.`,
+    Made with hypoallergenic and safe materials.`,
     price: "1999",
+    mrp: "3499",
+    deal: "Limited time deal",
     rating: 4.6,
     reviews: 94,
     category: "Soft Toys",
     subcategory: "Plush Animals",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'SOFT002-BLUE',
+        variant_value: 'Default Blue',
+        price: 2499,
+        stock_quantity: 25,
+        image_url: '/images/rabbit_plush.png',
+        gallery_images: ['/images/rabbit_plush.png']
+      },
+      {
+        sku: 'SOFT002-RED',
+        variant_value: 'Classic Red',
+        price: 2499,
+        stock_quantity: 15,
+        image_url: '/images/rabbit_plush.png',
+        gallery_images: ['/images/rabbit_plush.png']
+      }
+    ]
   },
   {
-    id: 3,
+    id: 'SOFT003',
     name: "Dinosaur Toy",
     image: "https://static.wixstatic.com/media/333417_6485f8c0bb124b9ca50456010639cbba~mv2.jpg",
     description: `Colorful dinosaur plush for fun playtime.
     Soft and safe fabric perfect for kids.
     Encourages creativity and imagination.
-    Lightweight and easy to carry anywhere.
-    Perfect for both play and bedtime comfort.
-    A must-have toy for dinosaur lovers.
-    Brings excitement and joy to everyday play.`,
+    Lightweight and easy to carry anywhere.`,
     price: "2799",
+    mrp: "4999",
+    deal: "Hot Deal",
     rating: 4.9,
     reviews: 211,
     category: "Soft Toys",
     subcategory: "Plush Animals",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'SOFT003-BLUE',
+        variant_value: 'Default Blue',
+        price: 2799,
+        stock_quantity: 25,
+        image_url: 'https://static.wixstatic.com/media/333417_6485f8c0bb124b9ca50456010639cbba~mv2.jpg',
+        gallery_images: ['https://static.wixstatic.com/media/333417_6485f8c0bb124b9ca50456010639cbba~mv2.jpg']
+      },
+      {
+        sku: 'SOFT003-RED',
+        variant_value: 'Classic Red',
+        price: 2799,
+        stock_quantity: 15,
+        image_url: 'https://static.wixstatic.com/media/333417_6485f8c0bb124b9ca50456010639cbba~mv2.jpg',
+        gallery_images: ['https://static.wixstatic.com/media/333417_6485f8c0bb124b9ca50456010639cbba~mv2.jpg']
+      }
+    ]
   },
   {
-    id: 4,
+    id: 'SOFT004',
     name: "Elephant Soft Toy",
     image: "https://m.media-amazon.com/images/I/512qbv+3AfL._AC_UF1000,1000_QL80_.jpg",
     description: `Adorable elephant plush with soft finish.
     Smooth fabric gives a premium feel.
-    Perfect for hugs, naps, and comfort.
-    Cute design loved by kids instantly.
-    Safe stitching and durable quality.
-    Great addition to any toy collection.
-    Provides comfort and warmth during bedtime.
-    An ideal gift for kids who love cute animals.`,
+    Perfect for hugs, naps, and comfort.`,
     price: "2199",
+    mrp: "3299",
     rating: 4.5,
     reviews: 76,
     category: "Soft Toys",
     subcategory: "Plush Animals",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'SOFT004-BLUE',
+        variant_value: 'Default Blue',
+        price: 2199,
+        stock_quantity: 20,
+        image_url: '/uploads/products/blue_elephant.png',
+        gallery_images: ['/uploads/products/blue_elephant.png']
+      },
+      {
+        sku: 'SOFT004-RED',
+        variant_value: 'Classic Red',
+        price: 2199,
+        stock_quantity: 12,
+        image_url: '/uploads/products/red_elephant.png',
+        gallery_images: ['/uploads/products/red_elephant.png']
+      }
+    ]
   },
   {
-    id: 5,
+    id: 'SOFT005',
     name: "Lion Plush",
     image: "https://www.ikea.com/in/en/images/products/djungelskog-soft-toy-lion__0710172_pe727375_s5.jpg",
     description: `Friendly lion plush with soft body.
     Designed for cuddles and playtime fun.
     Comfortable and gentle for kids.
-    Perfect for storytelling and imagination.
-    Strong stitching ensures long durability.
-    A playful companion for everyday adventures.
-    Encourages creative play and emotional bonding.`,
+    Perfect for storytelling and imagination.`,
     price: "3299",
+    mrp: "4999",
+    deal: "Best Seller",
     rating: 4.0,
     reviews: 304,
     category: "Soft Toys",
     subcategory: "Plush Animals",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'SOFT005-BLUE',
+        variant_value: 'Default Blue',
+        price: 2199,
+        stock_quantity: 25,
+        image_url: 'https://www.ikea.com/in/en/images/products/djungelskog-soft-toy-lion__0710172_pe727375_s5.jpg',
+        gallery_images: ['https://www.ikea.com/in/en/images/products/djungelskog-soft-toy-lion__0710172_pe727375_s5.jpg']
+      },
+      {
+        sku: 'SOFT005-RED',
+        variant_value: 'Classic Red',
+        price: 2199,
+        stock_quantity: 15,
+        image_url: 'https://www.ikea.com/in/en/images/products/djungelskog-soft-toy-lion__0710172_pe727375_s5.jpg',
+        gallery_images: ['https://www.ikea.com/in/en/images/products/djungelskog-soft-toy-lion__0710172_pe727375_s5.jpg']
+      }
+    ]
   },
   {
-    id: 6,
+    id: 'SOFT006',
     code: "st-006",
     name: "Koala Soft Toy",
     image: "https://images-cdn.ubuy.co.in/64132e2abf062028ce1cf2f1-koala-plush-toy-stuffed-animal-doll.jpg",
     description: `Cute koala plush with fluffy texture.
     Ultra-soft material for maximum comfort.
     Perfect for hugging and relaxing moments.
-    Lightweight and easy for kids to carry.
-    Safe and kid-friendly design.
-    A lovable friend for all-day companionship.
-    Great as a bedtime buddy for peaceful sleep.`,
+    Lightweight and easy for kids to carry.`,
     price: "1899",
+    mrp: "2999",
     rating: 4.4,
     reviews: 58,
     category: "Soft Toys",
     subcategory: "Plush Animals",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'SOFT006-BLUE',
+        variant_value: 'Default Blue',
+        price: 1899,
+        stock_quantity: 25,
+        image_url: 'https://images-cdn.ubuy.co.in/64132e2abf062028ce1cf2f1-koala-plush-toy-stuffed-animal-doll.jpg',
+        gallery_images: ['https://images-cdn.ubuy.co.in/64132e2abf062028ce1cf2f1-koala-plush-toy-stuffed-animal-doll.jpg']
+      },
+      {
+        sku: 'SOFT006-RED',
+        variant_value: 'Classic Red',
+        price: 1899,
+        stock_quantity: 15,
+        image_url: 'https://images-cdn.ubuy.co.in/64132e2abf062028ce1cf2f1-koala-plush-toy-stuffed-animal-doll.jpg',
+        gallery_images: ['https://images-cdn.ubuy.co.in/64132e2abf062028ce1cf2f1-koala-plush-toy-stuffed-animal-doll.jpg']
+      }
+    ]
   },
   {
-    id: 7,
+    id: 'SOFT007',
     name: "Panda Plush",
     image: "https://m.media-amazon.com/images/I/81arfNR+-YL.jpg",
     description: `Soft panda plush with a cute black and white look.
-    Gentle texture makes it perfect for cuddling.
-    Kid-safe materials support everyday play.
-    Lightweight build is easy to carry around.
-    Great for naps, room décor, and gifting.
-    A lovable panda friend for kids.`,
+    Gentle texture makes it perfect for cuddling.`,
     price: "2099",
+    mrp: "3499",
+    deal: "Limited time deal",
     rating: 4.7,
     reviews: 112,
     category: "Soft Toys",
     subcategory: "Plush Animals",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'SOFT007-BLUE',
+        variant_value: 'Default Blue',
+        price: 2099,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/81arfNR+-YL.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/81arfNR+-YL.jpg']
+      },
+      {
+        sku: 'SOFT007-RED',
+        variant_value: 'Classic Red',
+        price: 2099,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/81arfNR+-YL.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/81arfNR+-YL.jpg']
+      }
+    ]
   },
   {
-    id: 8,
+    id: 'SOFT008',
     name: "Giraffe Plush",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl5DZQvQW3gRkuSBXxTX8sH3s-FrJ99pkwrQ&s",
     description: `Adorable giraffe plush with a long-neck design.
     Soft body feels cosy and comfortable.
-    Great for storytelling and imaginative play.
-    Durable stitching improves lasting quality.
-    Safe for kids and easy to maintain.
-    Makes playtime more colourful and fun.`,
+    Great for storytelling and imaginative play.`,
     price: "2299",
+    mrp: "3599",
     rating: 4.6,
     reviews: 91,
     category: "Soft Toys",
     subcategory: "Plush Animals",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'SOFT008-BLUE',
+        variant_value: 'Default Blue',
+        price: 2299,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl5DZQvQW3gRkuSBXxTX8sH3s-FrJ99pkwrQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl5DZQvQW3gRkuSBXxTX8sH3s-FrJ99pkwrQ&s']
+      },
+      {
+        sku: 'SOFT008-RED',
+        variant_value: 'Classic Red',
+        price: 2299,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl5DZQvQW3gRkuSBXxTX8sH3s-FrJ99pkwrQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl5DZQvQW3gRkuSBXxTX8sH3s-FrJ99pkwrQ&s']
+      }
+    ]
   },
   {
-    id: 9,
+    id: 'SOFT009',
     name: "Monkey Plush",
     image: "https://www.kheliyatoys.com/wp-content/uploads/2025/08/Just-Bear-Cute-Monkey-with-Little-Banana6-Photoroom.jpg",
     description: `Playful monkey plush with a cheerful face.
     Super soft material is gentle for kids.
     Lightweight design supports easy carrying.
-    Ideal for cuddles, play, and display.
-    Durable seams help with daily use.
-    A fun jungle friend for every child.`,
+    Ideal for cuddles, play, and display.`,
     price: "1999",
+    mrp: "2999",
+    deal: "Hot Deal",
     rating: 4.5,
     reviews: 84,
     category: "Soft Toys",
     subcategory: "Plush Animals",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'SOFT009-BLUE',
+        variant_value: 'Default Blue',
+        price: 1999,
+        stock_quantity: 25,
+        image_url: 'https://www.kheliyatoys.com/wp-content/uploads/2025/08/Just-Bear-Cute-Monkey-with-Little-Banana6-Photoroom.jpg',
+        gallery_images: ['https://www.kheliyatoys.com/wp-content/uploads/2025/08/Just-Bear-Cute-Monkey-with-Little-Banana6-Photoroom.jpg']
+      },
+      {
+        sku: 'SOFT009-RED',
+        variant_value: 'Classic Red',
+        price: 1999,
+        stock_quantity: 15,
+        image_url: 'https://www.kheliyatoys.com/wp-content/uploads/2025/08/Just-Bear-Cute-Monkey-with-Little-Banana6-Photoroom.jpg',
+        gallery_images: ['https://www.kheliyatoys.com/wp-content/uploads/2025/08/Just-Bear-Cute-Monkey-with-Little-Banana6-Photoroom.jpg']
+      }
+    ]
   },
   {
-    id: 10,
+    id: 'SOFT010',
     name: "Penguin Plush",
     image: "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/NI_CATALOG/IMAGES/CIW/2026/3/19/b54a07b2-63a5-4384-a7eb-b0de9ea7b1e7_RA33DQGZOM.jpg",
     description: `Cute penguin plush with a soft rounded body.
     Smooth plush fabric feels cosy and warm.
-    Great for bedtime comfort and gentle play.
-    Child-friendly materials make it safe to use.
-    Compact size fits perfectly in little arms.
-    A charming toy for animal lovers.`,
+    Great for bedtime comfort and gentle play.`,
     price: "1899",
+    mrp: "2999",
+    deal: "Best Seller",
     rating: 4.7,
     reviews: 109,
     category: "Soft Toys",
     subcategory: "Plush Animals",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'SOFT010-BLUE',
+        variant_value: 'Default Blue',
+        price: 1899,
+        stock_quantity: 25,
+        image_url: 'https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/NI_CATALOG/IMAGES/CIW/2026/3/19/b54a07b2-63a5-4384-a7eb-b0de9ea7b1e7_RA33DQGZOM.jpg',
+        gallery_images: ['https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/NI_CATALOG/IMAGES/CIW/2026/3/19/b54a07b2-63a5-4384-a7eb-b0de9ea7b1e7_RA33DQGZOM.jpg']
+      },
+      {
+        sku: 'SOFT010-RED',
+        variant_value: 'Classic Red',
+        price: 1899,
+        stock_quantity: 15,
+        image_url: 'https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/NI_CATALOG/IMAGES/CIW/2026/3/19/b54a07b2-63a5-4384-a7eb-b0de9ea7b1e7_RA33DQGZOM.jpg',
+        gallery_images: ['https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/NI_CATALOG/IMAGES/CIW/2026/3/19/b54a07b2-63a5-4384-a7eb-b0de9ea7b1e7_RA33DQGZOM.jpg']
+      }
+    ]
   },
   {
-    id: 11,
+    id: 'SOFT011',
     name: "Fox Plush",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8jG_fPqIvlhj0p7FXMepgp3DE8ER1FLkHvQ&s",
     description: `Soft fox plush with bright charming colours.
     Plush stuffing gives a premium cuddly touch.
-    Perfect for playful moments and comfort.
-    Safe build is suitable for young children.
-    Strong stitching supports regular handling.
-    A clever little buddy for toy collections.`,
+    Perfect for playful moments and comfort.`,
     price: "2199",
     rating: 4.6,
     reviews: 78,
     category: "Soft Toys",
     subcategory: "Plush Animals",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'SOFT011-BLUE',
+        variant_value: 'Default Blue',
+        price: 2199,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8jG_fPqIvlhj0p7FXMepgp3DE8ER1FLkHvQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8jG_fPqIvlhj0p7FXMepgp3DE8ER1FLkHvQ&s']
+      },
+      {
+        sku: 'SOFT011-RED',
+        variant_value: 'Classic Red',
+        price: 2199,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8jG_fPqIvlhj0p7FXMepgp3DE8ER1FLkHvQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8jG_fPqIvlhj0p7FXMepgp3DE8ER1FLkHvQ&s']
+      }
+    ]
   },
 
   // CARTOON TOYS
   {
-    id: 12,
+    id: 'SOFT012',
     name: "Doraemon Cartoon Plush",
     image: "https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/i/p/k/cartoon-doremon-soft-toys-18-jr-jack-rose-original-imahh7p4avznzgft.jpeg?q=70",
     description: `Soft Doraemon cartoon plush loved by all ages.
     Bright blue color with classic character design.
-    Super soft and huggable for kids.
-    Safe stitching and durable quality throughout.
-    Perfect gift for cartoon fans.
-    Great companion for playtime and bedtime.`,
+    Super soft and huggable for kids.`,
     price: "1599",
     rating: 4.7,
     reviews: 143,
     category: "Soft Toys",
     subcategory: "Cartoon Toys",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'SOFT012-BLUE',
+        variant_value: 'Default Blue',
+        price: 1599,
+        stock_quantity: 25,
+        image_url: 'https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/i/p/k/cartoon-doremon-soft-toys-18-jr-jack-rose-original-imahh7p4avznzgft.jpeg?q=70',
+        gallery_images: ['https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/i/p/k/cartoon-doremon-soft-toys-18-jr-jack-rose-original-imahh7p4avznzgft.jpeg?q=70']
+      },
+      {
+        sku: 'SOFT012-RED',
+        variant_value: 'Classic Red',
+        price: 1599,
+        stock_quantity: 15,
+        image_url: 'https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/i/p/k/cartoon-doremon-soft-toys-18-jr-jack-rose-original-imahh7p4avznzgft.jpeg?q=70',
+        gallery_images: ['https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/i/p/k/cartoon-doremon-soft-toys-18-jr-jack-rose-original-imahh7p4avznzgft.jpeg?q=70']
+      }
+    ]
   },
   {
-    id: 13,
+    id: 'SOFT013',
     name: "Mickey Mouse Stuffed Toy",
     image: "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/products/pictures/item/free/original/VOPIsSwO1-product.jpeg",
     description: `Classic Mickey Mouse stuffed plush for kids.
     Iconic black-and-red design kids instantly love.
-    Soft, lightweight and easy to carry anywhere.
-    Safe materials ideal for toddlers and young kids.
-    A fan-favourite character gift for every occasion.
-    Durable stitching ensures long-lasting use.`,
+    Soft, lightweight and easy to carry anywhere.`,
     price: "1799",
     rating: 4.6,
     reviews: 89,
     category: "Soft Toys",
     subcategory: "Cartoon Toys",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'SOFT013-BLUE',
+        variant_value: 'Default Blue',
+        price: 1799,
+        stock_quantity: 25,
+        image_url: 'https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/products/pictures/item/free/original/VOPIsSwO1-product.jpeg',
+        gallery_images: ['https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/products/pictures/item/free/original/VOPIsSwO1-product.jpeg']
+      },
+      {
+        sku: 'SOFT013-RED',
+        variant_value: 'Classic Red',
+        price: 1799,
+        stock_quantity: 15,
+        image_url: 'https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/products/pictures/item/free/original/VOPIsSwO1-product.jpeg',
+        gallery_images: ['https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/products/pictures/item/free/original/VOPIsSwO1-product.jpeg']
+      }
+    ]
   },
   {
-    id: 14,
+    id: 'SOFT014',
     name: "Minnie Mouse Plush",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTGxJhNSrGZewNsY1wbIQjuWqc2QB1lBlCJA&s",
     description: `Lovely Minnie Mouse plush with signature bow.
     Soft body is perfect for hugging and cuddling.
-    Bright colours make it visually attractive.
-    Safe materials are ideal for kids.
-    Great gift for Disney fans of all ages.
-    Durable design supports long-lasting play.`,
+    Bright colours make it visually attractive.`,
     price: "1849",
     rating: 4.7,
     reviews: 95,
     category: "Soft Toys",
     subcategory: "Cartoon Toys",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'SOFT014-BLUE',
+        variant_value: 'Default Blue',
+        price: 1849,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTGxJhNSrGZewNsY1wbIQjuWqc2QB1lBlCJA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTGxJhNSrGZewNsY1wbIQjuWqc2QB1lBlCJA&s']
+      },
+      {
+        sku: 'SOFT014-RED',
+        variant_value: 'Classic Red',
+        price: 1849,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTGxJhNSrGZewNsY1wbIQjuWqc2QB1lBlCJA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTGxJhNSrGZewNsY1wbIQjuWqc2QB1lBlCJA&s']
+      }
+    ]
   },
   {
-    id: 15,
+    id: 'SOFT015',
     name: "Pikachu Plush",
     image: "https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/b/u/e/pikachu-soft-toy-for-kids-cute-plush-stuffed-toy-yellow-pok-mon-original-imahegrgd7tpktcy.jpeg?q=70",
     description: `Cute Pikachu plush with bright yellow design.
-    Soft filling makes it extra huggable and fun.
-    Perfect for Pokémon lovers and collectors.
-    Lightweight body is easy for kids to hold.
-    Durable quality ensures better long-term use.
-    Great for gifting and playful display.`,
+    Soft filling makes it extra huggable and fun.`,
     price: "1999",
     rating: 4.8,
     reviews: 162,
     category: "Soft Toys",
     subcategory: "Cartoon Toys",
     ageGroup: ["3-5", "6-8", "8-12"],
+    variants: [
+      {
+        sku: 'SOFT015-BLUE',
+        variant_value: 'Default Blue',
+        price: 1999,
+        stock_quantity: 25,
+        image_url: 'https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/b/u/e/pikachu-soft-toy-for-kids-cute-plush-stuffed-toy-yellow-pok-mon-original-imahegrgd7tpktcy.jpeg?q=70',
+        gallery_images: ['https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/b/u/e/pikachu-soft-toy-for-kids-cute-plush-stuffed-toy-yellow-pok-mon-original-imahegrgd7tpktcy.jpeg?q=70']
+      },
+      {
+        sku: 'SOFT015-RED',
+        variant_value: 'Classic Red',
+        price: 1999,
+        stock_quantity: 15,
+        image_url: 'https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/b/u/e/pikachu-soft-toy-for-kids-cute-plush-stuffed-toy-yellow-pok-mon-original-imahegrgd7tpktcy.jpeg?q=70',
+        gallery_images: ['https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/b/u/e/pikachu-soft-toy-for-kids-cute-plush-stuffed-toy-yellow-pok-mon-original-imahegrgd7tpktcy.jpeg?q=70']
+      }
+    ]
   },
   {
-    id: 16,
+    id: 'SOFT016',
     name: "Shinchan Plush",
     image: "https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/z/r/k/bunny-shinchan-soft-toy-teddy-bear-for-kids-huggable-plush-original-imahgvqcwewhaghx.jpeg?q=70",
     description: `Funny Shinchan plush with a playful expression.
     Soft texture keeps it cuddly and comfortable.
-    Cartoon-inspired look is loved by kids.
-    Safe stitching improves daily durability.
-    Great companion for playtime and naps.
-    A cute collectible for cartoon fans.`,
+    Cartoon-inspired look is loved by kids.`,
     price: "1699",
     rating: 4.5,
     reviews: 86,
     category: "Soft Toys",
     subcategory: "Cartoon Toys",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'SOFT016-BLUE',
+        variant_value: 'Default Blue',
+        price: 1699,
+        stock_quantity: 25,
+        image_url: 'https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/z/r/k/bunny-shinchan-soft-toy-teddy-bear-for-kids-huggable-plush-original-imahgvqcwewhaghx.jpeg?q=70',
+        gallery_images: ['https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/z/r/k/bunny-shinchan-soft-toy-teddy-bear-for-kids-huggable-plush-original-imahgvqcwewhaghx.jpeg?q=70']
+      },
+      {
+        sku: 'SOFT016-RED',
+        variant_value: 'Classic Red',
+        price: 1699,
+        stock_quantity: 15,
+        image_url: 'https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/z/r/k/bunny-shinchan-soft-toy-teddy-bear-for-kids-huggable-plush-original-imahgvqcwewhaghx.jpeg?q=70',
+        gallery_images: ['https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/z/r/k/bunny-shinchan-soft-toy-teddy-bear-for-kids-huggable-plush-original-imahgvqcwewhaghx.jpeg?q=70']
+      }
+    ]
   },
   {
-    id: 17,
+    id: 'SOFT017',
     name: "Tom Cartoon Plush",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Vn79x4RJhu9Yuy5MLGyDrHhYREhK0bsXlg&s",
     description: `Classic Tom plush inspired by cartoon fun.
-    Soft body and charming design delight kids.
-    Perfect for cuddles and character collections.
-    Child-friendly materials add safe comfort.
-    Easy to carry during travel and play.
-    Makes cartoon playtime more exciting.`,
+    Soft body and charming design delight kids.`,
     price: "1799",
     rating: 4.4,
     reviews: 71,
     category: "Soft Toys",
     subcategory: "Cartoon Toys",
     ageGroup: ["3-5", "6-8", "8-12"],
+    variants: [
+      {
+        sku: 'SOFT017-BLUE',
+        variant_value: 'Default Blue',
+        price: 1799,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Vn79x4RJhu9Yuy5MLGyDrHhYREhK0bsXlg&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Vn79x4RJhu9Yuy5MLGyDrHhYREhK0bsXlg&s']
+      },
+      {
+        sku: 'SOFT017-RED',
+        variant_value: 'Classic Red',
+        price: 1799,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Vn79x4RJhu9Yuy5MLGyDrHhYREhK0bsXlg&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Vn79x4RJhu9Yuy5MLGyDrHhYREhK0bsXlg&s']
+      }
+    ]
   },
   {
-    id: 18,
+    id: 'SOFT018',
     name: "Jerry Cartoon Plush",
     image: "https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/v/y/o/jerry-plush-doll-soft-cute-stuffed-cartoon-toy-animal-mouse-kids-original-imahffuqbhyr9gcf.jpeg?q=70",
     description: `Cute Jerry plush with a lively cartoon look.
     Soft and smooth fabric feels gentle to touch.
-    Great for kids who love classic characters.
-    Compact size makes it easy to carry.
-    Durable stitching keeps the toy secure.
-    A playful addition to any collection.`,
+    Great for kids who love classic characters.`,
     price: "1699",
     rating: 4.5,
     reviews: 79,
     category: "Soft Toys",
     subcategory: "Cartoon Toys",
     ageGroup: ["3-5", "6-8", "8-12"],
+    variants: [
+      {
+        sku: 'SOFT018-BLUE',
+        variant_value: 'Default Blue',
+        price: 1699,
+        stock_quantity: 25,
+        image_url: 'https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/v/y/o/jerry-plush-doll-soft-cute-stuffed-cartoon-toy-animal-mouse-kids-original-imahffuqbhyr9gcf.jpeg?q=70',
+        gallery_images: ['https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/v/y/o/jerry-plush-doll-soft-cute-stuffed-cartoon-toy-animal-mouse-kids-original-imahffuqbhyr9gcf.jpeg?q=70']
+      },
+      {
+        sku: 'SOFT018-RED',
+        variant_value: 'Classic Red',
+        price: 1699,
+        stock_quantity: 15,
+        image_url: 'https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/v/y/o/jerry-plush-doll-soft-cute-stuffed-cartoon-toy-animal-mouse-kids-original-imahffuqbhyr9gcf.jpeg?q=70',
+        gallery_images: ['https://rukmini1.flixcart.com/image/1500/1500/xif0q/stuffed-toy/v/y/o/jerry-plush-doll-soft-cute-stuffed-cartoon-toy-animal-mouse-kids-original-imahffuqbhyr9gcf.jpeg?q=70']
+      }
+    ]
   },
   {
-    id: 19,
+    id: 'SOFT019',
     name: "Hello Kitty Plush",
     image: "https://m.media-amazon.com/images/I/71NhuW4GS+L._AC_UF1000,1000_QL80_.jpg",
     description: `Adorable Hello Kitty plush with a soft finish.
@@ -331,9 +615,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Cartoon Toys",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'SOFT019-BLUE',
+        variant_value: 'Default Blue',
+        price: 1899,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71NhuW4GS+L._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71NhuW4GS+L._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'SOFT019-RED',
+        variant_value: 'Classic Red',
+        price: 1899,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71NhuW4GS+L._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71NhuW4GS+L._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 20,
+    id: 'SOFT020',
     name: "SpongeBob Plush",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQoNdgFfSd_z_qLPcqotyvOQfYGZcebnzc6Q&s",
     description: `Fun SpongeBob plush with a cheerful smile.
@@ -348,9 +650,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Cartoon Toys",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'SOFT020-BLUE',
+        variant_value: 'Default Blue',
+        price: 1899,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQoNdgFfSd_z_qLPcqotyvOQfYGZcebnzc6Q&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQoNdgFfSd_z_qLPcqotyvOQfYGZcebnzc6Q&s']
+      },
+      {
+        sku: 'SOFT020-RED',
+        variant_value: 'Classic Red',
+        price: 1899,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQoNdgFfSd_z_qLPcqotyvOQfYGZcebnzc6Q&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQoNdgFfSd_z_qLPcqotyvOQfYGZcebnzc6Q&s']
+      }
+    ]
   },
   {
-    id: 21,
+    id: 'SOFT021',
     name: "Pooh Bear Cartoon Plush",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYIInso0Czt0NbWTH6nrMMugeOgyeSUbErqA&s",
     description: `Soft Pooh Bear plush with classic yellow-red style.
@@ -365,11 +685,29 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Cartoon Toys",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'SOFT021-BLUE',
+        variant_value: 'Default Blue',
+        price: 1999,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYIInso0Czt0NbWTH6nrMMugeOgyeSUbErqA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYIInso0Czt0NbWTH6nrMMugeOgyeSUbErqA&s']
+      },
+      {
+        sku: 'SOFT021-RED',
+        variant_value: 'Classic Red',
+        price: 1999,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYIInso0Czt0NbWTH6nrMMugeOgyeSUbErqA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYIInso0Czt0NbWTH6nrMMugeOgyeSUbErqA&s']
+      }
+    ]
   },
 
   // BABY SOFT TOYS
   {
-    id: 22,
+    id: 'SOFT022',
     name: "Baby Rattle Plush",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp09hTQKo7Z2Tl_R8i_T2SIrIq7XqCqMVgJg&s",
     description: `Soft rattle plush for newborns and babies.
@@ -384,9 +722,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Baby Soft Toys",
     ageGroup: ["0-2"],
+    variants: [
+      {
+        sku: 'SOFT022-BLUE',
+        variant_value: 'Default Blue',
+        price: 699,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp09hTQKo7Z2Tl_R8i_T2SIrIq7XqCqMVgJg&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp09hTQKo7Z2Tl_R8i_T2SIrIq7XqCqMVgJg&s']
+      },
+      {
+        sku: 'SOFT022-RED',
+        variant_value: 'Classic Red',
+        price: 699,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp09hTQKo7Z2Tl_R8i_T2SIrIq7XqCqMVgJg&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp09hTQKo7Z2Tl_R8i_T2SIrIq7XqCqMVgJg&s']
+      }
+    ]
   },
   {
-    id: 23,
+    id: 'SOFT023',
     name: "Baby Crib Hanging Toy",
     image: "https://media.hunyhuny.com/12757-large_default/baby-cot-mobile-baby-crib-hanging-baby-nursery-decor-baby-toy-elephant.jpg",
     description: `Colourful crib hanging toy for infants.
@@ -401,9 +757,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Baby Soft Toys",
     ageGroup: ["0-2"],
+    variants: [
+      {
+        sku: 'SOFT023-BLUE',
+        variant_value: 'Default Blue',
+        price: 899,
+        stock_quantity: 25,
+        image_url: 'https://media.hunyhuny.com/12757-large_default/baby-cot-mobile-baby-crib-hanging-baby-nursery-decor-baby-toy-elephant.jpg',
+        gallery_images: ['https://media.hunyhuny.com/12757-large_default/baby-cot-mobile-baby-crib-hanging-baby-nursery-decor-baby-toy-elephant.jpg']
+      },
+      {
+        sku: 'SOFT023-RED',
+        variant_value: 'Classic Red',
+        price: 899,
+        stock_quantity: 15,
+        image_url: 'https://media.hunyhuny.com/12757-large_default/baby-cot-mobile-baby-crib-hanging-baby-nursery-decor-baby-toy-elephant.jpg',
+        gallery_images: ['https://media.hunyhuny.com/12757-large_default/baby-cot-mobile-baby-crib-hanging-baby-nursery-decor-baby-toy-elephant.jpg']
+      }
+    ]
   },
   {
-    id: 24,
+    id: 'SOFT024',
     name: "Baby Elephant Rattle",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG1SC38oIXoyC0DNxC7P3t-Kw9Ya1Y0wDgaQ&s",
     description: `Cute elephant rattle plush for little babies.
@@ -418,9 +792,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Baby Soft Toys",
     ageGroup: ["0-2"],
+    variants: [
+      {
+        sku: 'SOFT024-BLUE',
+        variant_value: 'Default Blue',
+        price: 749,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG1SC38oIXoyC0DNxC7P3t-Kw9Ya1Y0wDgaQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG1SC38oIXoyC0DNxC7P3t-Kw9Ya1Y0wDgaQ&s']
+      },
+      {
+        sku: 'SOFT024-RED',
+        variant_value: 'Classic Red',
+        price: 749,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG1SC38oIXoyC0DNxC7P3t-Kw9Ya1Y0wDgaQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG1SC38oIXoyC0DNxC7P3t-Kw9Ya1Y0wDgaQ&s']
+      }
+    ]
   },
   {
-    id: 25,
+    id: 'SOFT025',
     name: "Baby Star Pillow Toy",
     image: "https://m.media-amazon.com/images/I/71p8PP3M0lL._AC_UF1000,1000_QL80_.jpg",
     description: `Soft star-shaped toy pillow for babies.
@@ -435,9 +827,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Baby Soft Toys",
     ageGroup: ["0-2"],
+    variants: [
+      {
+        sku: 'SOFT025-BLUE',
+        variant_value: 'Default Blue',
+        price: 799,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71p8PP3M0lL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71p8PP3M0lL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'SOFT025-RED',
+        variant_value: 'Classic Red',
+        price: 799,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71p8PP3M0lL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71p8PP3M0lL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 26,
+    id: 'SOFT026',
     name: "Baby Bunny Comfort Toy",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShu1KTHuq0GlxbWJXfFGV6iVN-ORrxmaP9bA&s",
     description: `Soft bunny comfort toy for infants and toddlers.
@@ -452,9 +862,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Baby Soft Toys",
     ageGroup: ["0-2"],
+    variants: [
+      {
+        sku: 'SOFT026-BLUE',
+        variant_value: 'Default Blue',
+        price: 849,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShu1KTHuq0GlxbWJXfFGV6iVN-ORrxmaP9bA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShu1KTHuq0GlxbWJXfFGV6iVN-ORrxmaP9bA&s']
+      },
+      {
+        sku: 'SOFT026-RED',
+        variant_value: 'Classic Red',
+        price: 849,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShu1KTHuq0GlxbWJXfFGV6iVN-ORrxmaP9bA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShu1KTHuq0GlxbWJXfFGV6iVN-ORrxmaP9bA&s']
+      }
+    ]
   },
   {
-    id: 27,
+    id: 'SOFT027',
     name: "Moon Crib Plush",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3vrIF8cSa8SjuOLyKqmiiMkkvgt-Cj-a7yQ&s",
     description: `Soft moon-shaped crib plush for babies.
@@ -469,9 +897,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Baby Soft Toys",
     ageGroup: ["0-2"],
+    variants: [
+      {
+        sku: 'SOFT027-BLUE',
+        variant_value: 'Default Blue',
+        price: 899,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3vrIF8cSa8SjuOLyKqmiiMkkvgt-Cj-a7yQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3vrIF8cSa8SjuOLyKqmiiMkkvgt-Cj-a7yQ&s']
+      },
+      {
+        sku: 'SOFT027-RED',
+        variant_value: 'Classic Red',
+        price: 899,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3vrIF8cSa8SjuOLyKqmiiMkkvgt-Cj-a7yQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3vrIF8cSa8SjuOLyKqmiiMkkvgt-Cj-a7yQ&s']
+      }
+    ]
   },
   {
-    id: 28,
+    id: 'SOFT028',
     name: "Baby Cloud Plush",
     image: "https://m.media-amazon.com/images/I/8182JoWkY7L._AC_UF1000,1000_QL80_.jpg",
     description: `Cloud-shaped baby plush with a soft finish.
@@ -486,9 +932,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Baby Soft Toys",
     ageGroup: ["0-2"],
+    variants: [
+      {
+        sku: 'SOFT028-BLUE',
+        variant_value: 'Default Blue',
+        price: 799,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/8182JoWkY7L._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/8182JoWkY7L._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'SOFT028-RED',
+        variant_value: 'Classic Red',
+        price: 799,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/8182JoWkY7L._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/8182JoWkY7L._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 29,
+    id: 'SOFT029',
     name: "Baby Teether Plush",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMS8JP5MQBqbrkMki8UXiFmLtTl7qcir_lmA&s",
     description: `Soft baby plush with attached teether ring.
@@ -503,9 +967,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Baby Soft Toys",
     ageGroup: ["0-2"],
+    variants: [
+      {
+        sku: 'SOFT029-BLUE',
+        variant_value: 'Default Blue',
+        price: 949,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMS8JP5MQBqbrkMki8UXiFmLtTl7qcir_lmA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMS8JP5MQBqbrkMki8UXiFmLtTl7qcir_lmA&s']
+      },
+      {
+        sku: 'SOFT029-RED',
+        variant_value: 'Classic Red',
+        price: 949,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMS8JP5MQBqbrkMki8UXiFmLtTl7qcir_lmA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMS8JP5MQBqbrkMki8UXiFmLtTl7qcir_lmA&s']
+      }
+    ]
   },
   {
-    id: 30,
+    id: 'SOFT030',
     name: "Infant Sleep Plush",
     image: "https://assets.babycenter.com/ims/2020/06/iStock-519651132_4x3.jpg",
     description: `Sleep plush designed to comfort newborn babies.
@@ -520,9 +1002,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Baby Soft Toys",
     ageGroup: ["0-2"],
+    variants: [
+      {
+        sku: 'SOFT030-BLUE',
+        variant_value: 'Default Blue',
+        price: 899,
+        stock_quantity: 25,
+        image_url: 'https://assets.babycenter.com/ims/2020/06/iStock-519651132_4x3.jpg',
+        gallery_images: ['https://assets.babycenter.com/ims/2020/06/iStock-519651132_4x3.jpg']
+      },
+      {
+        sku: 'SOFT030-RED',
+        variant_value: 'Classic Red',
+        price: 899,
+        stock_quantity: 15,
+        image_url: 'https://assets.babycenter.com/ims/2020/06/iStock-519651132_4x3.jpg',
+        gallery_images: ['https://assets.babycenter.com/ims/2020/06/iStock-519651132_4x3.jpg']
+      }
+    ]
   },
   {
-    id: 31,
+    id: 'SOFT031',
     name: "Baby Sensory Plush Set",
     image: "https://m.media-amazon.com/images/I/716zkpAstSL.jpg",
     description: `Soft sensory plush set made for baby learning.
@@ -537,11 +1037,29 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Baby Soft Toys",
     ageGroup: ["0-2"],
+    variants: [
+      {
+        sku: 'SOFT031-BLUE',
+        variant_value: 'Default Blue',
+        price: 1199,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/716zkpAstSL.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/716zkpAstSL.jpg']
+      },
+      {
+        sku: 'SOFT031-RED',
+        variant_value: 'Classic Red',
+        price: 1199,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/716zkpAstSL.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/716zkpAstSL.jpg']
+      }
+    ]
   },
 
   // TEDDY
   {
-    id: 11,
+    id: 'SOFT032',
     name: "Pink Teddy Bear",
     image: "https://archiesonline.com/cdn/shop/files/8907089827042B_2.jpg?v=1753949161",
     description: `Soft pink teddy bear with a cute bow.
@@ -556,9 +1074,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Teddy Bears",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'SOFT032-BLUE',
+        variant_value: 'Default Blue',
+        price: 2299,
+        stock_quantity: 25,
+        image_url: 'https://archiesonline.com/cdn/shop/files/8907089827042B_2.jpg?v=1753949161',
+        gallery_images: ['https://archiesonline.com/cdn/shop/files/8907089827042B_2.jpg?v=1753949161']
+      },
+      {
+        sku: 'SOFT032-RED',
+        variant_value: 'Classic Red',
+        price: 2299,
+        stock_quantity: 15,
+        image_url: 'https://archiesonline.com/cdn/shop/files/8907089827042B_2.jpg?v=1753949161',
+        gallery_images: ['https://archiesonline.com/cdn/shop/files/8907089827042B_2.jpg?v=1753949161']
+      }
+    ]
   },
   {
-    id: 12,
+    id: 'SOFT033',
     code: "st-012",
     name: "White Cuddle Teddy",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUqAkNVxKPgTwN6pt7XtL9nY0NCUPVIUoILA&s",
@@ -574,9 +1110,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Teddy Bears",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'SOFT033-BLUE',
+        variant_value: 'Default Blue',
+        price: 2599,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUqAkNVxKPgTwN6pt7XtL9nY0NCUPVIUoILA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUqAkNVxKPgTwN6pt7XtL9nY0NCUPVIUoILA&s']
+      },
+      {
+        sku: 'SOFT033-RED',
+        variant_value: 'Classic Red',
+        price: 2599,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUqAkNVxKPgTwN6pt7XtL9nY0NCUPVIUoILA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUqAkNVxKPgTwN6pt7XtL9nY0NCUPVIUoILA&s']
+      }
+    ]
   },
   {
-    id: 13,
+    id: 'SOFT034',
     code: "st-013",
     name: "Heart Teddy Bear",
     image: "https://luvflowercake.com/wp-content/uploads/2021/09/47092_holding-heart-teddy.jpeg",
@@ -592,9 +1146,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Teddy Bears",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'SOFT034-BLUE',
+        variant_value: 'Default Blue',
+        price: 2699,
+        stock_quantity: 25,
+        image_url: 'https://luvflowercake.com/wp-content/uploads/2021/09/47092_holding-heart-teddy.jpeg',
+        gallery_images: ['https://luvflowercake.com/wp-content/uploads/2021/09/47092_holding-heart-teddy.jpeg']
+      },
+      {
+        sku: 'SOFT034-RED',
+        variant_value: 'Classic Red',
+        price: 2699,
+        stock_quantity: 15,
+        image_url: 'https://luvflowercake.com/wp-content/uploads/2021/09/47092_holding-heart-teddy.jpeg',
+        gallery_images: ['https://luvflowercake.com/wp-content/uploads/2021/09/47092_holding-heart-teddy.jpeg']
+      }
+    ]
   },
   {
-    id: 14,
+    id: 'SOFT035',
     code: "st-014",
     name: "Bow Teddy Plush",
     image: "https://m.media-amazon.com/images/I/81BFVOaKJIL.jpg",
@@ -610,9 +1182,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Teddy Bears",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'SOFT035-BLUE',
+        variant_value: 'Default Blue',
+        price: 2399,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/81BFVOaKJIL.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/81BFVOaKJIL.jpg']
+      },
+      {
+        sku: 'SOFT035-RED',
+        variant_value: 'Classic Red',
+        price: 2399,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/81BFVOaKJIL.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/81BFVOaKJIL.jpg']
+      }
+    ]
   },
   {
-    id: 15,
+    id: 'SOFT036',
     code: "st-015",
     name: "Jumbo Teddy Bear",
     image: "https://media.wallmantra.com/product/other/wallmantra-bow-tie-soft-premium-coffee-brown-big-teddy-bear-available-in-multiple-sizes-2-ft-B930-large.webp",
@@ -628,9 +1218,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Teddy Bears",
     ageGroup: ["3-5", "6-8", "8-12"],
+    variants: [
+      {
+        sku: 'SOFT036-BLUE',
+        variant_value: 'Default Blue',
+        price: 3999,
+        stock_quantity: 25,
+        image_url: 'https://media.wallmantra.com/product/other/wallmantra-bow-tie-soft-premium-coffee-brown-big-teddy-bear-available-in-multiple-sizes-2-ft-B930-large.webp',
+        gallery_images: ['https://media.wallmantra.com/product/other/wallmantra-bow-tie-soft-premium-coffee-brown-big-teddy-bear-available-in-multiple-sizes-2-ft-B930-large.webp']
+      },
+      {
+        sku: 'SOFT036-RED',
+        variant_value: 'Classic Red',
+        price: 3999,
+        stock_quantity: 15,
+        image_url: 'https://media.wallmantra.com/product/other/wallmantra-bow-tie-soft-premium-coffee-brown-big-teddy-bear-available-in-multiple-sizes-2-ft-B930-large.webp',
+        gallery_images: ['https://media.wallmantra.com/product/other/wallmantra-bow-tie-soft-premium-coffee-brown-big-teddy-bear-available-in-multiple-sizes-2-ft-B930-large.webp']
+      }
+    ]
   },
   {
-    id: 16,
+    id: 'SOFT037',
     code: "st-016",
     name: "Mini Pocket Teddy",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6fGuUv6BRGRGdyJv-lyJfRpq8xo2n8bMp_A&s",
@@ -646,9 +1254,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Teddy Bears",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'SOFT037-BLUE',
+        variant_value: 'Default Blue',
+        price: 999,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6fGuUv6BRGRGdyJv-lyJfRpq8xo2n8bMp_A&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6fGuUv6BRGRGdyJv-lyJfRpq8xo2n8bMp_A&s']
+      },
+      {
+        sku: 'SOFT037-RED',
+        variant_value: 'Classic Red',
+        price: 999,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6fGuUv6BRGRGdyJv-lyJfRpq8xo2n8bMp_A&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6fGuUv6BRGRGdyJv-lyJfRpq8xo2n8bMp_A&s']
+      }
+    ]
   },
   {
-    id: 17,
+    id: 'SOFT038',
     code: "st-017",
     name: "Honey Brown Teddy",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn5A_fWNg_f6bMSPRLU43rtUeqFTCWznwTjg&s",
@@ -664,9 +1290,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Teddy Bears",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'SOFT038-BLUE',
+        variant_value: 'Default Blue',
+        price: 2199,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn5A_fWNg_f6bMSPRLU43rtUeqFTCWznwTjg&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn5A_fWNg_f6bMSPRLU43rtUeqFTCWznwTjg&s']
+      },
+      {
+        sku: 'SOFT038-RED',
+        variant_value: 'Classic Red',
+        price: 2199,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn5A_fWNg_f6bMSPRLU43rtUeqFTCWznwTjg&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn5A_fWNg_f6bMSPRLU43rtUeqFTCWznwTjg&s']
+      }
+    ]
   },
   {
-    id: 18,
+    id: 'SOFT039',
     code: "st-018",
     name: "Sleepy Teddy Bear",
     image: "https://m.media-amazon.com/images/I/71JSVby8O6L.jpg",
@@ -682,9 +1326,27 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Teddy Bears",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'SOFT039-BLUE',
+        variant_value: 'Default Blue',
+        price: 2099,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71JSVby8O6L.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71JSVby8O6L.jpg']
+      },
+      {
+        sku: 'SOFT039-RED',
+        variant_value: 'Classic Red',
+        price: 2099,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71JSVby8O6L.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71JSVby8O6L.jpg']
+      }
+    ]
   },
   {
-    id: 19,
+    id: 'SOFT040',
     code: "st-019",
     name: "Classic Gift Teddy",
     image: "https://poojiflowers.com/cdn/shop/files/white-teddy-bear-with-red-heart-plush-gift-kuwait.png?v=1763249139&width=1024",
@@ -700,6 +1362,24 @@ const softToys = [
     category: "Soft Toys",
     subcategory: "Teddy Bears",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'SOFT040-BLUE',
+        variant_value: 'Default Blue',
+        price: 2499,
+        stock_quantity: 25,
+        image_url: 'https://poojiflowers.com/cdn/shop/files/white-teddy-bear-with-red-heart-plush-gift-kuwait.png?v=1763249139&width=1024',
+        gallery_images: ['https://poojiflowers.com/cdn/shop/files/white-teddy-bear-with-red-heart-plush-gift-kuwait.png?v=1763249139&width=1024']
+      },
+      {
+        sku: 'SOFT040-RED',
+        variant_value: 'Classic Red',
+        price: 2499,
+        stock_quantity: 15,
+        image_url: 'https://poojiflowers.com/cdn/shop/files/white-teddy-bear-with-red-heart-plush-gift-kuwait.png?v=1763249139&width=1024',
+        gallery_images: ['https://poojiflowers.com/cdn/shop/files/white-teddy-bear-with-red-heart-plush-gift-kuwait.png?v=1763249139&width=1024']
+      }
+    ]
   },
 ];
 

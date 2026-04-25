@@ -21,7 +21,6 @@ import {
   BarChart,
   Bar,
 } from 'recharts';
-import { salesData } from '../../data/admin/index.js';
 import {
   StatCard,
   StatusBadge,
@@ -89,7 +88,9 @@ function CustomTooltip({ active, payload, label }) {
 export default function Dashboard() {
   const navigate = useNavigate();
   const [period, setPeriod] = useState('Last 6 months');
-  const { products, orders, reviews, adminStats, categories } = useAdmin();
+  const { products, orders, reviews, adminStats, categories, salesData: fullSalesData, offers } = useAdmin();
+
+  const salesData = period === 'Last 6 months' ? fullSalesData.slice(-6) : fullSalesData.slice(-12);
 
   const topSelling = [...products].sort((a, b) => (b.sold || 0) - (a.sold || 0)).slice(0, 5);
   const lowStock = products.filter((p) => p.stock > 0 && p.stock <= 8);
@@ -109,7 +110,7 @@ export default function Dashboard() {
         <div onClick={() => navigate('/admin/customers')} className="cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-200 hover:border hover:border-orange-300 rounded-2xl">
           <StatCard icon={<Users size={22} />} label="Total Customers" value={adminStats.totalCustomers.toLocaleString('en-IN')} growth={adminStats.customersGrowth} color="purple" delay={160} />
         </div>
-        <div onClick={() => navigate('/admin')} className="cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-200 hover:border hover:border-orange-300 rounded-2xl">
+        <div onClick={() => navigate('/admin/finance')} className="cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-200 hover:border hover:border-orange-300 rounded-2xl">
           <StatCard icon={<IndianRupee size={22} />} label="Total Revenue" value={`₹${adminStats.totalRevenue.toLocaleString('en-IN')}`} growth={adminStats.revenueGrowth} color="green" delay={240} />
         </div>
       </div>
@@ -120,7 +121,7 @@ export default function Dashboard() {
           { label: 'Categories', value: adminStats.totalCategories, icon: <Grid3X3 size={16} />, path: '/admin/categories', color: 'text-violet-600 bg-violet-50' },
           { label: 'Low Stock Items', value: adminStats.lowStockItems, icon: <AlertTriangle size={16} />, path: '/admin/inventory', color: 'text-orange-600 bg-orange-50' },
           { label: 'Pending Reviews', value: reviews.filter(r => r.status === 'Pending').length, icon: <span className="text-sm">⭐</span>, path: '/admin/reviews', color: 'text-amber-600 bg-amber-50' },
-          { label: 'Active Offers', value: reviews.filter(r => r.status === 'Active').length || 1, icon: <span className="text-sm">🏷️</span>, path: '/admin/offers', color: 'text-emerald-600 bg-emerald-50' },
+          { label: 'Active Offers', value: offers.filter(o => o.status === 'Active').length, icon: <span className="text-sm">🏷️</span>, path: '/admin/offers', color: 'text-emerald-600 bg-emerald-50' },
         ].map((s) => (
           <div key={s.label} onClick={() => navigate(s.path)} className="card p-4 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
             <div className="flex items-center gap-2 mb-1">

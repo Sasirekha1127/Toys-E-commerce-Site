@@ -10,8 +10,8 @@ export default function UserLayout({ children }) {
     const currentUser = JSON.parse(localStorage.getItem('toyCurrentUser') || 'null');
     const currentSeller = JSON.parse(localStorage.getItem('toyCurrentSeller') || 'null');
 
-    // Allow access if logged in as user or admin, but not seller
-    if (!currentUser || currentSeller) {
+    // Allow access if either a regular user OR a seller is logged in
+    if (!currentUser && !currentSeller) {
       navigate('/auth');
     }
   }, [navigate]);
@@ -19,8 +19,9 @@ export default function UserLayout({ children }) {
   const currentUser = JSON.parse(localStorage.getItem('toyCurrentUser') || 'null');
   const currentSeller = JSON.parse(localStorage.getItem('toyCurrentSeller') || 'null');
 
-  if (!currentUser || currentSeller) {
-    return null; // or loading spinner
+  // Render nothing while redirecting if no session at all
+  if (!currentUser && !currentSeller) {
+    return null;
   }
 
   return (

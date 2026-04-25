@@ -1,7 +1,7 @@
 const educationalToys = [
   // LEARNING KITS (10)
   {
-    id: 1,
+    id: 'EDU001',
     name: "Math Learning Blocks",
     image: "https://i0.wp.com/magrid.education/wp-content/uploads/2023/07/1.jpg",
     description: `Colorful math blocks for fun number learning.
@@ -18,9 +18,27 @@ const educationalToys = [
     badge: "Award Winner",
     gradient: "toy-gradient-2",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'EDU001-BLUE',
+        variant_value: 'Default Blue',
+        price: 1500,
+        stock_quantity: 25,
+        image_url: 'https://i0.wp.com/magrid.education/wp-content/uploads/2023/07/1.jpg',
+        gallery_images: ['https://i0.wp.com/magrid.education/wp-content/uploads/2023/07/1.jpg']
+      },
+      {
+        sku: 'EDU001-RED',
+        variant_value: 'Classic Red',
+        price: 1500,
+        stock_quantity: 15,
+        image_url: 'https://i0.wp.com/magrid.education/wp-content/uploads/2023/07/1.jpg',
+        gallery_images: ['https://i0.wp.com/magrid.education/wp-content/uploads/2023/07/1.jpg']
+      }
+    ]
   },
   {
-    id: 2,
+    id: 'EDU002',
     name: "Magnetic Letters",
     image: "https://thetypesetco.com/cdn/shop/files/3E8CB307-B8BC-4615-8A28-101624BA27D4.png?v=1744201649&width=1080",
     description: `Magnetic letters for easy word learning.
@@ -39,9 +57,27 @@ const educationalToys = [
     badge: "Top Rated",
     gradient: "toy-gradient-5",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'EDU002-BLUE',
+        variant_value: 'Default Blue',
+        price: 1800,
+        stock_quantity: 25,
+        image_url: 'https://thetypesetco.com/cdn/shop/files/3E8CB307-B8BC-4615-8A28-101624BA27D4.png?v=1744201649&width=1080',
+        gallery_images: ['https://thetypesetco.com/cdn/shop/files/3E8CB307-B8BC-4615-8A28-101624BA27D4.png?v=1744201649&width=1080']
+      },
+      {
+        sku: 'EDU002-RED',
+        variant_value: 'Classic Red',
+        price: 1800,
+        stock_quantity: 15,
+        image_url: 'https://thetypesetco.com/cdn/shop/files/3E8CB307-B8BC-4615-8A28-101624BA27D4.png?v=1744201649&width=1080',
+        gallery_images: ['https://thetypesetco.com/cdn/shop/files/3E8CB307-B8BC-4615-8A28-101624BA27D4.png?v=1744201649&width=1080']
+      }
+    ]
   },
   {
-    id: 3,
+    id: 'EDU003',
     name: "Phonics Learning Cards",
     image: "https://i.pinimg.com/736x/4f/a1/9e/4fa19e65ffc85ff6773598fdf6715e5f.jpg",
     description: `Phonics learning cards help kids identify letter sounds.
@@ -58,9 +94,27 @@ const educationalToys = [
     badge: "Early Learning",
     gradient: "toy-gradient-3",
     ageGroup: ["3-5"],
+    variants: [
+      {
+        sku: 'EDU003-BLUE',
+        variant_value: 'Default Blue',
+        price: 1399,
+        stock_quantity: 25,
+        image_url: 'https://i.pinimg.com/736x/4f/a1/9e/4fa19e65ffc85ff6773598fdf6715e5f.jpg',
+        gallery_images: ['https://i.pinimg.com/736x/4f/a1/9e/4fa19e65ffc85ff6773598fdf6715e5f.jpg']
+      },
+      {
+        sku: 'EDU003-RED',
+        variant_value: 'Classic Red',
+        price: 1399,
+        stock_quantity: 15,
+        image_url: 'https://i.pinimg.com/736x/4f/a1/9e/4fa19e65ffc85ff6773598fdf6715e5f.jpg',
+        gallery_images: ['https://i.pinimg.com/736x/4f/a1/9e/4fa19e65ffc85ff6773598fdf6715e5f.jpg']
+      }
+    ]
   },
   {
-    id: 4,
+    id: 'EDU004',
     name: "Word Builder Kit",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeYbnBTh8n4zLk3_kfj0Z3OMHH88j4O8WHMw&s",
     description: `Interactive word builder kit for spelling practice.
@@ -77,9 +131,27 @@ const educationalToys = [
     badge: "Top Pick",
     gradient: "toy-gradient-6",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'EDU004-BLUE',
+        variant_value: 'Default Blue',
+        price: 1599,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeYbnBTh8n4zLk3_kfj0Z3OMHH88j4O8WHMw&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeYbnBTh8n4zLk3_kfj0Z3OMHH88j4O8WHMw&s']
+      },
+      {
+        sku: 'EDU004-RED',
+        variant_value: 'Classic Red',
+        price: 1599,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeYbnBTh8n4zLk3_kfj0Z3OMHH88j4O8WHMw&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeYbnBTh8n4zLk3_kfj0Z3OMHH88j4O8WHMw&s']
+      }
+    ]
   },
   {
-    id: 5,
+    id: 'EDU005',
     name: "Number Flash Card Set",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK8Iulnk6WacJ9Uqi-SDOl5dD578QhDAvB9A&s",
     description: `Flash cards designed for number learning and counting.
@@ -96,9 +168,27 @@ const educationalToys = [
     badge: null,
     gradient: "toy-gradient-1",
     ageGroup: ["3-5"],
+    variants: [
+      {
+        sku: 'EDU005-BLUE',
+        variant_value: 'Default Blue',
+        price: 999,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK8Iulnk6WacJ9Uqi-SDOl5dD578QhDAvB9A&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK8Iulnk6WacJ9Uqi-SDOl5dD578QhDAvB9A&s']
+      },
+      {
+        sku: 'EDU005-RED',
+        variant_value: 'Classic Red',
+        price: 999,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK8Iulnk6WacJ9Uqi-SDOl5dD578QhDAvB9A&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK8Iulnk6WacJ9Uqi-SDOl5dD578QhDAvB9A&s']
+      }
+    ]
   },
   {
-    id: 6,
+    id: 'EDU006',
     name: "Sight Words Kit",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxkJoSTPjJkRqFcsmN2EsNAmFaXPNiNi_IuA&s",
     description: `Sight words kit helps kids read common words faster.
@@ -115,9 +205,27 @@ const educationalToys = [
     badge: "Reading Boost",
     gradient: "toy-gradient-4",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'EDU006-BLUE',
+        variant_value: 'Default Blue',
+        price: 1499,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxkJoSTPjJkRqFcsmN2EsNAmFaXPNiNi_IuA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxkJoSTPjJkRqFcsmN2EsNAmFaXPNiNi_IuA&s']
+      },
+      {
+        sku: 'EDU006-RED',
+        variant_value: 'Classic Red',
+        price: 1499,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxkJoSTPjJkRqFcsmN2EsNAmFaXPNiNi_IuA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxkJoSTPjJkRqFcsmN2EsNAmFaXPNiNi_IuA&s']
+      }
+    ]
   },
   {
-    id: 7,
+    id: 'EDU007',
     name: "Colour Matching Kit",
     image: "https://www.smartivity.in/cdn/shop/files/1_1.jpg?v=1748724084",
     description: `Colour matching kit helps children identify shades and tones.
@@ -134,9 +242,27 @@ const educationalToys = [
     badge: "Creative Play",
     gradient: "toy-gradient-2",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'EDU007-BLUE',
+        variant_value: 'Default Blue',
+        price: 1199,
+        stock_quantity: 25,
+        image_url: 'https://www.smartivity.in/cdn/shop/files/1_1.jpg?v=1748724084',
+        gallery_images: ['https://www.smartivity.in/cdn/shop/files/1_1.jpg?v=1748724084']
+      },
+      {
+        sku: 'EDU007-RED',
+        variant_value: 'Classic Red',
+        price: 1199,
+        stock_quantity: 15,
+        image_url: 'https://www.smartivity.in/cdn/shop/files/1_1.jpg?v=1748724084',
+        gallery_images: ['https://www.smartivity.in/cdn/shop/files/1_1.jpg?v=1748724084']
+      }
+    ]
   },
   {
-    id: 8,
+    id: 'EDU008',
     name: "Basic Writing Practice Kit",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8w7nbeS4Z-nFvarL95w--xE3qlV26OKAAJw&s",
     description: `Writing practice kit helps children trace letters and numbers.
@@ -153,9 +279,27 @@ const educationalToys = [
     badge: "Handwriting Fun",
     gradient: "toy-gradient-5",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'EDU008-BLUE',
+        variant_value: 'Default Blue',
+        price: 1699,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8w7nbeS4Z-nFvarL95w--xE3qlV26OKAAJw&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8w7nbeS4Z-nFvarL95w--xE3qlV26OKAAJw&s']
+      },
+      {
+        sku: 'EDU008-RED',
+        variant_value: 'Classic Red',
+        price: 1699,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8w7nbeS4Z-nFvarL95w--xE3qlV26OKAAJw&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8w7nbeS4Z-nFvarL95w--xE3qlV26OKAAJw&s']
+      }
+    ]
   },
   {
-    id: 9,
+    id: 'EDU009',
     name: "Memory Learning Box",
     image: "https://kidsbestie.com/cdn/shop/files/memory-game-15-game-cards-and-20-magnetic-game-pieces-metal-box-random-design-will-be-send-kids-bestie-4.png?v=1715973910&width=1080",
     description: `Learning box filled with memory and matching activities.
@@ -172,9 +316,27 @@ const educationalToys = [
     badge: "Brain Boost",
     gradient: "toy-gradient-6",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'EDU009-BLUE',
+        variant_value: 'Default Blue',
+        price: 1899,
+        stock_quantity: 25,
+        image_url: 'https://kidsbestie.com/cdn/shop/files/memory-game-15-game-cards-and-20-magnetic-game-pieces-metal-box-random-design-will-be-send-kids-bestie-4.png?v=1715973910&width=1080',
+        gallery_images: ['https://kidsbestie.com/cdn/shop/files/memory-game-15-game-cards-and-20-magnetic-game-pieces-metal-box-random-design-will-be-send-kids-bestie-4.png?v=1715973910&width=1080']
+      },
+      {
+        sku: 'EDU009-RED',
+        variant_value: 'Classic Red',
+        price: 1899,
+        stock_quantity: 15,
+        image_url: 'https://kidsbestie.com/cdn/shop/files/memory-game-15-game-cards-and-20-magnetic-game-pieces-metal-box-random-design-will-be-send-kids-bestie-4.png?v=1715973910&width=1080',
+        gallery_images: ['https://kidsbestie.com/cdn/shop/files/memory-game-15-game-cards-and-20-magnetic-game-pieces-metal-box-random-design-will-be-send-kids-bestie-4.png?v=1715973910&width=1080']
+      }
+    ]
   },
   {
-    id: 10,
+    id: 'EDU010',
     name: "Reading Readiness Kit",
     image: "https://images.kaplanco.com/catalog/jumbo/33160_01.jpg",
     description: `Reading readiness kit builds strong early literacy skills.
@@ -191,11 +353,29 @@ const educationalToys = [
     badge: "Best Seller",
     gradient: "toy-gradient-3",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'EDU010-BLUE',
+        variant_value: 'Default Blue',
+        price: 1799,
+        stock_quantity: 25,
+        image_url: 'https://images.kaplanco.com/catalog/jumbo/33160_01.jpg',
+        gallery_images: ['https://images.kaplanco.com/catalog/jumbo/33160_01.jpg']
+      },
+      {
+        sku: 'EDU010-RED',
+        variant_value: 'Classic Red',
+        price: 1799,
+        stock_quantity: 15,
+        image_url: 'https://images.kaplanco.com/catalog/jumbo/33160_01.jpg',
+        gallery_images: ['https://images.kaplanco.com/catalog/jumbo/33160_01.jpg']
+      }
+    ]
   },
 
   // PUZZLE GAMES (10)
   {
-    id: 11,
+    id: 'EDU011',
     name: "Alphabet Puzzle",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9esSA2Xp9kXnrLgpQsv8cpk2wmkyTP5yrLQ&s",
     description: `Fun alphabet puzzle for letter recognition.
@@ -213,9 +393,27 @@ const educationalToys = [
     badge: "STEM",
     gradient: "toy-gradient-3",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'EDU011-BLUE',
+        variant_value: 'Default Blue',
+        price: 2000,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9esSA2Xp9kXnrLgpQsv8cpk2wmkyTP5yrLQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9esSA2Xp9kXnrLgpQsv8cpk2wmkyTP5yrLQ&s']
+      },
+      {
+        sku: 'EDU011-RED',
+        variant_value: 'Classic Red',
+        price: 2000,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9esSA2Xp9kXnrLgpQsv8cpk2wmkyTP5yrLQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9esSA2Xp9kXnrLgpQsv8cpk2wmkyTP5yrLQ&s']
+      }
+    ]
   },
   {
-    id: 12,
+    id: 'EDU012',
     name: "Jigsaw World Map Puzzle",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVIu3EoNtAdwHByEYpzNcsUvoWEiJ1JjoMqg&s",
     description: `100-piece jigsaw world map puzzle for geography fun.
@@ -232,9 +430,27 @@ const educationalToys = [
     badge: null,
     gradient: "toy-gradient-3",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'EDU012-BLUE',
+        variant_value: 'Default Blue',
+        price: 1299,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVIu3EoNtAdwHByEYpzNcsUvoWEiJ1JjoMqg&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVIu3EoNtAdwHByEYpzNcsUvoWEiJ1JjoMqg&s']
+      },
+      {
+        sku: 'EDU012-RED',
+        variant_value: 'Classic Red',
+        price: 1299,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVIu3EoNtAdwHByEYpzNcsUvoWEiJ1JjoMqg&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVIu3EoNtAdwHByEYpzNcsUvoWEiJ1JjoMqg&s']
+      }
+    ]
   },
   {
-    id: 13,
+    id: 'EDU013',
     name: "Animal Matching Puzzle",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaMt_WQ--FeI4477FkIfJJZJf08TsaytsLEQ&s",
     description: `Animal matching puzzle helps kids identify animals easily.
@@ -251,9 +467,27 @@ const educationalToys = [
     badge: "Animal Fun",
     gradient: "toy-gradient-1",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'EDU013-BLUE',
+        variant_value: 'Default Blue',
+        price: 1199,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaMt_WQ--FeI4477FkIfJJZJf08TsaytsLEQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaMt_WQ--FeI4477FkIfJJZJf08TsaytsLEQ&s']
+      },
+      {
+        sku: 'EDU013-RED',
+        variant_value: 'Classic Red',
+        price: 1199,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaMt_WQ--FeI4477FkIfJJZJf08TsaytsLEQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaMt_WQ--FeI4477FkIfJJZJf08TsaytsLEQ&s']
+      }
+    ]
   },
   {
-    id: 14,
+    id: 'EDU014',
     name: "Number Puzzle Board",
     image: "https://rukmini1.flixcart.com/image/1500/1500/xif0q/learning-toy/e/w/2/wooden-numbers-puzzle-board-toy-educational-and-learning-toy-1-original-imagm6tygueuhuav.jpeg?q=70",
     description: `Number puzzle board helps children learn digits through play.
@@ -270,9 +504,27 @@ const educationalToys = [
     badge: "Math Fun",
     gradient: "toy-gradient-4",
     ageGroup: ["3-5"],
+    variants: [
+      {
+        sku: 'EDU014-BLUE',
+        variant_value: 'Default Blue',
+        price: 1099,
+        stock_quantity: 25,
+        image_url: 'https://rukmini1.flixcart.com/image/1500/1500/xif0q/learning-toy/e/w/2/wooden-numbers-puzzle-board-toy-educational-and-learning-toy-1-original-imagm6tygueuhuav.jpeg?q=70',
+        gallery_images: ['https://rukmini1.flixcart.com/image/1500/1500/xif0q/learning-toy/e/w/2/wooden-numbers-puzzle-board-toy-educational-and-learning-toy-1-original-imagm6tygueuhuav.jpeg?q=70']
+      },
+      {
+        sku: 'EDU014-RED',
+        variant_value: 'Classic Red',
+        price: 1099,
+        stock_quantity: 15,
+        image_url: 'https://rukmini1.flixcart.com/image/1500/1500/xif0q/learning-toy/e/w/2/wooden-numbers-puzzle-board-toy-educational-and-learning-toy-1-original-imagm6tygueuhuav.jpeg?q=70',
+        gallery_images: ['https://rukmini1.flixcart.com/image/1500/1500/xif0q/learning-toy/e/w/2/wooden-numbers-puzzle-board-toy-educational-and-learning-toy-1-original-imagm6tygueuhuav.jpeg?q=70']
+      }
+    ]
   },
   {
-    id: 14,
+    id: 'EDU015',
     name: "Solar System Puzzle",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQkYHHGHrhW922zP3c_EpgcSi3wF6E26qigQ&s",
     description: `Solar system puzzle introduces planets in a fun format.
@@ -289,9 +541,27 @@ const educationalToys = [
     badge: "Space Fun",
     gradient: "toy-gradient-5",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'EDU015-BLUE',
+        variant_value: 'Default Blue',
+        price: 1499,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQkYHHGHrhW922zP3c_EpgcSi3wF6E26qigQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQkYHHGHrhW922zP3c_EpgcSi3wF6E26qigQ&s']
+      },
+      {
+        sku: 'EDU015-RED',
+        variant_value: 'Classic Red',
+        price: 1499,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQkYHHGHrhW922zP3c_EpgcSi3wF6E26qigQ&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQkYHHGHrhW922zP3c_EpgcSi3wF6E26qigQ&s']
+      }
+    ]
   },
   {
-    id: 15,
+    id: 'EDU016',
     name: "Transport Puzzle Set",
     image: "https://www.gillkart.com/cdn/shop/files/53860347413_1223e9ff22_o_d-1000x1000.webp?v=1766225954",
     description: `Transport puzzle set teaches children different vehicle types.
@@ -308,9 +578,27 @@ const educationalToys = [
     badge: null,
     gradient: "toy-gradient-2",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'EDU016-BLUE',
+        variant_value: 'Default Blue',
+        price: 1299,
+        stock_quantity: 25,
+        image_url: 'https://www.gillkart.com/cdn/shop/files/53860347413_1223e9ff22_o_d-1000x1000.webp?v=1766225954',
+        gallery_images: ['https://www.gillkart.com/cdn/shop/files/53860347413_1223e9ff22_o_d-1000x1000.webp?v=1766225954']
+      },
+      {
+        sku: 'EDU016-RED',
+        variant_value: 'Classic Red',
+        price: 1299,
+        stock_quantity: 15,
+        image_url: 'https://www.gillkart.com/cdn/shop/files/53860347413_1223e9ff22_o_d-1000x1000.webp?v=1766225954',
+        gallery_images: ['https://www.gillkart.com/cdn/shop/files/53860347413_1223e9ff22_o_d-1000x1000.webp?v=1766225954']
+      }
+    ]
   },
   {
-    id: 16,
+    id: 'EDU017',
     name: "Shapes and Patterns Puzzle",
     image: "https://www.cretto.com/cdn/shop/files/3_2_-min_1024x1024.jpg?v=1754328427",
     description: `Shapes and patterns puzzle teaches logical matching.
@@ -327,9 +615,27 @@ const educationalToys = [
     badge: "Smart Play",
     gradient: "toy-gradient-6",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'EDU017-BLUE',
+        variant_value: 'Default Blue',
+        price: 1399,
+        stock_quantity: 25,
+        image_url: 'https://www.cretto.com/cdn/shop/files/3_2_-min_1024x1024.jpg?v=1754328427',
+        gallery_images: ['https://www.cretto.com/cdn/shop/files/3_2_-min_1024x1024.jpg?v=1754328427']
+      },
+      {
+        sku: 'EDU017-RED',
+        variant_value: 'Classic Red',
+        price: 1399,
+        stock_quantity: 15,
+        image_url: 'https://www.cretto.com/cdn/shop/files/3_2_-min_1024x1024.jpg?v=1754328427',
+        gallery_images: ['https://www.cretto.com/cdn/shop/files/3_2_-min_1024x1024.jpg?v=1754328427']
+      }
+    ]
   },
   {
-    id: 17,
+    id: 'EDU018',
     name: "Body Parts Puzzle",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuI327XYHwD-ziUGC0Tych362A8ysc5FKvbA&s",
     description: `Body parts puzzle teaches children basic anatomy concepts.
@@ -346,9 +652,27 @@ const educationalToys = [
     badge: "Kids Learning",
     gradient: "toy-gradient-1",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'EDU018-BLUE',
+        variant_value: 'Default Blue',
+        price: 1199,
+        stock_quantity: 25,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuI327XYHwD-ziUGC0Tych362A8ysc5FKvbA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuI327XYHwD-ziUGC0Tych362A8ysc5FKvbA&s']
+      },
+      {
+        sku: 'EDU018-RED',
+        variant_value: 'Classic Red',
+        price: 1199,
+        stock_quantity: 15,
+        image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuI327XYHwD-ziUGC0Tych362A8ysc5FKvbA&s',
+        gallery_images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuI327XYHwD-ziUGC0Tych362A8ysc5FKvbA&s']
+      }
+    ]
   },
   {
-    id: 18,
+    id: 'EDU019',
     name: "Clock Time Puzzle",
     image: "https://m.media-amazon.com/images/I/71Y8w7n2mAL._AC_UF1000,1000_QL80_.jpg",
     description: `Clock time puzzle helps children learn hours and minutes.
@@ -365,9 +689,27 @@ const educationalToys = [
     badge: "Daily Skills",
     gradient: "toy-gradient-3",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'EDU019-BLUE',
+        variant_value: 'Default Blue',
+        price: 1349,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71Y8w7n2mAL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71Y8w7n2mAL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU019-RED',
+        variant_value: 'Classic Red',
+        price: 1349,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71Y8w7n2mAL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71Y8w7n2mAL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id:19,
+    id: 'EDU020',
     name: "Memory Match Puzzle",
     image: "https://m.media-amazon.com/images/I/71nH6m4x6eL._AC_UF1000,1000_QL80_.jpg",
     description: `Memory match puzzle sharpens recall and focus skills.
@@ -384,11 +726,29 @@ const educationalToys = [
     badge: "Brain Game",
     gradient: "toy-gradient-5",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'EDU020-BLUE',
+        variant_value: 'Default Blue',
+        price: 999,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71nH6m4x6eL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71nH6m4x6eL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU020-RED',
+        variant_value: 'Classic Red',
+        price: 999,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71nH6m4x6eL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71nH6m4x6eL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
 
   // STEM TOYS (10)
   {
-    id: 20,
+    id: 'EDU021',
     name: "Science Kit",
     image: "https://static.wixstatic.com/media/91210f_fc85cd488d314cf5bbe2798d63105167~mv2.webp/v1/fit/w_500,h_500,q_90/file.webp",
     description: `Exciting science kit with fun experiments.
@@ -407,9 +767,27 @@ const educationalToys = [
     badge: "Geography Fun",
     gradient: "toy-gradient-4",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'EDU021-BLUE',
+        variant_value: 'Default Blue',
+        price: 1500,
+        stock_quantity: 25,
+        image_url: 'https://static.wixstatic.com/media/91210f_fc85cd488d314cf5bbe2798d63105167~mv2.webp/v1/fit/w_500,h_500,q_90/file.webp',
+        gallery_images: ['https://static.wixstatic.com/media/91210f_fc85cd488d314cf5bbe2798d63105167~mv2.webp/v1/fit/w_500,h_500,q_90/file.webp']
+      },
+      {
+        sku: 'EDU021-RED',
+        variant_value: 'Classic Red',
+        price: 1500,
+        stock_quantity: 15,
+        image_url: 'https://static.wixstatic.com/media/91210f_fc85cd488d314cf5bbe2798d63105167~mv2.webp/v1/fit/w_500,h_500,q_90/file.webp',
+        gallery_images: ['https://static.wixstatic.com/media/91210f_fc85cd488d314cf5bbe2798d63105167~mv2.webp/v1/fit/w_500,h_500,q_90/file.webp']
+      }
+    ]
   },
   {
-    id:21,
+    id: 'EDU022',
     name: "Robotics Coding Kit",
     image: "https://m.media-amazon.com/images/I/81Hxl0N0C3L._AC_UF1000,1000_QL80_.jpg",
     description: `Beginner robotics kit to introduce coding concepts.
@@ -426,9 +804,27 @@ const educationalToys = [
     badge: "STEM",
     gradient: "toy-gradient-2",
     ageGroup: ["8-12"],
+    variants: [
+      {
+        sku: 'EDU022-BLUE',
+        variant_value: 'Default Blue',
+        price: 3499,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/81Hxl0N0C3L._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/81Hxl0N0C3L._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU022-RED',
+        variant_value: 'Classic Red',
+        price: 3499,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/81Hxl0N0C3L._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/81Hxl0N0C3L._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 22,
+    id: 'EDU023',
     name: "Circuit Builder Kit",
     image: "https://m.media-amazon.com/images/I/71D8z6nQXGL._AC_UF1000,1000_QL80_.jpg",
     description: `Circuit builder kit introduces basic electronics safely.
@@ -445,9 +841,27 @@ const educationalToys = [
     badge: "Future Tech",
     gradient: "toy-gradient-6",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'EDU023-BLUE',
+        variant_value: 'Default Blue',
+        price: 2299,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71D8z6nQXGL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71D8z6nQXGL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU023-RED',
+        variant_value: 'Classic Red',
+        price: 2299,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71D8z6nQXGL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71D8z6nQXGL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 23,
+    id: 'EDU024',
     name: "Solar Energy Kit",
     image: "https://m.media-amazon.com/images/I/71QzV9r4qNL._AC_UF1000,1000_QL80_.jpg",
     description: `Solar energy kit teaches renewable power through play.
@@ -464,9 +878,27 @@ const educationalToys = [
     badge: "Eco Learning",
     gradient: "toy-gradient-1",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'EDU024-BLUE',
+        variant_value: 'Default Blue',
+        price: 2499,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71QzV9r4qNL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71QzV9r4qNL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU024-RED',
+        variant_value: 'Classic Red',
+        price: 2499,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71QzV9r4qNL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71QzV9r4qNL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 24,
+    id: 'EDU025',
     name: "Microscope Starter Kit",
     image: "https://m.media-amazon.com/images/I/71b4m1qFvPL._AC_UF1000,1000_QL80_.jpg",
     description: `Starter microscope kit for young science explorers.
@@ -483,9 +915,27 @@ const educationalToys = [
     badge: "Science Fun",
     gradient: "toy-gradient-5",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'EDU025-BLUE',
+        variant_value: 'Default Blue',
+        price: 2899,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71b4m1qFvPL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71b4m1qFvPL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU025-RED',
+        variant_value: 'Classic Red',
+        price: 2899,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71b4m1qFvPL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71b4m1qFvPL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 25,
+    id: 'EDU026',
     name: "Magnet Experiment Kit",
     image: "https://m.media-amazon.com/images/I/71F0m8jLQfL._AC_UF1000,1000_QL80_.jpg",
     description: `Magnet experiment kit teaches attraction and repulsion clearly.
@@ -502,9 +952,27 @@ const educationalToys = [
     badge: null,
     gradient: "toy-gradient-3",
     ageGroup: ["6-8"],
+    variants: [
+      {
+        sku: 'EDU026-BLUE',
+        variant_value: 'Default Blue',
+        price: 1799,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71F0m8jLQfL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71F0m8jLQfL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU026-RED',
+        variant_value: 'Classic Red',
+        price: 1799,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71F0m8jLQfL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71F0m8jLQfL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 26,
+    id: 'EDU027',
     name: "Engineering Builder Set",
     image: "https://m.media-amazon.com/images/I/81u6b0gRukL._AC_UF1000,1000_QL80_.jpg",
     description: `Builder set helps children understand basic engineering ideas.
@@ -521,9 +989,27 @@ const educationalToys = [
     badge: "Builder Set",
     gradient: "toy-gradient-4",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'EDU027-BLUE',
+        variant_value: 'Default Blue',
+        price: 2699,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/81u6b0gRukL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/81u6b0gRukL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU027-RED',
+        variant_value: 'Classic Red',
+        price: 2699,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/81u6b0gRukL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/81u6b0gRukL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 27,
+    id: 'EDU028',
     name: "Volcano Experiment Kit",
     image: "https://m.media-amazon.com/images/I/71iP3j2hALL._AC_UF1000,1000_QL80_.jpg",
     description: `Volcano experiment kit makes science dramatic and fun.
@@ -540,9 +1026,27 @@ const educationalToys = [
     badge: "Experiment Fun",
     gradient: "toy-gradient-2",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'EDU028-BLUE',
+        variant_value: 'Default Blue',
+        price: 1999,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71iP3j2hALL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71iP3j2hALL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU028-RED',
+        variant_value: 'Classic Red',
+        price: 1999,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71iP3j2hALL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71iP3j2hALL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id:28,
+    id: 'EDU029',
     name: "Space Explorer Kit",
     image: "https://m.media-amazon.com/images/I/71lQ9m8A4AL._AC_UF1000,1000_QL80_.jpg",
     description: `Space explorer kit introduces kids to astronomy basics.
@@ -559,9 +1063,27 @@ const educationalToys = [
     badge: "Space Learning",
     gradient: "toy-gradient-6",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'EDU029-BLUE',
+        variant_value: 'Default Blue',
+        price: 2399,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71lQ9m8A4AL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71lQ9m8A4AL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU029-RED',
+        variant_value: 'Classic Red',
+        price: 2399,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71lQ9m8A4AL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71lQ9m8A4AL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id:29,
+    id: 'EDU030',
     name: "Coding Logic Board",
     image: "https://m.media-amazon.com/images/I/71o8rN4J4-L._AC_UF1000,1000_QL80_.jpg",
     description: `Coding logic board introduces sequence and command thinking.
@@ -578,11 +1100,29 @@ const educationalToys = [
     badge: "Coding Fun",
     gradient: "toy-gradient-1",
     ageGroup: ["6-8", "8-12"],
+    variants: [
+      {
+        sku: 'EDU030-BLUE',
+        variant_value: 'Default Blue',
+        price: 2599,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71o8rN4J4-L._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71o8rN4J4-L._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU030-RED',
+        variant_value: 'Classic Red',
+        price: 2599,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71o8rN4J4-L._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71o8rN4J4-L._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
 
   // MONTESSORI TOYS (10)
   {
-    id: 30,
+    id: 'EDU031',
     name: "Shape Sorting Cube",
     image: "https://us.bababooandfriends.com/cdn/shop/products/KB110041_ShapeSorterCube_Life_P02LowRes.jpg?v=1734445926&width=1080",
     description: `Interactive cube for learning shapes and colors.
@@ -601,9 +1141,27 @@ const educationalToys = [
     badge: "Future Tech",
     gradient: "toy-gradient-6",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'EDU031-BLUE',
+        variant_value: 'Default Blue',
+        price: 2000,
+        stock_quantity: 25,
+        image_url: 'https://us.bababooandfriends.com/cdn/shop/products/KB110041_ShapeSorterCube_Life_P02LowRes.jpg?v=1734445926&width=1080',
+        gallery_images: ['https://us.bababooandfriends.com/cdn/shop/products/KB110041_ShapeSorterCube_Life_P02LowRes.jpg?v=1734445926&width=1080']
+      },
+      {
+        sku: 'EDU031-RED',
+        variant_value: 'Classic Red',
+        price: 2000,
+        stock_quantity: 15,
+        image_url: 'https://us.bababooandfriends.com/cdn/shop/products/KB110041_ShapeSorterCube_Life_P02LowRes.jpg?v=1734445926&width=1080',
+        gallery_images: ['https://us.bababooandfriends.com/cdn/shop/products/KB110041_ShapeSorterCube_Life_P02LowRes.jpg?v=1734445926&width=1080']
+      }
+    ]
   },
   {
-    id: 31,
+    id: 'EDU032',
     name: "Counting Beads Abacus",
     image: "https://bluebellstoys.com/wp-content/uploads/2024/06/Abacus-3-12.webp",
     description: `Classic abacus for learning numbers and counting.
@@ -621,9 +1179,27 @@ const educationalToys = [
     subcategory: "Montessori Toys",
     gradient: "toy-gradient-1",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'EDU032-BLUE',
+        variant_value: 'Default Blue',
+        price: 1700,
+        stock_quantity: 25,
+        image_url: 'https://bluebellstoys.com/wp-content/uploads/2024/06/Abacus-3-12.webp',
+        gallery_images: ['https://bluebellstoys.com/wp-content/uploads/2024/06/Abacus-3-12.webp']
+      },
+      {
+        sku: 'EDU032-RED',
+        variant_value: 'Classic Red',
+        price: 1700,
+        stock_quantity: 15,
+        image_url: 'https://bluebellstoys.com/wp-content/uploads/2024/06/Abacus-3-12.webp',
+        gallery_images: ['https://bluebellstoys.com/wp-content/uploads/2024/06/Abacus-3-12.webp']
+      }
+    ]
   },
   {
-    id: 32,
+    id: 'EDU033',
     name: "Montessori Busy Board",
     image: "https://m.media-amazon.com/images/I/71t8V6mH0eL._AC_UF1000,1000_QL80_.jpg",
     description: `Busy board offers hands-on sensory learning for toddlers.
@@ -640,9 +1216,27 @@ const educationalToys = [
     badge: "Skill Builder",
     gradient: "toy-gradient-4",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'EDU033-BLUE',
+        variant_value: 'Default Blue',
+        price: 1899,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71t8V6mH0eL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71t8V6mH0eL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU033-RED',
+        variant_value: 'Classic Red',
+        price: 1899,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71t8V6mH0eL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71t8V6mH0eL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 33,
+    id: 'EDU034',
     name: "Stacking Cups Set",
     image: "https://m.media-amazon.com/images/I/71z6m4jV4BL._AC_UF1000,1000_QL80_.jpg",
     description: `Colourful stacking cups help toddlers learn size order.
@@ -659,9 +1253,27 @@ const educationalToys = [
     badge: null,
     gradient: "toy-gradient-2",
     ageGroup: ["0-2"],
+    variants: [
+      {
+        sku: 'EDU034-BLUE',
+        variant_value: 'Default Blue',
+        price: 899,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71z6m4jV4BL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71z6m4jV4BL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU034-RED',
+        variant_value: 'Classic Red',
+        price: 899,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71z6m4jV4BL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71z6m4jV4BL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 34,
+    id: 'EDU035',
     name: "Wooden Lacing Beads",
     image: "https://m.media-amazon.com/images/I/71i7W4xVYxL._AC_UF1000,1000_QL80_.jpg",
     description: `Lacing beads toy strengthens finger control and coordination.
@@ -678,9 +1290,27 @@ const educationalToys = [
     badge: "Fine Motor",
     gradient: "toy-gradient-5",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'EDU035-BLUE',
+        variant_value: 'Default Blue',
+        price: 1199,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71i7W4xVYxL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71i7W4xVYxL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU035-RED',
+        variant_value: 'Classic Red',
+        price: 1199,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71i7W4xVYxL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71i7W4xVYxL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 35,
+    id: 'EDU036',
     name: "Colour Sorting Tray",
     image: "https://m.media-amazon.com/images/I/71r5L7jK8xL._AC_UF1000,1000_QL80_.jpg",
     description: `Sorting tray helps kids group colours and objects correctly.
@@ -697,9 +1327,27 @@ const educationalToys = [
     badge: "Sorting Fun",
     gradient: "toy-gradient-3",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'EDU036-BLUE',
+        variant_value: 'Default Blue',
+        price: 1299,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71r5L7jK8xL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71r5L7jK8xL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU036-RED',
+        variant_value: 'Classic Red',
+        price: 1299,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71r5L7jK8xL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71r5L7jK8xL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 36,
+    id: 'EDU037',
     name: "Practical Life Dressing Frame",
     image: "https://m.media-amazon.com/images/I/71Yp0m4v5uL._AC_UF1000,1000_QL80_.jpg",
     description: `Dressing frame helps kids learn buttons and zippers.
@@ -716,9 +1364,27 @@ const educationalToys = [
     badge: "Life Skills",
     gradient: "toy-gradient-6",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'EDU037-BLUE',
+        variant_value: 'Default Blue',
+        price: 1599,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71Yp0m4v5uL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71Yp0m4v5uL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU037-RED',
+        variant_value: 'Classic Red',
+        price: 1599,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71Yp0m4v5uL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71Yp0m4v5uL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 37,
+    id: 'EDU038',
     name: "Object Permanence Box",
     image: "https://m.media-amazon.com/images/I/71bQ6v7v8KL._AC_UF1000,1000_QL80_.jpg",
     description: `Object permanence box teaches cause and effect clearly.
@@ -735,9 +1401,27 @@ const educationalToys = [
     badge: "Toddler Pick",
     gradient: "toy-gradient-1",
     ageGroup: ["0-2"],
+    variants: [
+      {
+        sku: 'EDU038-BLUE',
+        variant_value: 'Default Blue',
+        price: 1399,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71bQ6v7v8KL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71bQ6v7v8KL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU038-RED',
+        variant_value: 'Classic Red',
+        price: 1399,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71bQ6v7v8KL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71bQ6v7v8KL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 38,
+    id: 'EDU039',
     name: "Peg Board Activity Toy",
     image: "https://m.media-amazon.com/images/I/71D7k5hP0SL._AC_UF1000,1000_QL80_.jpg",
     description: `Peg board toy supports fine motor and matching skills.
@@ -754,9 +1438,27 @@ const educationalToys = [
     badge: "Pattern Play",
     gradient: "toy-gradient-5",
     ageGroup: ["3-5", "6-8"],
+    variants: [
+      {
+        sku: 'EDU039-BLUE',
+        variant_value: 'Default Blue',
+        price: 1499,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71D7k5hP0SL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71D7k5hP0SL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU039-RED',
+        variant_value: 'Classic Red',
+        price: 1499,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71D7k5hP0SL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71D7k5hP0SL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
   {
-    id: 39,
+    id: 'EDU040',
     name: "Montessori Sensory Bin Set",
     image: "https://m.media-amazon.com/images/I/71s4m9jQ2UL._AC_UF1000,1000_QL80_.jpg",
     description: `Sensory bin set encourages texture-based learning and discovery.
@@ -773,6 +1475,24 @@ const educationalToys = [
     badge: "Sensory Play",
     gradient: "toy-gradient-2",
     ageGroup: ["0-2", "3-5"],
+    variants: [
+      {
+        sku: 'EDU040-BLUE',
+        variant_value: 'Default Blue',
+        price: 1799,
+        stock_quantity: 25,
+        image_url: 'https://m.media-amazon.com/images/I/71s4m9jQ2UL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71s4m9jQ2UL._AC_UF1000,1000_QL80_.jpg']
+      },
+      {
+        sku: 'EDU040-RED',
+        variant_value: 'Classic Red',
+        price: 1799,
+        stock_quantity: 15,
+        image_url: 'https://m.media-amazon.com/images/I/71s4m9jQ2UL._AC_UF1000,1000_QL80_.jpg',
+        gallery_images: ['https://m.media-amazon.com/images/I/71s4m9jQ2UL._AC_UF1000,1000_QL80_.jpg']
+      }
+    ]
   },
 ];
 

@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   User, Mail, Phone, MapPin, ShoppingBag,
   Heart, ChevronRight, LogOut, Pencil, Save,
   X, ShieldCheck, Package, Star, ArrowLeft,
-  Camera
+  Camera, Plus, Trash2, Home, Briefcase, CheckCircle2, LayoutDashboard
 } from "lucide-react";
 import { useStore } from "../../hooks/useStore";
+
+const API = "http://localhost:5000";
 
 function initials(name = "") {
   return name
@@ -68,8 +70,14 @@ function EditModal({ user, onSave, onClose }) {
     name: user?.name || "",
     email: user?.email || "",
     phone: user?.phone || "",
-    address: user?.address || "",
-    profileImage: user?.profileImage || "",
+    address1: user?.address1 || "",
+    address2: user?.address2 || "",
+    profileImage: user?.profile_pic || user?.profileImage || "",
+    gender: user?.gender || "",
+    dob: user?.birthdate ? new Date(user.birthdate).toISOString().split('T')[0] : "",
+    city: user?.city || "",
+    state: user?.state || "",
+    pincode: user?.pincode || "",
   }));
   const [errors, setErrors] = useState({});
 
@@ -132,124 +140,190 @@ function EditModal({ user, onSave, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
-  <div className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white shadow-2xl border border-orange-100">
-    <div className="sticky top-0 z-10 flex items-center justify-between px-6 py-5 border-b border-orange-100 bg-gradient-to-r from-orange-500 to-amber-500 rounded-t-3xl">
-      <div className="flex items-center gap-2">
-        <Pencil size={18} className="text-white" />
-        <h3
-          className="text-lg font-bold text-white"
-          style={{ fontFamily: "'Fredoka One', cursive" }}
-        >
-          Edit Profile
-        </h3>
-      </div>
-
-      <button
-        type="button"
-        onClick={onClose}
-        className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-colors"
-      >
-        <X size={18} />
-      </button>
-    </div>
-
-    <div className="p-6 md:p-8 space-y-5">
-      <Field label="Profile Image">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-          <div className="w-24 h-24 rounded-3xl overflow-hidden border-2 border-orange-200 bg-orange-50 flex items-center justify-center shrink-0">
-            {form.profileImage ? (
-              <img
-                src={form.profileImage}
-                alt="Profile Preview"
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <User size={30} className="text-orange-300" />
-            )}
+      <div className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white shadow-2xl border border-orange-100">
+        <div className="sticky top-0 z-10 flex items-center justify-between px-6 py-5 border-b border-orange-100 bg-gradient-to-r from-orange-500 to-amber-500 rounded-t-3xl">
+          <div className="flex items-center gap-2">
+            <Pencil size={18} className="text-white" />
+            <h3
+              className="text-lg font-bold text-white"
+              style={{ fontFamily: "'Fredoka One', cursive" }}
+            >
+              Edit Profile
+            </h3>
           </div>
 
-          <label className="cursor-pointer inline-flex w-fit items-center gap-2 px-5 py-3 rounded-2xl bg-orange-100 hover:bg-orange-200 text-orange-600 font-bold text-sm md:text-base transition-colors">
-            <Camera size={18} />
-            Upload Image
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              className="hidden"
-            />
-          </label>
+          <button
+            type="button"
+            onClick={onClose}
+            className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-colors"
+          >
+            <X size={18} />
+          </button>
         </div>
-      </Field>
 
-      <Field label="Full Name" error={errors.name}>
-        <input
-          type="text"
-          className={inputCls(errors.name)}
-          value={form.name}
-          onChange={(e) => updateField("name", e.target.value)}
-          placeholder="Your full name"
-          autoComplete="name"
-        />
-      </Field>
+        <div className="p-6 md:p-8 space-y-5">
+          <Field label="Profile Image">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+              <div className="w-24 h-24 rounded-3xl overflow-hidden border-2 border-orange-200 bg-orange-50 flex items-center justify-center shrink-0">
+                {form.profileImage ? (
+                  <img
+                    src={form.profileImage}
+                    alt="Profile Preview"
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <User size={30} className="text-orange-300" />
+                )}
+              </div>
 
-      <Field label="Email Address" error={errors.email}>
-        <input
-          type="email"
-          className={inputCls(errors.email)}
-          value={form.email}
-          onChange={(e) => updateField("email", e.target.value)}
-          placeholder="your@email.com"
-          autoComplete="email"
-        />
-      </Field>
+              <label className="cursor-pointer inline-flex w-fit items-center gap-2 px-5 py-3 rounded-2xl bg-orange-100 hover:bg-orange-200 text-orange-600 font-bold text-sm md:text-base transition-colors">
+                <Camera size={18} />
+                Upload Image
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  className="hidden"
+                />
+              </label>
+            </div>
+          </Field>
 
-      <Field label="Mobile Number" error={errors.phone}>
-        <input
-          type="tel"
-          className={inputCls(errors.phone)}
-          value={form.phone}
-          onChange={(e) =>
-            updateField("phone", e.target.value.replace(/\D/g, "").slice(0, 10))
-          }
-          placeholder="9876543210"
-          autoComplete="tel"
-          maxLength={10}
-        />
-      </Field>
+          <Field label="Full Name" error={errors.name}>
+            <input
+              type="text"
+              className={inputCls(errors.name)}
+              value={form.name}
+              onChange={(e) => updateField("name", e.target.value)}
+              placeholder="Your full name"
+              autoComplete="name"
+            />
+          </Field>
 
-      <Field label="Delivery Address" error={errors.address}>
-        <textarea
-          className={`${inputCls(errors.address)} resize-none min-h-[120px]`}
-          rows={4}
-          value={form.address}
-          onChange={(e) => updateField("address", e.target.value)}
-          placeholder="Street, City, State, Pincode"
-        />
-      </Field>
-    </div>
+          <Field label="Email Address" error={errors.email}>
+            <input
+              type="email"
+              className={inputCls(errors.email)}
+              value={form.email}
+              onChange={(e) => updateField("email", e.target.value)}
+              placeholder="your@email.com"
+              autoComplete="email"
+            />
+          </Field>
 
-    <div className="sticky bottom-0 bg-white px-6 md:px-8 pb-6 pt-2 border-t border-orange-100">
-      <div className="flex flex-col sm:flex-row gap-3">
-        <button
-          type="button"
-          onClick={onClose}
-          className="flex-1 py-3 rounded-2xl border border-orange-200 text-orange-600 font-bold text-sm md:text-base hover:bg-orange-50 transition-colors"
-        >
-          Cancel
-        </button>
+          <Field label="Mobile Number" error={errors.phone}>
+            <input
+              type="tel"
+              className={inputCls(errors.phone)}
+              value={form.phone}
+              onChange={(e) =>
+                updateField("phone", e.target.value.replace(/\D/g, "").slice(0, 10))
+              }
+              placeholder="9876543210"
+              autoComplete="tel"
+              maxLength={10}
+            />
+          </Field>
 
-        <button
-          type="button"
-          onClick={handleSave}
-          className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-sm md:text-base hover:from-orange-600 hover:to-amber-600 transition-all shadow-toy hover:shadow-toy-hover"
-        >
-          <Save size={18} />
-          Save Changes
-        </button>
+          <Field label="Address Line 1" error={errors.address1}>
+            <input
+              type="text"
+              className={inputCls(errors.address1)}
+              value={form.address1}
+              onChange={(e) => updateField("address1", e.target.value)}
+              placeholder="Flat, House no., Building, Apartment"
+            />
+          </Field>
+
+          <Field label="Address Line 2" error={errors.address2}>
+            <input
+              type="text"
+              className={inputCls(errors.address2)}
+              value={form.address2}
+              onChange={(e) => updateField("address2", e.target.value)}
+              placeholder="Area, Street, Sector, Village"
+            />
+          </Field>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Field label="City" error={errors.city}>
+              <input
+                type="text"
+                className={inputCls(errors.city)}
+                value={form.city}
+                onChange={(e) => updateField("city", e.target.value)}
+                placeholder="City"
+              />
+            </Field>
+            <Field label="State" error={errors.state}>
+              <input
+                type="text"
+                className={inputCls(errors.state)}
+                value={form.state}
+                onChange={(e) => updateField("state", e.target.value)}
+                placeholder="State"
+              />
+            </Field>
+          </div>
+
+          <Field label="Pincode" error={errors.pincode}>
+            <input
+              type="text"
+              className={inputCls(errors.pincode)}
+              value={form.pincode}
+              onChange={(e) => updateField("pincode", e.target.value)}
+              placeholder="Pincode"
+            />
+          </Field>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Field label="Gender" error={errors.gender}>
+              <select
+                className={inputCls(errors.gender)}
+                value={form.gender}
+                onChange={(e) => updateField("gender", e.target.value)}
+              >
+                <option value="">Select gender</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Other">Other</option>
+              </select>
+            </Field>
+
+            <Field label="Date of Birth" error={errors.dob}>
+              <input
+                type="date"
+                className={inputCls(errors.dob)}
+                value={form.dob}
+                onChange={(e) => updateField("dob", e.target.value)}
+              />
+            </Field>
+          </div>
+        </div>
+
+
+        <div className="sticky bottom-0 bg-white px-6 md:px-8 pb-6 pt-2 border-t border-orange-100">
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button
+              type="button"
+              onClick={onClose}
+              className="flex-1 py-3 rounded-2xl border border-orange-200 text-orange-600 font-bold text-sm md:text-base hover:bg-orange-50 transition-colors"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="button"
+              onClick={handleSave}
+              className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-sm md:text-base hover:from-orange-600 hover:to-amber-600 transition-all shadow-toy hover:shadow-toy-hover"
+            >
+              <Save size={18} />
+              Save Changes
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
   );
 }
 
@@ -337,8 +411,8 @@ function OrdersPage({ orders, onBack, navigate }) {
                   <div className="flex items-center gap-3 flex-wrap">
                     <span
                       className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${order.status === "Confirmed"
-                          ? "bg-green-100 text-green-600"
-                          : "bg-orange-100 text-orange-600"
+                        ? "bg-green-100 text-green-600"
+                        : "bg-orange-100 text-orange-600"
                         }`}
                     >
                       {order.status}
@@ -420,13 +494,11 @@ function OrdersPage({ orders, onBack, navigate }) {
 
 export default function UserProfile() {
   const navigate = useNavigate();
-  const { wishlist, cartCount, orders } = useStore();
+  const { wishlist, cartCount, orders, logout } = useStore();
 
   const [user, setUser] = useState(null);
-  const [showEdit, setShowEdit] = useState(false
-
-    
-  );
+  const [showEdit, setShowEdit] = useState(false);
+  const [showAddressMgr, setShowAddressMgr] = useState(false);
   const [showOrdersPage, setShowOrdersPage] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -442,11 +514,12 @@ export default function UserProfile() {
 
     const fetchProfile = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/user/profile/${parsed.id}`);
+        const customerId = parsed.customer_id || parsed.id;
+        const res = await fetch(`http://localhost:5000/api/user/profile/${customerId}`);
         const data = await res.json();
 
         if (res.ok) {
-          const fullUser = { ...parsed, ...data.user };
+          const fullUser = { ...parsed, ...data.user, profileImage: data.user.profile_pic };
           setUser(fullUser);
           localStorage.setItem("toyCurrentUser", JSON.stringify(fullUser));
         } else {
@@ -467,35 +540,42 @@ export default function UserProfile() {
         name: form.name,
         email: form.email,
         phone: form.phone,
-        address: form.address,
-        profileImage: form.profileImage,
+        address1: form.address1,
+        address2: form.address2,
+        city: form.city,
+        state: form.state,
+        pincode: form.pincode,
+        country: form.country || user.country,
+        profile_pic: form.profileImage, // Harmonized with backend profile_pic
+        gender: form.gender,
+        birthdate: form.dob,
       };
 
-      let updated = null;
+      const res = await fetch(`http://localhost:5000/api/user/profile/${user.customer_id || user.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-      try {
-        const res = await fetch(`http://localhost:5000/api/user/profile/${user.id}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
+      const data = await res.json();
 
-        const data = await res.json();
-
-        if (res.ok) {
-          updated = { ...user, ...data.user, profileImage: form.profileImage };
-        } else {
-          updated = { ...user, ...payload };
-        }
-      } catch {
-        updated = { ...user, ...payload };
+      if (res.ok) {
+        // Enforce consistent property names and ensure all fields are synchronized
+        const updated = { 
+          ...user, 
+          ...data.user, 
+          profileImage: data.user.profile_pic || form.profileImage 
+        };
+        localStorage.setItem("toyCurrentUser", JSON.stringify(updated));
+        setUser(updated);
+        setShowEdit(false);
+        setSaved(true);
+        // Trigger storage event to refresh Header immediately
+        window.dispatchEvent(new Event("storage"));
+        setTimeout(() => setSaved(false), 2500);
+      } else {
+        alert(data.error || "Failed to save profile");
       }
-
-      localStorage.setItem("toyCurrentUser", JSON.stringify(updated));
-      setUser(updated);
-      setShowEdit(false);
-      setSaved(true);
-      setTimeout(() => setSaved(false), 2500);
     } catch (err) {
       console.error("Save profile error:", err);
       alert("An error occurred while saving profile");
@@ -503,8 +583,7 @@ export default function UserProfile() {
   };
 
   const confirmLogout = () => {
-    localStorage.removeItem("toyCurrentUser");
-    setShowLogoutConfirm(false);
+    logout();
     navigate("/");
   };
 
@@ -587,9 +666,9 @@ export default function UserProfile() {
           <div className="flex flex-col sm:flex-row items-center sm:items-end gap-5">
             <div className="relative flex-none">
               <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-white/20 backdrop-blur border-4 border-white/40 flex items-center justify-center shadow-xl overflow-hidden">
-                {user.profileImage ? (
+                {(user.profile_pic || user.profileImage) ? (
                   <img
-                    src={user.profileImage}
+                    src={user.profile_pic || user.profileImage}
                     alt={user.name || "User"}
                     className="w-full h-full object-cover"
                   />
@@ -640,72 +719,98 @@ export default function UserProfile() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-10 items-start">
-          <div className="lg:col-span-7">
-            <div className="bg-white/75 backdrop-blur-sm border border-orange-100 rounded-[28px] overflow-hidden">
-              <div className="grid grid-cols-3 border-b border-orange-100">
-                {[
-                  { label: "Cart Items", value: cartCount, icon: ShoppingBag },
-                  { label: "Wishlist", value: wishlist.length, icon: Heart },
-                  { label: "Orders", value: orders.length, icon: Package },
-                ].map(({ label, value, icon: Icon }) => (
-                  <div
-                    key={label}
-                    className="flex flex-col items-center justify-center py-5 gap-1 border-r border-orange-100 last:border-r-0"
-                  >
-                    <Icon size={18} className="text-orange-400" />
-                    <p
-                      className="text-2xl font-black text-gray-800"
-                      style={{ fontFamily: "'Fredoka One', cursive" }}
-                    >
-                      {value}
-                    </p>
-                    <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide text-center px-2">
-                      {label}
-                    </p>
-                  </div>
-                ))}
+        {/* Stats Row: Now full width below banner */}
+        <div className="bg-white/75 backdrop-blur-sm border border-orange-100 rounded-[28px] overflow-hidden shadow-sm mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3">
+            {[
+              { label: "Cart Items", value: cartCount, icon: ShoppingBag },
+              { label: "Wishlist", value: wishlist.length, icon: Heart },
+              { label: "Orders", value: orders.length, icon: Package },
+            ].map(({ label, value, icon: Icon }) => (
+              <div
+                key={label}
+                className="flex flex-col items-center justify-center py-6 gap-1 border-b sm:border-b-0 sm:border-r border-orange-100 last:border-0"
+              >
+                <div className="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center mb-1">
+                  <Icon size={18} className="text-orange-500" />
+                </div>
+                <p
+                  className="text-2xl font-black text-gray-800"
+                  style={{ fontFamily: "'Fredoka One', cursive" }}
+                >
+                  {value}
+                </p>
+                <p className="text-[10px] font-bold text-orange-400 uppercase tracking-widest text-center px-2">
+                  {label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-10 items-stretch">
+          {/* ── LEFT: Profile Details ── */}
+          <div className="bg-white/75 backdrop-blur-sm border border-orange-100 rounded-[28px] overflow-hidden shadow-sm">
+            <div className="px-5 sm:px-7 py-6">
+              <div className="flex items-center gap-2 pb-4 border-b border-orange-100 mb-2">
+                <User size={18} className="text-orange-500 flex-none" />
+                <h2
+                  className="text-lg font-bold text-gray-800"
+                  style={{ fontFamily: "'Fredoka One', cursive" }}
+                >
+                  Profile Details
+                </h2>
               </div>
 
-              <div className="px-5 sm:px-7 py-6">
-                <div className="flex items-center justify-between gap-3 pb-4 border-b border-orange-100">
-                  <div className="flex items-center gap-2 min-w-0">
-                    <User size={16} className="text-orange-500 flex-none" />
-                    <h2
-                      className="font-bold text-gray-800"
-                      style={{ fontFamily: "'Fredoka One', cursive" }}
-                    >
-                      Profile Details
-                    </h2>
-                  </div>
-
-                  {/* <button
-                    onClick={() => setShowEdit(true)}
-                    className="flex items-center gap-1.5 text-xs font-bold text-orange-500 hover:text-orange-600 bg-orange-50 hover:bg-orange-100 px-3 py-1.5 rounded-xl transition-all"
-                  >
-                    <Pencil size={12} /> Edit
-                  </button> */}
+              <div className="pt-2">
+                <InfoRow icon={User} label="Full Name" value={user.name} />
+                <InfoRow icon={Mail} label="Email Address" value={user.email} />
+                <InfoRow icon={Phone} label="Mobile Number" value={user.phone} />
+                <InfoRow icon={MapPin} label="Address Line 1" value={user.address1} />
+                <InfoRow icon={MapPin} label="Address Line 2" value={user.address2} />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-4">
+                  <InfoRow icon={MapPin} label="City" value={user.city} />
+                  <InfoRow icon={MapPin} label="State" value={user.state} />
+                  <InfoRow icon={MapPin} label="Pincode" value={user.pincode} />
                 </div>
-
-                <div className="pt-2">
-                  <InfoRow icon={User} label="Full Name" value={user.name} />
-                  <InfoRow icon={Mail} label="Email Address" value={user.email} />
-                  <InfoRow icon={Phone} label="Mobile Number" value={user.phone} />
-                  <InfoRow icon={MapPin} label="Delivery Address" value={user.address} />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-4">
+                  <InfoRow icon={User} label="Gender" value={user.gender} />
+                  <InfoRow
+                    icon={Star}
+                    label="Date of Birth"
+                    value={user.birthdate ? new Date(user.birthdate).toLocaleDateString("en-IN", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric"
+                    }) : ""}
+                  />
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-5">
-            <div className="lg:sticky lg:top-24">
-              <div className="pb-3 px-1">
-                <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider">
-                  Account Details
-                </h2>
-              </div>
+          {/* ── RIGHT: Account Actions ── */}
+          <div className="bg-white/75 backdrop-blur-sm border border-orange-100 rounded-[28px] overflow-hidden shadow-sm">
+            <div className="border-b border-orange-100 px-5 sm:px-7 py-5 flex items-center gap-2">
+              <ShieldCheck size={18} className="text-orange-500 flex-none" />
+              <h2
+                className="text-lg font-bold text-gray-800"
+                style={{ fontFamily: "'Fredoka One', cursive" }}
+              >
+                Account Actions
+              </h2>
+            </div>
 
-              <div>
+            <div className="px-5 sm:px-7 py-6 flex flex-col h-full justify-between pb-12">
+              <div className="space-y-1">
+                {user.role === 'admin' && (
+                  <QuickCard
+                    icon={LayoutDashboard}
+                    title="Return to Admin Dashboard"
+                    sub="Go back to admin control panel"
+                    onClick={() => navigate("/admin")}
+                  />
+                )}
                 <QuickCard
                   icon={ShoppingBag}
                   title="My Orders"
@@ -731,26 +836,30 @@ export default function UserProfile() {
                   icon={MapPin}
                   title="Addresses"
                   sub="Manage your delivery addresses"
-                  onClick={() => setShowEdit(true)}
+                  onClick={() => setShowAddressMgr(true)}
                 />
                 <QuickCard
                   icon={Star}
-                  title="Profile Details"
-                  sub="Edit your personal information"
+                  title="Edit Profile"
+                  sub="Update your personal information"
                   onClick={() => setShowEdit(true)}
                 />
               </div>
 
-              <button
-                onClick={() => setShowLogoutConfirm(true)}
-                className="w-full mt-5 flex items-center justify-center gap-2 py-3.5 rounded-2xl border-2 border-orange-200 text-orange-500 font-bold text-sm hover:bg-orange-50 hover:border-orange-300 transition-all duration-200 group"
-              >
-                <LogOut size={16} className="group-hover:-translate-x-0.5 transition-transform" />
-                Sign Out
-              </button>
+              <div className="mt-8">
+                <button
+                  onClick={() => setShowLogoutConfirm(true)}
+                  className="w-full flex items-center justify-center mb-20 gap-2 py-3.5 rounded-2xl border-2 border-orange-200 text-orange-500 font-bold text-sm hover:bg-orange-50 hover:border-orange-300 transition-all duration-200 group"
+                >
+                  <LogOut size={16} className="group-hover:-translate-x-0.5 transition-transform" />
+                  Sign Out
+                </button>
+              </div>
             </div>
           </div>
         </div>
+
+
       </div>
 
       {showEdit && user && (
@@ -798,6 +907,219 @@ export default function UserProfile() {
           </div>
         </div>
       )}
+
+      {showAddressMgr && user && (
+        <AddressManager
+          customerId={user.customer_id || user.id}
+          onClose={() => setShowAddressMgr(false)}
+        />
+      )}
+    </div>
+  );
+}
+
+// ── ADDRESS MANAGER COMPONENTS ───────────────────────────────────────
+const EMPTY_ADDR = {
+  full_name: "", phone: "", address_line_1: "", address_line_2: "",
+  city: "", state: "", pincode: "", address_type: "Home", is_default: false,
+};
+
+function AddressForm({ initial, onSave, onCancel, saving }) {
+  const [form, setForm] = useState(initial || EMPTY_ADDR);
+  const [errors, setErrors] = useState({});
+
+  const set = (k, v) => {
+    setForm(p => ({ ...p, [k]: v }));
+    setErrors(p => ({ ...p, [k]: "" }));
+  };
+
+  const validate = () => {
+    const e = {};
+    if (!form.full_name.trim()) e.full_name = "Full name is required";
+    if (!form.phone.trim()) e.phone = "Phone is required";
+    else if (!/^[6-9]\d{9}$/.test(form.phone.replace(/\s/g, ""))) e.phone = "Enter a valid 10-digit number";
+    if (!form.address_line_1.trim()) e.address_line_1 = "Address line 1 is required";
+    if (!form.city.trim()) e.city = "City is required";
+    if (!form.state.trim()) e.state = "State is required";
+    if (!form.pincode.trim()) e.pincode = "Pincode is required";
+    else if (!/^\d{6}$/.test(form.pincode)) e.pincode = "Enter a valid 6-digit pincode";
+    return e;
+  };
+
+  const handleSave = () => {
+    const e = validate();
+    if (Object.keys(e).length > 0) { setErrors(e); return; }
+    onSave(form);
+  };
+
+  const inp = (err) =>
+    `w-full px-4 py-3 rounded-xl border text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all ${
+      err ? "border-red-300 bg-red-50" : "border-orange-200 bg-orange-50/40 hover:border-orange-300"
+    }`;
+
+  const Lbl = ({ label, err, children }) => (
+    <div className="space-y-1">
+      <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wide">{label}</label>
+      {children}
+      {err && <p className="text-xs text-red-500 font-medium">{err}</p>}
+    </div>
+  );
+
+  return (
+    <div className="space-y-4">
+      <div className="flex gap-3">
+        {["Home", "Work", "Other"].map(t => (
+          <button key={t} type="button" onClick={() => set("address_type", t)}
+            className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-bold border-2 transition-all ${
+              form.address_type === t ? "border-orange-500 bg-orange-500 text-white" : "border-orange-200 text-gray-600 hover:border-orange-300"
+            }`}>
+            {t === "Home" ? <Home size={13} /> : t === "Work" ? <Briefcase size={13} /> : <MapPin size={13} />}
+            {t}
+          </button>
+        ))}
+      </div>
+
+      <Lbl label="Full Name" err={errors.full_name}>
+        <input type="text" className={inp(errors.full_name)} value={form.full_name}
+          onChange={e => set("full_name", e.target.value)} />
+      </Lbl>
+
+      <Lbl label="Phone" err={errors.phone}>
+        <input type="tel" className={inp(errors.phone)} value={form.phone}
+          onChange={e => set("phone", e.target.value.replace(/\D/g, "").slice(0, 10))} maxLength={10} />
+      </Lbl>
+
+      <Lbl label="Address Line 1" err={errors.address_line_1}>
+        <input type="text" className={inp(errors.address_line_1)} value={form.address_line_1}
+          onChange={e => set("address_line_1", e.target.value)} />
+      </Lbl>
+
+      <Lbl label="Address Line 2" err={errors.address_line_2}>
+        <input type="text" className={inp(errors.address_line_2)} value={form.address_line_2}
+          onChange={e => set("address_line_2", e.target.value)} />
+      </Lbl>
+
+      <div className="grid grid-cols-2 gap-4">
+        <Lbl label="City" err={errors.city}>
+          <input type="text" className={inp(errors.city)} value={form.city}
+            onChange={e => set("city", e.target.value)} />
+        </Lbl>
+        <Lbl label="State" err={errors.state}>
+          <input type="text" className={inp(errors.state)} value={form.state}
+            onChange={e => set("state", e.target.value)} />
+        </Lbl>
+      </div>
+
+      <Lbl label="Pincode" err={errors.pincode}>
+        <input type="text" className={inp(errors.pincode)} value={form.pincode}
+          onChange={e => set("pincode", e.target.value.replace(/\D/g, "").slice(0, 6))} maxLength={6} />
+      </Lbl>
+
+      <label className="flex items-center gap-2 cursor-pointer">
+        <input type="checkbox" checked={form.is_default} onChange={e => set("is_default", e.target.checked)}
+          className="w-4 h-4 text-orange-500 rounded border-orange-200 focus:ring-orange-400" />
+        <span className="text-sm font-semibold text-gray-700">Set as default address</span>
+      </label>
+
+      <div className="flex gap-3 pt-2">
+        <button type="button" onClick={onCancel}
+          className="flex-1 py-3 rounded-2xl border border-orange-200 text-orange-600 font-bold text-sm">Cancel</button>
+        <button type="button" onClick={handleSave} disabled={saving}
+          className="flex-1 py-3 rounded-2xl bg-orange-500 text-white font-bold text-sm hover:bg-orange-600 shadow-md">
+          {saving ? "Saving..." : "Save Address"}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function AddressCard({ addr, onEdit, onDelete, onSetDefault }) {
+  return (
+    <div className={`p-4 rounded-2xl border-2 transition-all ${addr.is_default ? "border-orange-400 bg-orange-50" : "border-orange-100 bg-white"}`}>
+      <div className="flex justify-between items-start mb-2">
+        <span className="text-[10px] font-bold uppercase tracking-widest text-orange-600 bg-orange-100 px-2 py-0.5 rounded-full">{addr.address_type}</span>
+        {addr.is_default && <span className="text-[10px] font-bold text-green-600">DEFAULT</span>}
+      </div>
+      <p className="text-sm font-bold text-gray-800">{addr.full_name}</p>
+      <p className="text-xs text-gray-600">{addr.phone}</p>
+      <p className="text-xs text-gray-500 mt-1">{addr.address_line_1}, {addr.address_line_2 && addr.address_line_2 + ","} {addr.city}, {addr.state} - {addr.pincode}</p>
+      <div className="flex gap-2 mt-3">
+        <button onClick={() => onEdit(addr)} className="text-xs font-bold text-orange-600 border border-orange-200 px-3 py-1.5 rounded-xl bg-white hover:bg-orange-50">Edit</button>
+        <button onClick={() => onDelete(addr.address_id)} className="text-xs font-bold text-red-500 border border-red-100 px-3 py-1.5 rounded-xl bg-white hover:bg-red-50">Remove</button>
+        {!addr.is_default && <button onClick={() => onSetDefault(addr.address_id)} className="text-xs font-bold text-gray-600 border border-gray-200 px-3 py-1.5 rounded-xl bg-white hover:bg-gray-50 ml-auto">Set Default</button>}
+      </div>
+    </div>
+  );
+}
+
+
+
+function AddressManager({ customerId, onClose }) {
+  const [addresses, setAddresses] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [mode, setMode] = useState("list");
+  const [editing, setEditing] = useState(null);
+  const [saving, setSaving] = useState(false);
+
+  const fetchAddresses = useCallback(async () => {
+    try {
+      const res = await fetch(`${API}/api/addresses/${customerId}`);
+      const data = await res.json();
+      setAddresses(data.addresses || []);
+    } catch (err) { console.error(err); }
+    finally { setLoading(false); }
+  }, [customerId]);
+
+  useEffect(() => { fetchAddresses(); }, [fetchAddresses]);
+
+  const onSave = async (form) => {
+    setSaving(true);
+    const url = mode === "add" ? `${API}/api/addresses/${customerId}` : `${API}/api/addresses/${customerId}/${editing.address_id}`;
+    const method = mode === "add" ? "POST" : "PUT";
+    try {
+      const res = await fetch(url, { method, headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) });
+      if (res.ok) { fetchAddresses(); setMode("list"); setEditing(null); }
+    } catch (err) { alert("Failed to save address"); }
+    finally { setSaving(false); }
+  };
+
+  const onDelete = async (id) => {
+    if (!window.confirm("Remove address?")) return;
+    try {
+      const res = await fetch(`${API}/api/addresses/${customerId}/${id}`, { method: "DELETE" });
+      if (res.ok) fetchAddresses();
+    } catch (err) { alert("Failed to delete"); }
+  };
+
+  const onSetDefault = async (id) => {
+    try {
+      const res = await fetch(`${API}/api/addresses/${customerId}/${id}`, { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...addresses.find(a => a.address_id === id), is_default: true }) });
+      if (res.ok) fetchAddresses();
+    } catch (err) { console.error(err); }
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
+      <div className="w-full max-w-lg max-h-[90vh] flex flex-col rounded-3xl bg-white shadow-2xl border border-orange-100 overflow-hidden">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-orange-100 bg-gradient-to-r from-orange-500 to-amber-500">
+          <h3 className="text-lg font-bold text-white tracking-wide">
+            {mode === "list" ? "My Addresses" : mode === "add" ? "Add Address" : "Edit Address"}
+          </h3>
+          <button onClick={onClose} className="text-white hover:bg-white/20 rounded-full p-1"><X size={20} /></button>
+        </div>
+        <div className="flex-1 overflow-y-auto p-6">
+          {mode === "list" ? (
+            loading ? <div className="p-10 text-center">Loading...</div> : (
+              <div className="space-y-4">
+                {addresses.map(a => <AddressCard key={a.address_id} addr={a} onEdit={(addr) => { setEditing(addr); setMode("edit"); }} onDelete={onDelete} onSetDefault={onSetDefault} />)}
+                <button onClick={() => setMode("add")} className="w-full py-4 rounded-2xl border-2 border-dashed border-orange-200 text-orange-500 font-bold text-sm hover:bg-orange-50">+ Add New Address</button>
+              </div>
+            )
+          ) : (
+            <AddressForm initial={editing} onSave={onSave} onCancel={() => { setMode("list"); setEditing(null); }} saving={saving} />
+          )}
+        </div>
+      </div>
     </div>
   );
 }

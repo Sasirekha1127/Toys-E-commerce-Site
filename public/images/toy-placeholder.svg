@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#FFF7ED"/>
+  <rect x="2" y="2" width="396" height="396" rx="16" fill="none" stroke="#FED7AA" stroke-width="3" stroke-dasharray="10,6"/>
+  <!-- Box shape -->
+  <rect x="130" y="160" width="140" height="120" rx="8" fill="#FDBA74" opacity="0.5"/>
+  <rect x="130" y="160" width="140" height="40" rx="8" fill="#FB923C" opacity="0.6"/>
+  <!-- Star decoration -->
+  <text x="200" y="142" text-anchor="middle" font-size="40" fill="#FB923C" opacity="0.7">🎁</text>
+  <!-- Label -->
+  <text x="200" y="320" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#C2410C" opacity="0.8">No Image</text>
+  <text x="200" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#9A3412" opacity="0.5">Image not available</text>
+</svg>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { ShoppingCart, Heart, Menu, X, User, ChevronRight } from "lucide-react";
+import { ShoppingCart, Heart, Menu, X, User, ChevronRight, LayoutDashboard, LogOut } from "lucide-react";
 import { useStore } from "../../hooks/useStore";
 
-// ── Category + subcategory data ──────────────────────────────────────────────
+// ── Category + subcategory data 
 const CATEGORY_MAP = [
   {
     name: "All Categories",
@@ -11,28 +11,24 @@ const CATEGORY_MAP = [
   },
   {
     name: "Soft Toys",
-    emoji: "🧸",
     subs: ["Teddy Bears", "Plush Animals", "Cartoon Toys", "Baby Soft Toys"],
   },
   {
     name: "Educational Toys",
-    emoji: "🎓",
     subs: ["Learning Kits", "Puzzle Games", "STEM Toys", "Montessori Toys"],
   },
   {
     name: "Electronic Toys",
-    emoji: "⚡",
     subs: ["Remote Control Toys", "Musical Toys", "Interactive Toys", "Battery Operated Toys"],
   },
   {
     name: "Wooden Toys",
-    emoji: "🪵",
     subs: ["Wooden Blocks", "Wooden Puzzles", "Wooden Vehicles", "Wooden Learning Toys"],
   },
 ];
 
 export default function Header({ onCategoryChange, onSearch }) {
-  const { cartCount, wishlist } = useStore();
+  const { cartCount, wishlist, currentUser, currentSeller, logout } = useStore();
   const navigate  = useNavigate();
   const location  = useLocation();
 
@@ -44,12 +40,10 @@ export default function Header({ onCategoryChange, onSearch }) {
   const [hoveredCat,       setHoveredCat]       = useState(null);
   const [selectedLabel,    setSelectedLabel]    = useState("All Categories");
   const [searchTerm,       setSearchTerm]       = useState("");
-
-  const [currentUser, setCurrentUser] = useState(() =>
-    JSON.parse(localStorage.getItem("toyCurrentUser") || "null")
-  );
+  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
 
   const categoryRef = useRef(null);
+  const profileRef  = useRef(null);
   const closeTimer  = useRef(null);
   const isHomePage  = location.pathname === "/" || location.pathname === "/home";
 
@@ -71,29 +65,23 @@ export default function Header({ onCategoryChange, onSearch }) {
     }
   }, [isHomePage]);
 
-  // ── Close on outside click ────────────────────────────────────────────────
+  // ── Close category dropdown on outside click 
   useEffect(() => {
     const onOutside = (e) => {
       if (categoryRef.current && !categoryRef.current.contains(e.target)) {
         setDropdownOpen(false);
         setHoveredCat(null);
       }
+      if (profileRef.current && !profileRef.current.contains(e.target)) {
+        setProfileDropdownOpen(false);
+      }
     };
     document.addEventListener("mousedown", onOutside);
     return () => document.removeEventListener("mousedown", onOutside);
   }, []);
 
-  // ── Sync user from localStorage ───────────────────────────────────────────
-  useEffect(() => {
-    const sync = () =>
-      setCurrentUser(JSON.parse(localStorage.getItem("toyCurrentUser") || "null"));
-    window.addEventListener("storage", sync);
-    window.addEventListener("focus",   sync);
-    return () => {
-      window.removeEventListener("storage", sync);
-      window.removeEventListener("focus",   sync);
-    };
-  }, []);
+  // ── Sync user + seller from localStorage
+  // Synchronization is now handled by StoreContext
 
   // ── Hover helpers (delay prevents flicker when moving between panels) ─────
   const onMainEnter = (catName) => {
@@ -154,7 +142,7 @@ export default function Header({ onCategoryChange, onSearch }) {
           {/* Logo — unchanged */}
           <Link to="/" className="flex items-center gap-2.5 group">
             <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center shadow-toy group-hover:shadow-toy-hover transition-all duration-300 group-hover:scale-105 group-hover:rotate-3">
-              <span className="text-white text-xl">🧸</span>
+              <span className="text-white text-xl"></span>
             </div>
             <div>
               <span className="font-bold text-2xl text-orange-600">ToyStore</span>
@@ -296,31 +284,77 @@ export default function Header({ onCategoryChange, onSearch }) {
               )}
             </div>
 
-            {/* Profile — unchanged */}
-            <button
-              type="button"
-              onClick={() => navigate("/profile")}
-              className="relative w-10 h-10 rounded-xl bg-orange-100 hover:bg-orange-500 flex items-center justify-center transition-all duration-200 group overflow-hidden border border-orange-200"
-              aria-label="Open profile page"
-              title="Open profile page"
-            >
-              {currentUser?.profileImage ? (
-                <img
-                  src={currentUser.profileImage}
-                  alt="Profile"
-                  className="w-full h-full object-cover"
-                />
-              ) : currentUser?.name ? (
-                <span className="text-orange-600 group-hover:text-white font-black text-[11px] transition-colors">
-                  {getInitials(currentUser.name)}
-                </span>
-              ) : (
-                <User
-                  size={16}
-                  className="text-gray-500 group-hover:text-white transition-colors"
-                />
+            {/* Profile — with dropdown */}
+            <div className="relative" ref={profileRef}>
+              <button
+                type="button"
+                onClick={() => setProfileDropdownOpen((o) => !o)}
+                className="relative w-10 h-10 rounded-xl bg-orange-100 hover:bg-orange-500 flex items-center justify-center transition-all duration-200 group overflow-hidden border border-orange-200"
+                aria-label="Open profile menu"
+                title="Open profile menu"
+              >
+                {(currentUser?.profile_pic || currentUser?.profileImage) ? (
+                  <img
+                    src={currentUser.profile_pic || currentUser.profileImage}
+                    alt="Profile"
+                    className="w-full h-full object-cover"
+                  />
+                ) : currentUser?.name ? (
+                  <span className="text-orange-600 group-hover:text-white font-black text-[11px] transition-colors">
+                    {getInitials(currentUser.name)}
+                  </span>
+                ) : (
+                  <User
+                    size={16}
+                    className="text-gray-500 group-hover:text-white transition-colors"
+                  />
+                )}
+              </button>
+
+              {/* Profile dropdown */}
+              {profileDropdownOpen && (
+                <div className="absolute right-0 top-full mt-2 w-48 bg-white border border-orange-100 rounded-2xl shadow-xl z-[70] overflow-hidden py-1">
+                  <button
+                    type="button"
+                    onClick={() => { setProfileDropdownOpen(false); navigate("/profile"); }}
+                    className="w-full flex items-center gap-3 px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors text-left"
+                  >
+                    <User size={15} className="text-orange-400 flex-none" />
+                    My Account
+                  </button>
+                  {currentSeller && (
+                    <button
+                      type="button"
+                      onClick={() => { setProfileDropdownOpen(false); navigate("/seller"); }}
+                      className="w-full flex items-center gap-3 px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors text-left"
+                    >
+                      <LayoutDashboard size={15} className="text-orange-400 flex-none" />
+                      Seller Dashboard
+                    </button>
+                  )}
+                  <div className="h-px bg-orange-100 mx-2 my-1" />
+                  {currentUser || currentSeller ? (
+                    <button
+                      type="button"
+                      onClick={() => { setProfileDropdownOpen(false); logout(); navigate("/"); }}
+                      className="w-full flex items-center gap-3 px-4 py-3 text-sm font-semibold text-red-600 hover:bg-red-50 transition-colors text-left"
+                    >
+                      <LogOut size={15} className="text-red-400 flex-none" />
+                      Sign Out
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => { setProfileDropdownOpen(false); navigate("/auth"); }}
+                      className="w-full flex items-center gap-3 px-4 py-3 text-sm font-semibold text-orange-600 hover:bg-orange-50 transition-colors text-left"
+                    >
+                      <User size={15} className="text-orange-400 flex-none" />
+                      Sign In
+                    </button>
+                  )}
+                </div>
               )}
-            </button>
+            </div>
 
             {/* Mobile hamburger — unchanged */}
             {isHomePage && (

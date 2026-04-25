@@ -17,7 +17,7 @@ export const sellerProducts = [
     price: 1999,
     stock: 94,
     status: 'Active',
-    image: 'https://m.media-amazon.com/images/I/61VP9u-+3LL._AC_UF1000,1000_QL80_.jpg',
+    image: '/images/rabbit_plush.png',
   },
   {
     id: 'SP003',
@@ -35,7 +35,7 @@ export const sellerProducts = [
     price: 3499,
     stock: 5,
     status: 'Low Stock',
-    image: 'https://m.media-amazon.com/images/I/81XC6fJlGVL._AC_UF1000,1000_QL80_.jpg',
+    image: '/images/science_kit.png',
   },
   {
     id: 'SP005',
@@ -44,7 +44,7 @@ export const sellerProducts = [
     price: 4999,
     stock: 38,
     status: 'Active',
-    image: 'https://m.media-amazon.com/images/I/61yBuPQZ7QL._AC_UF1000,1000_QL80_.jpg',
+    image: '/images/rc_car.png',
   },
   {
     id: 'SP006',
@@ -53,7 +53,7 @@ export const sellerProducts = [
     price: 1299,
     stock: 3,
     status: 'Low Stock',
-    image: 'https://m.media-amazon.com/images/I/61SZ1PKAXNL._AC_UF1000,1000_QL80_.jpg',
+    image: 'https://m.media-amazon.com/images/I/61MvSBeC8NL._AC_SL1000_.jpg',
   },
   {
     id: 'SP007',
@@ -71,7 +71,7 @@ export const sellerProducts = [
     price: 5999,
     stock: 12,
     status: 'Active',
-    image: 'https://m.media-amazon.com/images/I/71XxRRLRBbL._AC_UF1000,1000_QL80_.jpg',
+    image: 'https://images.unsplash.com/photo-1524143902484-1d455aa73783?q=80&w=1000&auto=format&fit=crop',
   },
 ];
 

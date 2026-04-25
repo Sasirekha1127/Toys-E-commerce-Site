@@ -46,6 +46,16 @@ const X = () => (
   </svg>
 );
 
+const DocFile = () => (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+    <polyline points="14 2 14 8 20 8" />
+    <line x1="16" y1="13" x2="8" y2="13" />
+    <line x1="16" y1="17" x2="8" y2="17" />
+    <polyline points="10 9 9 9 8 9" />
+  </svg>
+);
+
 /* ─── Shared sub-components ─────────────── */
 function Field({ label, error, hint, children }) {
   return (
@@ -80,8 +90,8 @@ function OBSelect({ error, children, className = '', style = {}, ...props }) {
   );
 }
 
-/* ─── Image upload box ───────────────────── */
-function ImageUpload({ label, value, onChange, hint, required }) {
+/* ─── Generic upload box ─────────────────── */
+function ImageUpload({ label, value, onChange, hint, required, accept = 'image/*' }) {
   const inputRef = useRef();
 
   const handleFile = (e) => {
@@ -103,7 +113,14 @@ function ImageUpload({ label, value, onChange, hint, required }) {
 
       {value?.preview ? (
         <div className="relative inline-block">
-          <img src={value.preview} alt="preview" className="h-28 w-auto rounded-xl border border-gray-200 object-cover" />
+          {value.preview.startsWith('data:application/pdf') ? (
+            <div className="h-28 w-28 rounded-xl border border-gray-200 bg-gray-50 flex flex-col items-center justify-center gap-1 text-gray-400">
+              <DocFile />
+              <span className="text-[10px] font-bold uppercase">PDF</span>
+            </div>
+          ) : (
+            <img src={value.preview} alt="preview" className="h-28 w-auto rounded-xl border border-gray-200 object-cover" />
+          )}
           <button
             type="button"
             onClick={() => onChange(null)}
@@ -123,7 +140,7 @@ function ImageUpload({ label, value, onChange, hint, required }) {
         </button>
       )}
 
-      <input ref={inputRef} type="file" accept="image/*" className="hidden" onChange={handleFile} />
+      <input ref={inputRef} type="file" accept={accept} className="hidden" onChange={handleFile} />
     </div>
   );
 }
@@ -148,15 +165,21 @@ function Step1({ data, update, errors, setErrors }) {
     }
 
     setOtpSent(true);
-    alert('Dummy OTP sent: 1234');
+    if (import.meta.env.DEV) {
+      setOtpInput('123456');
+      alert('Local Development Mode: Test OTP 123456 generated automatically');
+    } else {
+      alert('OTP sent to your mobile number');
+    }
   };
 
   const verifyOtp = () => {
-    if (otpInput === '1234') {
+    const validOtp = import.meta.env.DEV ? '123456' : '1234'; // Use 1234 as fallback for pro-legacy if needed
+    if (otpInput === validOtp) {
       update({ otpVerified: true });
       setOtpError('');
     } else {
-      setOtpError('Wrong OTP (use 1234)');
+      setOtpError(`Wrong OTP${import.meta.env.DEV ? ' (use 123456)' : ''}`);
     }
   };
 
@@ -208,7 +231,7 @@ function Step1({ data, update, errors, setErrors }) {
             <OBInput
               value={otpInput}
               onChange={(e) => {
-                setOtpInput(e.target.value.replace(/\D/g, '').slice(0, 4));
+                setOtpInput(e.target.value.replace(/\D/g, '').slice(0, 6));
                 setOtpError('');
               }}
               placeholder="Enter OTP"
@@ -327,7 +350,8 @@ function Step3({ data, update, errors, setErrors }) {
           update({ kycDocumentImage: v });
           setErrors((e) => ({ ...e, kycDocumentImage: '' }));
         }}
-        hint="Upload PAN card, Aadhaar or any valid ID"
+        accept=".pdf"
+        hint="Upload PDF copy of PAN card, Aadhaar or any valid ID"
         required
       />
       {errors.kycDocumentImage && <p className="text-xs text-red-500 font-medium">{errors.kycDocumentImage}</p>}
@@ -578,14 +602,14 @@ export default function SellerOnboarding() {
       return;
     }
 
+    // Only pre-fill email and password from the registration/login session; all other fields start blank.
     if (currentSeller?.email && !data.email) {
       update({ email: currentSeller.email });
     }
-
-    if (currentSeller?.sellerName && !data.fullName) {
-      update({ fullName: currentSeller.sellerName });
+    if (currentSeller?.password && !data.password) {
+      update({ password: currentSeller.password });
     }
-  }, [currentSeller, data.email, data.fullName, navigate, update]);
+  }, [currentSeller, data.email, data.password, navigate, update]);
 
   const goNext = () => {
     const errs = validate(step, data);
@@ -606,10 +630,34 @@ export default function SellerOnboarding() {
     setStep((s) => Math.max(1, s - 1));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setSubmitting(true);
 
-    setTimeout(() => {
+    try {
+      const payload = {
+        seller_id: currentSeller.id || currentSeller.seller_id,
+        ...data
+      };
+
+      const res = await fetch('http://127.0.0.1:5000/api/auth/seller/onboarding', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const contentType = res.headers.get('content-type');
+      let result;
+      if (contentType && contentType.includes('application/json')) {
+        result = await res.json();
+      } else {
+        const text = await res.text();
+        throw new Error(`Server returned non-JSON response: ${text.slice(0, 100)}...`);
+      }
+
+      if (!res.ok) {
+        throw new Error(result.error || 'Failed to save onboarding data');
+      }
+
       markComplete();
 
       const sel = JSON.parse(localStorage.getItem('toyCurrentSeller') || '{}');
@@ -618,9 +666,13 @@ export default function SellerOnboarding() {
       localStorage.setItem('toyCurrentSeller', JSON.stringify(updatedSeller));
       localStorage.removeItem('toyNewSellerPendingOnboarding');
 
-      setSubmitting(false);
       setDone(true);
-    }, 1400);
+    } catch (err) {
+      console.error('Onboarding submission failed:', err);
+      alert('Failed to save onboarding details: ' + err.message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const pct = (step / 5) * 100;

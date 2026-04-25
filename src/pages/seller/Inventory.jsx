@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { AlertTriangle, PackageX, CheckCircle, RefreshCw, X } from 'lucide-react';
 import { sellerProducts as initialProducts } from '../../data/seller/index.js';
 
-const STORAGE_KEY = "toySellerInventory_v1";
+
 
 function fmt(n) {
   return new Intl.NumberFormat('en-IN').format(n);
@@ -37,30 +37,54 @@ function StockBar({ stock }) {
   );
 }
 
-function getInitialProducts() {
-  try {
-    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if (stored) return stored;
-  } catch {}
-
-  const data = initialProducts.map(p => ({
+function getInitialMockProducts() {
+  return initialProducts.map(p => ({
     ...p,
     stock: Number(p.stock || 0),
     status: getStatus(Number(p.stock || 0)),
   }));
-
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  return data;
 }
 
 export default function SellerInventory() {
-  const [products, setProducts] = useState(getInitialProducts);
+  const currentSeller = useMemo(() => JSON.parse(localStorage.getItem('toyCurrentSeller') || '{}'), []);
+  const isDemo = currentSeller?.email === 'kidstoys@gmail.com';
+
+  const [products, setProducts] = useState(isDemo ? getInitialMockProducts() : []);
+  const [loading, setLoading] = useState(!isDemo);
   const [selected, setSelected] = useState(null);
   const [qty, setQty] = useState('');
 
+  const fetchInventory = async () => {
+    if (isDemo || !currentSeller?.id) {
+      setLoading(false);
+      return;
+    };
+
+    setLoading(true);
+    try {
+      const res = await fetch(`http://localhost:5000/api/seller-products?seller_id=${currentSeller.id}`);
+      const data = await res.json();
+      if (data.products) {
+        const mapped = data.products.map(p => ({
+          id: p.id,
+          name: p.title || '',
+          category: p.category || 'Soft Toys',
+          stock: Number(p.stock_quantity || 0),
+          image: p.image_url || (p.image_urls && p.image_urls.length > 0 ? p.image_urls[0] : ''),
+          status: getStatus(Number(p.stock_quantity || 0)),
+        }));
+        setProducts(mapped);
+      }
+    } catch (err) {
+      console.error('Failed to fetch inventory:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
-  }, [products]);
+    fetchInventory();
+  }, [currentSeller?.id, isDemo]);
 
   const stats = useMemo(() => {
     return {
@@ -83,6 +107,7 @@ export default function SellerInventory() {
   const handleRestock = () => {
     if (!qty || Number(qty) <= 0) return;
 
+    // Local update
     setProducts(prev =>
       prev.map(p =>
         p.id === selected.id
@@ -95,8 +120,25 @@ export default function SellerInventory() {
       )
     );
 
+    // TODO: Update backend if not in demo mode
+    if (!isDemo) {
+      fetch(`http://localhost:5000/api/products/${selected.id}/stock`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ stock_quantity: selected.stock + Number(qty) })
+      }).catch(err => console.error("Failed to sync stock with backend", err));
+    }
+
     closeModal();
   };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="p-4 sm:p-6 max-w-7xl mx-auto space-y-5">

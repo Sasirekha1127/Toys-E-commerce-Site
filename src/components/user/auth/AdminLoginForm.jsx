@@ -11,7 +11,7 @@ function Field({ label, error, children }) {
   );
 }
 
-export default function AdminLoginForm() {
+export default function AdminLoginForm({ onSwitchToUserLogin }) {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -130,7 +130,17 @@ export default function AdminLoginForm() {
         >
           {loading ? 'Signing in…' : 'Sign In to Admin Dashboard ⚙️'}
         </button>
+
+        <div className="pt-2 text-center">
+          <button
+            type="button"
+            onClick={onSwitchToUserLogin}
+            className="text-sm font-semibold text-gray-500 hover:text-orange-600 transition"
+          >
+            ← Back to User Login
+          </button>
+        </div>
       </form>
     </>
   );
-}
+}     
