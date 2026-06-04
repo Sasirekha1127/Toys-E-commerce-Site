@@ -26,7 +26,7 @@ import {
   Star,
   X,
 } from "lucide-react";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 // ── GST rate ──────────────────────────────────────────────────
 const GST_RATE = 0.05;
 
