@@ -4998,8 +4998,8 @@ app.put('/api/admin/vendors/:id/status', async (req, res) => {
     // If we only have name, email, password_hash etc, we might need to alter it or use seller_profile.
     // Let's assume we update seller_profile verification status or sellers active status
     const result = await pool.query(
-      'UPDATE sellers SET updated_at = CURRENT_TIMESTAMP WHERE seller_id = $1 RETURNING *',
-      [id]
+      'UPDATE sellers SET status = $1, updated_at = CURRENT_TIMESTAMP WHERE seller_id = $2 RETURNING *',
+      [status, id]
     );
     res.json({ vendor: result.rows[0], message: 'Vendor status updated' });
   } catch (err) {

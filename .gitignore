@@ -1,6 +1,31 @@
+# Dependencies
 node_modules/
 backend/node_modules/
-.env
+frontend/customer/node_modules/
+frontend/admin/node_modules/
+frontend/seller/node_modules/
+
+# Build outputs
 dist/
 build/
 backend/dist/
+frontend/customer/dist/
+frontend/admin/dist/
+frontend/seller/dist/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
