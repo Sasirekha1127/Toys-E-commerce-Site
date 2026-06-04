@@ -127,7 +127,6 @@ export default function Cart() {
                       </button>
                     </div>
 
-                    {/* Price */}
                     <span className="text-gray-500">₹{parsePrice(item.price)} each</span>
 
                     {/* Actions */}
